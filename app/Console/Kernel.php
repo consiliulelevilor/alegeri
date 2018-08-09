@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\GenerateSitemap::class,
     ];
 
     /**
@@ -25,6 +26,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        if(App::environment('production')) {
+            $schedule->call('generate:sitemap')->twiceDaily(8, 16);
+            $schedule->command('backup:clean')->twiceDaily(7, 15);
+            $schedule->command('backup:run')->twiceDaily(8, 16);
+        }
+
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
     }
 
     /**
