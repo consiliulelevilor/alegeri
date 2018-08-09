@@ -24,7 +24,8 @@ jobs:
       - run:
           background: true
           command: php artisan serve
-      - run: ./vendor/bin/phpunit --stop-on-error
+      - run: ./vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-clover=coverage.xml
+      - run: bash <(curl -s https://codecov.io/bash)
   #staging:
   #  docker:
   #    - image: appropriate/curl:latest
