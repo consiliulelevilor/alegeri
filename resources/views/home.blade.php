@@ -1,95 +1,129 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('master')
 
-        <title>Laravel</title>
+@section('title', 'Alegeri CNE')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+@section('content')
+    
+    <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui masthead image" style="background-image: url({{ asset('/images/ag-2.jpg') }});"></div>
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing home menu">
+                <a class="toc item">
+                    <i class="mdi mdi-menu"></i>
+                </a>
+                <div class="item">
+                    <img src="{{ asset('/images/logo-white.png') }}">
+                </div>
+                <div class="item">
+                    <a href="{{ route('users') }}" class="ui inverted secondary button"><i class="fa fa-users"></i> &nbsp; Candidați</a>
+                </div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="right item">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <img src="{{ Auth::user()->avatarUrl() }}">
+                        &nbsp;
+                        <a href="{{ route('user.profile', ['idOrSlug' => Auth::user()->id]) }}" class="ui inverted secondary icon button"><i class="fa fa-user"></i> &nbsp; Profilul meu</a>
+                        <a href="{{ route('logout') }}" class="ui inverted secondary icon button"><i class="mdi mdi-power"></i></a>
                     @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    @guest
+                        <a href="{{ route('login') }}" class="ui inverted secondary button"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
+                    @endguest
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        @auth
+            <div class="ui text container">
+                <h1 class="ui inverted header green-text">
+                    Susține elevii.
+                </h1>
+            </div>
+        @endauth
+
+        @guest
+            <div class="ui text container">
+                <h1 class="ui inverted header green-text">
+                    Fă parte din Consiliul Național al Elevilor.
+                </h1>
+                <br>
+                <a href="{{ route('login') }}?new=1" class="ui big blue circular button">Înscrie-te &nbsp; <i class="fa fa-arrow-right"></i></a>
+            </div>
+        @endguest
+    </div>
+
+    <div class="ui centered grid">
+        <div class="fifteen wide column">
+            <div class="ui vertical stripe segment">
+                <div class="ui four statistics">
+                    <div class="statistic">
+                        <div class="value">22</div>
+                        <div class="label">
+                            candidaturi depuse
+                        </div>
+                    </div>
+                    <div class="statistic">
+                        <div class="value">22</div>
+                        <div class="label">
+                            județe au aplicat
+                        </div>
+                    </div>
+                    <div class="statistic">
+                        <div class="value">300+</div>
+                        <div class="label">
+                            întrebări puse candidaților
+                        </div>
+                    </div>
+                    <div class="statistic">
+                        <div class="value">30+</div>
+                        <div class="label">
+                            membri în CNE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui centered grid">
+        <div class="fifteen wide column">
+            <div class="ui vertical stripe segment">
+                <div class="ui middle aligned stackable grid container">
+                    <div class="row">
+                        <div class="eight wide column">
+                            <h3 class="ui header"><i class="fa fa-users"></i> &nbsp; Cine suntem?</h3>
+                            <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+                            <h3 class="ui header"><i class="fa fa-user-check"></i> &nbsp; De ce să ni te alături?</h3>
+                            <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
+                            <h3 class="ui header"><i class="fa fa-band-aid"></i> &nbsp; Ce beneficii ai?</h3>
+                            <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+                            
+                        </div>
+                        <div class="six wide right floated column">
+                            <img src="{{ asset('/images/ag-5.jpg') }}" class="ui large bordered rounded image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.masthead').visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            });
+        });
+    </script>
+@endsection
+
+@section('css')
+
+@endsection

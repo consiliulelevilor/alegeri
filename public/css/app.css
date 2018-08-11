@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:600,700,800,900&subset=latin-ext');
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.hidden.menu {
+    display: none;
+}
+
+.ui.home.menu {
+    border-bottom: none !important;
+    border-color: transparent !important;
+    border-width: 0px !important;
+}
+
+.masthead.segment {
+    min-height: 700px;
+    padding: 1em 0em;
+    background-color: transparent !important;
+}
+
+.masthead.image {
+    background-size: cover !important;
+    background-position: 100% 50% !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.masthead .logo.item img {
+    margin-right: 1em;
+}
+
+.masthead .ui.home.menu .ui.button {
+    margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+    margin-top: 3em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: 700;
+}
+
+.masthead h2 {
+    font-size: 1.7em;
+    font-weight: 800;
+}
+
+.ui.vertical.stripe {
+    padding: 3em 0em;
+}
+
+.ui.vertical.stripe h3 {
+    font-size: 2em;
+}
+
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+    margin-top: 3em;
+}
+
+.ui.vertical.stripe .floated.image {
+    clear: both;
+}
+
+.ui.vertical.stripe p {
+    font-size: 1.33em;
+}
+
+.ui.vertical.stripe .horizontal.divider {
+    margin: 3em 0em;
+}
+
+.quote.stripe.segment {
+    padding: 0em;
+}
+
+.quote.stripe.segment .grid .column {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.footer.segment {
+    padding: 5em 0em;
+}
+
+.secondary.pointing.home.menu .toc.item {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .ui.fixed.home.menu {
+        display: none !important;
+    }
+
+    .secondary.pointing.home.menu .item,
+    .secondary.pointing.home.menu .home.menu {
+        display: none;
+    }
+
+    .secondary.pointing.home.menu .toc.item {
+        display: block;
+    }
+
+    .masthead.segment {
+        min-height: 0px !important;
+        height: 100% !important;
+    }
+
+    .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+    }
+
+    .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+    }
+}
+
+.ui.login.grid {
+    margin-top: 20vh !important;
+}
+
+.ui.login.image {
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.green-text {
+    color: rgb(18, 225, 142) !important;
+}
+
+.black-text {
+    color: #222 !important;
+}

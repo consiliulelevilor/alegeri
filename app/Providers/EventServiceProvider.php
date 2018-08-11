@@ -13,14 +13,20 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
+        \App\Events\Event::class => [
             'App\Listeners\EventListener',
         ],
-        'Laravel\Passport\Events\AccessTokenCreated' => [
+        \Laravel\Passport\Events\AccessTokenCreated::class => [
             'App\Listeners\RevokeOldTokens',
         ],
-        'Laravel\Passport\Events\RefreshTokenCreated' => [
+        \Laravel\Passport\Events\RefreshTokenCreated::class => [
             'App\Listeners\PruneOldTokens',
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Google\\GoogleExtendSocialite@handle',
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Instagram\\InstagramExtendSocialite@handle',
         ],
     ];
 

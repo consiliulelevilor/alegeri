@@ -15,14 +15,29 @@ class Users extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('profile_name')->nullable();
 
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
 
-            $table->string('password');
+            $table->string('city')->nullable();
+            $table->string('region')->nullable();
+            $table->string('institution')->nullable();
+
+            $table->date('starting_year')->nullable();
+            $table->date('graduation_year')->nullable();
+
+            $table->boolean('is_admin')->default(false);
+            $table->string('password')->nullable();
             $table->rememberToken();
 
+            $table->uuid('activation_token')->nullable();
+            $table->boolean('is_subscribed')->default(true);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -33,7 +33,7 @@ folders:
         to: /home/vagrant/code
 sites:
     -
-        map: alegeri.consiliulelevilor.test
+        map: alegeri.cne.com
         to: /home/vagrant/code/public
         type: "apache"
         php: "7.2"
@@ -46,9 +46,9 @@ hostname: alegeri
 
 4. În fișierul tău `hosts`, adaugă următoarea linie:
 ```
-192.168.10.10 alegeri.consiliulelevilor.test
+192.168.10.10 alegeri.cne.com
 ```
-În felul ăsta, `alegeri.consiliulelevilor.test` va duce direct la serverul tău pe care îl vei porni.
+În felul ăsta, `alegeri.cne.com` va duce direct la serverul tău pe care îl vei porni.
 
 5. Pornește Vagrant folosind comanda `up` cu opțiunea `--provision`:
 ```bash

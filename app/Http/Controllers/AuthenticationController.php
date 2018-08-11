@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\User;
+use Socialite;
+use App\UserSocial;
+use Illuminate\Http\Request;
+
+class AuthenticationController extends Controller
+{
+    public function view(Request $request)
+    {
+        return view('login');
+    }
+
+    public function socialLogin(Request $request, $social)
+    {
+        if (!in_array($social, ['google', 'facebook', 'instagram'])) {
+            return redirect(route('login'));
+        }
+
+        $scopes = [];
+
+        if ($social == 'facebook') {
+            $scopes = ['email'];
+        }
+
+        if ($social == 'instagram') {
+            $scopes = ['basic'];
+        }
+
+        return Socialite::driver($social)->scopes($scopes)->redirect();
+    }
+
+    public function socialConfirmation(Request $request, $social)
+    {
+        if (!in_array($social, ['google', 'facebook', 'instagram'])) {
+            return redirect(route('login'));
+        }
+
+        $socialite = Socialite::driver($social)->user();
+        $userSocial = UserSocial::{$social}()->socialId($socialite->getId())->first();
+
+        if ($userSocial) {
+            \Auth::login($userSocial->user()->first());
+
+            return redirect(route('home'));
+        }
+
+        if ($socialite->getEmail()) {
+            $user = User::with(['facebook', 'google', 'instagram'])->email($socialite->getEmail())->first();
+
+            if ($user) {
+                if (! $user->{$social}) {
+                    $user->socials()->create([
+                        'social_id' => $socialite->getId(),
+                        'social_type' => $social,
+                        'email' => $socialite->getEmail(),
+                        'nickname' => $socialite->getNickname(),
+                        'name' => $socialite->getName(),
+                        'avatar_url' => $socialite->getAvatar(),
+                        'token' => $socialite->token,
+                        'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
+                        'socialite' => $socialite,
+                    ]);
+
+                    \Auth::login($user);
+
+                    return redirect(route('user.profile', ['idOrSlug' => $user->profile_name]));
+                }
+            }
+        }
+
+        $user = User::create([
+            'email' => $socialite->getEmail(),
+            'first_name' => $socialite->getName(),
+            'last_name' => null,
+        ]);
+
+        $user->update([
+            'profile_name' => str_slug($socialite->getName()).'-'.mt_rand(1000000, 9999999),
+        ]);
+
+        $user->socials()->create([
+            'social_id' => $socialite->getId(),
+            'social_type' => $social,
+            'email' => $socialite->getEmail(),
+            'nickname' => $socialite->getNickname(),
+            'name' => $socialite->getName(),
+            'avatar_url' => $socialite->getAvatar(),
+            'token' => $socialite->token,
+            'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
+            'socialite' => $socialite,
+        ]);
+
+        \Auth::login($user);
+
+        return redirect(route('user.profile', ['idOrSlug' => $user->profile_name]));
+    }
+
+    public function logout(Request $request)
+    {
+        \Auth::logout();
+
+        return redirect(route('home'));
+    }
+}

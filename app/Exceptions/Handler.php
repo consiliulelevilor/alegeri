@@ -46,6 +46,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Laravel\Socialite\Two\InvalidStateException) {
+            return redirect(route('login'));
+        }
+
+        if ($exception instanceof \GuzzleHttp\Exception\ClientException) {
+            return redirect(route('home'));
+        }
+
         return parent::render($request, $exception);
     }
 }
