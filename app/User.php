@@ -82,22 +82,20 @@ class User extends Authenticatable implements HasMedia
     {
         $this->load(['facebook', 'google', 'instagram']);
 
-        if($this->facebook) {
+        if ($this->facebook) {
             return $this->facebook->avatar_url;
         }
 
-        if($this->google) {
+        if ($this->google) {
             return $this->google->avatar_url;
         }
 
-        if($this->instagram) {
+        if ($this->instagram) {
             return $this->instagram->avatar_url;
         }
 
-        if(count($media) > 0) {
+        if (count($media) > 0) {
             return $media->getFirstMediaUrl();
         }
-
-        return null;
     }
 }

@@ -16,7 +16,7 @@ class AuthenticationController extends Controller
 
     public function socialLogin(Request $request, $social)
     {
-        if (!in_array($social, ['google', 'facebook', 'instagram'])) {
+        if (! in_array($social, ['google', 'facebook', 'instagram'])) {
             return redirect(route('login'));
         }
 
@@ -35,7 +35,7 @@ class AuthenticationController extends Controller
 
     public function socialConfirmation(Request $request, $social)
     {
-        if (!in_array($social, ['google', 'facebook', 'instagram'])) {
+        if (! in_array($social, ['google', 'facebook', 'instagram'])) {
             return redirect(route('login'));
         }
 
