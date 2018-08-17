@@ -25,9 +25,9 @@ class Users extends Migration
             $table->string('city')->nullable();
             $table->string('region')->nullable();
             $table->string('institution')->nullable();
-
             $table->date('starting_year')->nullable();
-            $table->date('graduation_year')->nullable();
+
+            $table->text('description')->nullable();
 
             $table->boolean('is_admin')->default(false);
             $table->string('password')->nullable();

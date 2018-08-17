@@ -8,6 +8,11 @@
     font-family: 'Poppins', sans-serif !important;
 }
 
+input:focus {
+    outline: none !important;
+    border: 0px solid red !important;
+}
+
 .hidden.menu {
     display: none;
 }
@@ -89,10 +94,6 @@
     padding-bottom: 5em;
 }
 
-.footer.segment {
-    padding: 5em 0em;
-}
-
 .secondary.pointing.home.menu .toc.item {
     display: none;
 }
@@ -131,7 +132,12 @@
     margin-top: 20vh !important;
 }
 
-.ui.login.image {
+.ui.profile.grid {
+    margin-top: 10vh !important;
+}
+
+.ui.login.image,
+.ui.profile.image {
     background-size: cover !important;
     background-position: 50% 50% !important;
     width: 100%;
@@ -148,4 +154,8 @@
 
 .black-text {
     color: #222 !important;
+}
+
+.grey-text {
+    color: grey !important;
 }

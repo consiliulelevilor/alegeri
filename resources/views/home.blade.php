@@ -111,6 +111,8 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
+            $('.ui.sidebar').sidebar('attach events', '.toc.item');
+
             $('.masthead').visibility({
                 once: false,
                 onBottomPassed: function() {

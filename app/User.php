@@ -98,4 +98,13 @@ class User extends Authenticatable implements HasMedia
             return $media->getFirstMediaUrl();
         }
     }
+
+    public function canBeEdited()
+    {
+        if (request()->query('as_visitor')) {
+            return false;
+        }
+
+        return (bool) ($this->is(\Auth::user()));
+    }
 }

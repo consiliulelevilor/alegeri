@@ -42,8 +42,15 @@ class AuthenticationController extends Controller
         $socialite = Socialite::driver($social)->user();
         $userSocial = UserSocial::{$social}()->socialId($socialite->getId())->first();
 
+        // dd($socialite);
         if ($userSocial) {
             \Auth::login($userSocial->user()->first());
+
+            $userSocial->update([
+                'token' => $socialite->token,
+                'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
+                'socialite' => $socialite,
+            ]);
 
             return redirect(route('home'));
         }
@@ -59,7 +66,7 @@ class AuthenticationController extends Controller
                         'email' => $socialite->getEmail(),
                         'nickname' => $socialite->getNickname(),
                         'name' => $socialite->getName(),
-                        'avatar_url' => $socialite->getAvatar(),
+                        'avatar_url' => str_replace(['?sz=50', '?type=normal'], '?type=large', $socialite->getAvatar()),
                         'token' => $socialite->token,
                         'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
                         'socialite' => $socialite,
@@ -88,7 +95,7 @@ class AuthenticationController extends Controller
             'email' => $socialite->getEmail(),
             'nickname' => $socialite->getNickname(),
             'name' => $socialite->getName(),
-            'avatar_url' => $socialite->getAvatar(),
+            'avatar_url' => str_replace(['?sz=50', '?type=normal'], '?type=large', $socialite->getAvatar()),
             'token' => $socialite->token,
             'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
             'socialite' => $socialite,
