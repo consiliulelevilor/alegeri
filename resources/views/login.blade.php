@@ -3,14 +3,15 @@
 @section('title', 'Alegeri CNE')
 
 @section('content')
-    <div class="ui login image" style="background-image: url({{ asset('/images/ag-1.jpg') }});"></div>
+    <div class="ui login image" style="background-image: url({{ asset('/images/ag-10.jpg') }});"></div>
     <div class="ui centered grid">
         <div class="fifteen wide column">
             <div class="ui middle aligned center aligned login grid">
                 <div class="column six wide computer twelve wide tablet sixteen wide mobile">
                     <div class="ui raised padded segment">
                         <h2 class="ui center aligned icon header">
-                            <i class="circular icon mdi mdi-star"></i>
+                            <img src="{{ asset('/images/logo/logo-1024-black.png') }}">
+                            <br><br>
                             <div class="content">
                                 @if(request()->query('new'))
                                     Creează un profil de candidat

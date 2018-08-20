@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@view')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/candidați', 'UserController@viewUsers')->name('users');
-Route::get('/candidat/{idOrSlug}', 'UserController@viewUser')->name('user.profile');
+Route::get('/candidați', 'UserController@index')->name('users');
+Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
+Route::get('/profilul-meu', 'UserController@me')->name('me');
 
 Route::group(['middleware' => ['guest']], function () {
-    Route::get('/zona-candidatilor', 'AuthenticationController@view')->name('login');
+    Route::get('/zona-candidatilor', 'AuthenticationController@index')->name('login');
 
-    Route::get('/zona-candidatilor/{social}', 'AuthenticationController@socialLogin')->name('social.login');
+    Route::get('/zona-candidatilor/{social}', 'AuthenticationController@social')->name('social.login');
     Route::get('/zona-candidatilor/{social}/confirmation', 'AuthenticationController@socialConfirmation')->name('social.confirmation');
 });
 

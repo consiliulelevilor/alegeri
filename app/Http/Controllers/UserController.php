@@ -7,17 +7,22 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function viewUsers(Request $request)
+    public function index(Request $request)
     {
         $users = User::with(['facebook', 'instagram', 'google'])->paginate(20);
 
         return view('users', ['users' => $users]);
     }
 
-    public function viewUser(Request $request, $idOrSlug)
+    public function show($idOrSlug, Request $request)
     {
         $user = User::with(['facebook', 'instagram', 'google'])->profile($idOrSlug)->firstOrFail();
 
-        return view('profile', ['user' => $user]);
+        return view('user', ['user' => $user]);
+    }
+
+    public function me(Request $request)
+    {
+        return view('profile', ['user' => $request->user()]);
     }
 }

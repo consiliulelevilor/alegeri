@@ -91,16 +91,57 @@
             @endif
         </script>
 
-        <div class="ui vertical inverted sidebar menu">
-            <a class="active item">Home</a>
-            <a class="item">Work</a>
-            <a class="item">Company</a>
-            <a class="item">Careers</a>
-            <a class="item">Login</a>
-            <a class="item">Signup</a>
+        <div class="ui vertical sidebar menu">
+            <div class="item">
+                <div class="ui right aligned">
+                    <a href="javascript:{}" id="close-sidebar-button" class="sidebar close"><i class="mdi mdi-close mdi-36px"></i></a>
+                </div>
+            </div>
+            @auth
+                <div class="item">
+                    <div class="header">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
+                    <div class="menu">
+                        <a href="{{ route('me') }}" class="item">Profilul meu</a>
+                        <a href="{{ route('logout') }}" class="item">Deconectare</a>  
+                    </div>
+                </div>
+            @endauth
+
+            @guest
+                <a href="{{ route('login') }}" class="item"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
+            @endguest
         </div>
 
         <div class="pusher">
+            @if(!request()->is('/'))
+                <div class="ui centered grid">
+                    <div class="column fifteen wide">
+                        <div class="ui container">
+                            <div class="ui master large secondary inverted text menu">
+                                <a class="toc item">
+                                    <i class="mdi mdi-menu mdi-36px"></i>
+                                </a>
+                                <div class="item logo">
+                                    <img src="{{ asset('/images/logo/logo-1024-white.png') }}">
+                                </div>
+
+                                <div class="right item">
+                                    @auth
+                                        <img src="{{ Auth::user()->avatarUrl() }}">
+                                        &nbsp;
+                                        <a href="{{ route('me') }}" class="item">Profilul meu</a>
+                                        <a href="{{ route('logout') }}" class="item">Deconectare</a>
+                                    @endauth
+
+                                    @guest
+                                        <a href="{{ route('login') }}" class="ui inverted button"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
+                                    @endguest
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif             
             @yield('content')
         </div>
 
@@ -109,6 +150,10 @@
         <script type="text/javascript">
             $(document).ready(function($) {
                 $('.ui.sidebar').sidebar('attach events', '.toc.item');
+
+                $('#close-sidebar-button').on('click', function(e) {
+                    $('.ui.sidebar').sidebar('toggle');
+                });
             });
         </script>
 

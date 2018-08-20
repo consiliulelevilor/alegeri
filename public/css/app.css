@@ -8,13 +8,12 @@
     font-family: 'Poppins', sans-serif !important;
 }
 
-input:focus {
-    outline: none !important;
-    border: 0px solid red !important;
-}
-
 .hidden.menu {
     display: none;
+}
+
+.vertical.sidebar.menu {
+    font-size: 21px !important;
 }
 
 .ui.home.menu {
@@ -94,22 +93,22 @@ input:focus {
     padding-bottom: 5em;
 }
 
-.secondary.pointing.home.menu .toc.item {
+.secondary.pointing.home.menu .toc.item,
+.master.text.menu .toc.item {
     display: none;
 }
 
 @media only screen and (max-width: 700px) {
-    .ui.fixed.home.menu {
-        display: none !important;
-    }
-
-    .secondary.pointing.home.menu .item,
-    .secondary.pointing.home.menu .home.menu {
+    .secondary.pointing.home.menu .item:not(.logo),
+    .secondary.pointing.home.menu .home.menu,
+    .text.master.menu .item:not(.logo),
+    .text.master.menu .text.master {
         display: none;
     }
 
-    .secondary.pointing.home.menu .toc.item {
-        display: block;
+    .secondary.pointing.home.menu .toc.item,
+    .master.text.menu .toc.item {
+        display: block !important;
     }
 
     .masthead.segment {
@@ -125,6 +124,16 @@ input:focus {
     .masthead h2 {
         margin-top: 0.5em;
         font-size: 1.5em;
+    }
+
+    .vertical.sidebar.menu {
+        width: 70vw !important;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .vertical.sidebar.menu {
+        width: 100vw !important;
     }
 }
 
@@ -158,4 +167,14 @@ input:focus {
 
 .grey-text {
     color: grey !important;
+}
+
+.sidebar.close {
+    position: absolute;
+    margin: auto !important;
+    right: 0px !important;
+    margin-right: 0px !important;
+    right: 0px !important;
+    color: #222 !important;
+    top: 0px !important;
 }

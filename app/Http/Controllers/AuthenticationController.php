@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
-    public function view(Request $request)
+    public function index(Request $request)
     {
         return view('login');
     }
 
-    public function socialLogin(Request $request, $social)
+    public function social($social, Request $request)
     {
         if (! in_array($social, ['google', 'facebook', 'instagram'])) {
             return redirect(route('login'));
@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
         return Socialite::driver($social)->scopes($scopes)->redirect();
     }
 
-    public function socialConfirmation(Request $request, $social)
+    public function socialConfirmation($social, Request $request)
     {
         if (! in_array($social, ['google', 'facebook', 'instagram'])) {
             return redirect(route('login'));
@@ -74,7 +74,7 @@ class AuthenticationController extends Controller
 
                     \Auth::login($user);
 
-                    return redirect(route('user.profile', ['idOrSlug' => $user->profile_name]));
+                    return redirect(route('me'));
                 }
             }
         }
@@ -103,7 +103,7 @@ class AuthenticationController extends Controller
 
         \Auth::login($user);
 
-        return redirect(route('user.profile', ['idOrSlug' => $user->profile_name]));
+        return redirect(route('me'));
     }
 
     public function logout(Request $request)
