@@ -17,13 +17,10 @@
             header-classes="bg-white pb-5"
             body-classes="px-lg-5 py-lg-5"
             class="border-0">
-            <div v-if="this.$store.getters.userIsPendingSync" class="loader mt-2 mb-4"></div>
+            <div class="loader mt-2 mb-4"></div>
             <template>
-              <div v-if="this.$store.getters.userIsPendingSync" class="text-muted text-center mb-2">
-                Încă puțin. Ești aproape gata...
-              </div>
-              <div v-if="!this.$store.getters.userIsPendingSync" class="text-muted text-center">
-                Gata, vei fi redirecționat imediat...
+              <div class="text-muted text-center">
+                Imediat vei fi delogat...
               </div>
             </template>
           </card>
@@ -37,27 +34,12 @@
 import axios from 'axios';
 
 export default {
-  methods: {},
   mounted() {
-    if (this.$route.query.withToken) {
-      this.$store.dispatch("syncUserWithToken", {
-        token: this.$route.query.withToken
-      }).then(() => {
-        setTimeout(() => {
-          if (this.$store.getters.user) {
-            this.$router.push({ name: 'home' });
-          } else {
-            this.$router.push({ name: 'login' });
-          }
-        }, 2000);
-      });
-    } else {
-      if (this.$store.getters.user) {
+    this.$store.dispatch("logout").then(() => {
+      setTimeout(() => {
         this.$router.push({ name: 'home' });
-      } else {
-        this.$router.push({ name: 'login' });
-      }
-    }
+      }, 2000);
+    });
   },
 };
 </script>

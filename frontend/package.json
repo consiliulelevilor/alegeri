@@ -5,7 +5,6 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build-production": "vue-cli-service build --dest ./../public --no-clean",
-    "build-development": "vue-cli-service build --mode development --dest ./../public --no-clean",
     "build-testing": "vue-cli-service build --mode testing --dest ./../public --no-clean",
     "lint": "vue-cli-service lint"
   },

@@ -7,18 +7,18 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 
   state: {
-    isLoggedIn: !!localStorage.getItem("token"),
+    hasToken: !!localStorage.getItem("token"),
     token: localStorage.getItem("token"),
-    user: null,
+    user: localStorage.getItem("user"),
     userIsPendingSync: false
   },
 
   mutations: {
     logout: state => {
-      state.isLoggedIn = false;
+      state.hasToken = false;
     },
     tokenSet: state => {
-      state.isLoggedIn = true;
+      state.hasToken = true;
     },
     syncUser: state => {
       state.userIsPendingSync = true;
@@ -36,45 +36,48 @@ export default new Vuex.Store({
         resolve();
       });
     },
-    syncUser: ({ commit, state, dispatch }) => {
+    syncUser: ({ commit, state, dispatch }, payload) => {
       commit("syncUser");
 
-      return new Promise(resolve => {
-        if (! state.isLoggedIn) {
-          localStorage.setItem("user", null);
-          commit("userSynced");
-          resolve();
-        } else {
-          axios.defaults.headers.Authorization = 'Bearer ' + state.token;
-
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          axios.defaults.headers.Authorization = 'Bearer ' + payload.token;
           axios.get(process.env.VUE_APP_API_URL + '/me').then(response => {
             let data = response.data.data;
-            state.user = data.data;
+            localStorage.setItem("user", JSON.stringify(data));
+            commit("userSynced");
             resolve();
           }).catch(error => {
             commit("userSynced");
             dispatch("logout");
             resolve();
           });
-        }
+        }, 3000);
+      });
+    },
+    syncUserWithToken: ({ commit, state, dispatch }, payload) => {
+      return dispatch("withToken", payload).then(() => {
+        return dispatch("syncUser", payload);
       });
     },
     logout: ({ commit }) => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      commit("logout");
+      setTimeout(() => {
+        commit("logout");
+      }, 500);
     }
   },
 
   getters: {
-    isLoggedIn: state => {
-      return state.isLoggedIn;
+    hasToken: state => {
+      return state.hasToken;
     },
     user: state => {
-      return state.user;
+      return JSON.parse(state.user);
     },
-    token: state => {
-      return state.token;
+    userIsPendingSync: state => {
+      return state.userIsPendingSync;
     }
   }
 

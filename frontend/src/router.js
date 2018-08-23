@@ -13,6 +13,7 @@ import Profile from "./views/Profile.vue";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import LoginConfirmation from "./views/LoginConfirmation.vue";
+import Logout from "./views/Logout.vue";
 
 Vue.use(Router);
 
@@ -50,6 +51,13 @@ export default new Router({
       name: "loginConfirmation",
       components: {
         default: LoginConfirmation
+      }
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      components: {
+        default: Logout
       }
     },
     {

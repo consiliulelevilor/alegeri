@@ -21,13 +21,29 @@
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item d-none d-lg-block ml-lg-4">
+        <li v-if="!this.$store.getters.hasToken" class="nav-item d-none d-lg-block ml-lg-4">
           <router-link to="/login">
             <a href="javascript:{}" class="btn btn-primary btn-icon">
               <span class="btn-inner--icon">
                 <i class="fa fa-sign-in mr-2"></i>
               </span>
               <span class="nav-link-inner--text">Login</span>
+            </a>
+          </router-link>
+        </li>
+        <li v-if="this.$store.getters.hasToken" class="nav-item d-none d-lg-block ml-lg-4">
+          <router-link to="/profilul-meu">
+            <a href="javascript:{}" class="btn btn-success">
+              <span class="nav-link-inner--text">{{ this.$store.getters.user.identity.first_name }} {{ this.$store.getters.user.identity.last_name }}</span>
+            </a>
+          </router-link>
+        </li>
+        <li v-if="this.$store.getters.hasToken" class="nav-item d-none d-lg-block ml-lg-4">
+          <router-link to="/logout">
+            <a href="javascript:{}" class="btn btn-dark btn-icon">
+              <span class="btn-inner--icon">
+                <i class="fa fa-power-off"></i>
+              </span>
             </a>
           </router-link>
         </li>
