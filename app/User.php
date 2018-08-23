@@ -6,12 +6,13 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\HasActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Flugg\Responder\Contracts\Transformable;
 use Rennokki\Guardian\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia, Transformable
 {
     use HasActivity, HasApiTokens, HasMediaTrait, HasPermissions, Notifiable, SoftDeletes;
 
@@ -40,6 +41,11 @@ class User extends Authenticatable implements HasMedia
 
     protected static $logAttributes = ['*'];
     protected static $logOnlyDirty = false;
+
+    public function transformer()
+    {
+        return \App\Transformers\UserTransformer::class;
+    }
 
     public function socials()
     {
@@ -97,14 +103,5 @@ class User extends Authenticatable implements HasMedia
         if (count($media) > 0) {
             return $media->getFirstMediaUrl();
         }
-    }
-
-    public function canBeEdited()
-    {
-        if (request()->query('as_visitor')) {
-            return false;
-        }
-
-        return (bool) ($this->is(\Auth::user()));
     }
 }
