@@ -151,8 +151,6 @@ return [
          * Package Service Providers...
          */
         \SocialiteProviders\Manager\ServiceProvider::class,
-        \Barryvdh\Cors\ServiceProvider::class,
-
 
         /*
          * Application Service Providers...

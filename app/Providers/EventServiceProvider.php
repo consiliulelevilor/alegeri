@@ -16,12 +16,12 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\Event::class => [
             'App\Listeners\EventListener',
         ],
-        // \Laravel\Passport\Events\AccessTokenCreated::class => [
-        //     'App\Listeners\RevokeOldTokens',
-        // ],
-        // \Laravel\Passport\Events\RefreshTokenCreated::class => [
-        //     'App\Listeners\PruneOldTokens',
-        // ],
+        \Laravel\Passport\Events\AccessTokenCreated::class => [
+            'App\Listeners\RevokeOldTokens',
+        ],
+        \Laravel\Passport\Events\RefreshTokenCreated::class => [
+            'App\Listeners\PruneOldTokens',
+        ],
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\\Google\\GoogleExtendSocialite@handle',
             'SocialiteProviders\\Instagram\\InstagramExtendSocialite@handle',
