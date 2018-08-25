@@ -113,32 +113,26 @@
                 </div>
               </div>
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                
               </ul>
-              <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                  @auth
-                    <a href="{{ route('me') }}" class="btn btn-primary btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-account mr-2"></i>
-                      </span>
+              <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                @auth
+                  <li class="nav-item d-lg-block ml-lg-4">
+                    <a href="{{ route('me') }}" class="btn btn-success">
                       <span class="nav-link-inner--text">
                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                       </span>
                     </a>
-                    <a href="{{ route('logout') }}" class="btn btn-dark btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-power"></i>
-                      </span>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link">
+                      Deconectare
                     </a>
-                  @endauth
-                  
+                  </li>
+                @endauth
+                <li class="nav-link">
                   @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-login mr-2"></i>
-                      </span>
-                      <span class="nav-link-inner--text">Login</span>
+                    <a href="{{ route('login') }}" class="btn btn-primary">
+                      Login
                     </a>
                   @endguest
                 </li>
@@ -149,17 +143,15 @@
       </header>
     @endif
 
-    <main>
-      @yield('content')
-    </main>
+    @yield('content')
 
     @if(!request()->is('login'))
       <footer class="footer has-cards">
         <div class="container">
           <div class="row row-grid align-items-center my-md">
             <div class="col-lg-6">
-              <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
-              <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+              <h3 class="text-primary font-weight-light mb-2">Consiliul Elevilor este online.</h3>
+              <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
             </div>
             <div class="col-lg-6 text-lg-center btn-wrapper">
               <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
@@ -180,23 +172,17 @@
           <div class="row align-items-center justify-content-md-between">
             <div class="col-md-6">
               <div class="copyright">
-                &copy; 2018
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                &copy; {{ now()->format('Y') }}
+                <a href="{{ env('MAIN_URL') }}" target="_blank">Consiliul Național al Elevilor</a>.
               </div>
             </div>
             <div class="col-md-6">
               <ul class="nav nav-footer justify-content-end">
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Despre noi</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link">Echipa</a>
                 </li>
               </ul>
             </div>
@@ -208,7 +194,9 @@
     <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/vendor/popper/popper.min.js') }}"></script>
     <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/vendor/headroom/headroom.min.js') }}"></script>
     <script src="{{ asset('/js/argon.min.js') }}"></script>
+
     <script type="text/javascript">
       $(document).ready(function() {
         //
