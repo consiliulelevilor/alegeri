@@ -1,180 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:600,700,800,900&subset=latin-ext');
 
 ::-webkit-scrollbar { 
-    display: none; 
+  display: none; 
 }
 
 * {
-    font-family: 'Poppins', sans-serif !important;
+  #font-family: 'Poppins', sans-serif !important;
 }
 
-.hidden.menu {
-    display: none;
+.masthead {
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
-.vertical.sidebar.menu {
-    font-size: 21px !important;
+.login.section {
+  position: inherit !important;
 }
 
-.ui.home.menu {
-    border-bottom: none !important;
-    border-color: transparent !important;
-    border-width: 0px !important;
+.loader {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #222;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 30%;
 }
-
-.masthead.segment {
-    min-height: 700px;
-    padding: 1em 0em;
-    background-color: transparent !important;
+.loader-background {
+  background: grey;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999 !important;
 }
-
-.masthead.image {
-    background-size: cover !important;
-    background-position: 100% 50% !important;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-}
-
-.masthead .logo.item img {
-    margin-right: 1em;
-}
-
-.masthead .ui.home.menu .ui.button {
-    margin-left: 0.5em;
-}
-
-.masthead h1.ui.header {
-    margin-top: 3em;
-    margin-bottom: 0em;
-    font-size: 4em;
-    font-weight: 700;
-}
-
-.masthead h2 {
-    font-size: 1.7em;
-    font-weight: 800;
-}
-
-.ui.vertical.stripe {
-    padding: 3em 0em;
-}
-
-.ui.vertical.stripe h3 {
-    font-size: 2em;
-}
-
-.ui.vertical.stripe .button + h3,
-.ui.vertical.stripe p + h3 {
-    margin-top: 3em;
-}
-
-.ui.vertical.stripe .floated.image {
-    clear: both;
-}
-
-.ui.vertical.stripe p {
-    font-size: 1.33em;
-}
-
-.ui.vertical.stripe .horizontal.divider {
-    margin: 3em 0em;
-}
-
-.quote.stripe.segment {
-    padding: 0em;
-}
-
-.quote.stripe.segment .grid .column {
-    padding-top: 5em;
-    padding-bottom: 5em;
-}
-
-.secondary.pointing.home.menu .toc.item,
-.master.text.menu .toc.item {
-    display: none;
-}
-
-@media only screen and (max-width: 700px) {
-    .secondary.pointing.home.menu .item:not(.logo),
-    .secondary.pointing.home.menu .home.menu,
-    .text.master.menu .item:not(.logo),
-    .text.master.menu .text.master {
-        display: none;
-    }
-
-    .secondary.pointing.home.menu .toc.item,
-    .master.text.menu .toc.item {
-        display: block !important;
-    }
-
-    .masthead.segment {
-        min-height: 0px !important;
-        height: 100% !important;
-    }
-
-    .masthead h1.ui.header {
-        font-size: 2em;
-        margin-top: 1.5em;
-    }
-
-    .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-    }
-
-    .vertical.sidebar.menu {
-        width: 70vw !important;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-    .vertical.sidebar.menu {
-        width: 100vw !important;
-    }
-}
-
-.ui.login.grid {
-    margin-top: 20vh !important;
-}
-
-.ui.profile.grid {
-    margin-top: 10vh !important;
-}
-
-.ui.login.image,
-.ui.profile.image {
-    background-size: cover !important;
-    background-position: 50% 50% !important;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-}
-
-.green-text {
-    color: rgb(18, 225, 142) !important;
-}
-
-.black-text {
-    color: #222 !important;
-}
-
-.grey-text {
-    color: grey !important;
-}
-
-.sidebar.close {
-    position: absolute;
-    margin: auto !important;
-    right: 0px !important;
-    margin-right: 0px !important;
-    right: 0px !important;
-    color: #222 !important;
-    top: 0px !important;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

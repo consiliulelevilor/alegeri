@@ -18,10 +18,10 @@ Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
 Route::get('/profilul-meu', 'UserController@me')->name('me');
 
 Route::group(['middleware' => ['guest']], function () {
-    Route::get('/zona-candidatilor', 'AuthenticationController@index')->name('login');
+    Route::get('/login', 'AuthenticationController@index')->name('login');
 
-    Route::get('/zona-candidatilor/{social}', 'AuthenticationController@social')->name('social.login');
-    Route::get('/zona-candidatilor/{social}/confirmation', 'AuthenticationController@socialConfirmation')->name('social.confirmation');
+    Route::get('/login/social/{social}', 'AuthenticationController@social')->name('social');
+    Route::get('/login/social/{social}/confirmation', 'AuthenticationController@socialConfirmation')->name('social.confirmation');
 });
 
 Route::group(['middleware' => ['authenticated']], function () {

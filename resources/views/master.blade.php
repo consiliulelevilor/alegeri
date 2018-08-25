@@ -1,162 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <meta name="google-site-verification" content="" />
+    <meta name="google-site-verification" content="" />
 
-        <meta name="theme-color" content="#000aee">
-        <meta name="msapplication-navbutton-color" content="#000aee">
-        <meta name="msapplication-TileColor" content="#000aee">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000aee">
-        <meta name="msapplication-TileImage" content="http://via.placeholder.com/350x150">
+    <meta name="theme-color" content="#000aee">
+    <meta name="msapplication-navbutton-color" content="#000aee">
+    <meta name="msapplication-TileColor" content="#000aee">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000aee">
+    <meta name="msapplication-TileImage" content="http://via.placeholder.com/350x150">
 
-        <meta property="og:url" content="{{ request()->url() }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="" />
-        <meta property="og:description"content="" />
-        <meta property="og:image" content="{{ asset('/images/renoki-as-open-source-renoki.png') }}" />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description"content="" />
+    <meta property="og:image" content="{{ asset('/images/renoki-as-open-source-renoki.png') }}" />
 
-        <meta name="twitter:card" content="summary"></meta>
-        <meta name="twitter:creator" content="@rennokki"></meta>
+    <meta name="twitter:card" content="summary"></meta>
+    <meta name="twitter:creator" content="@rennokki"></meta>
 
-        <meta property="fb:app_id" content="{{ env('FACEBOOK_ID') }}">
+    <meta property="fb:app_id" content="{{ env('FACEBOOK_ID') }}">
 
-        <link rel="apple-touch-icon" sizes="57x57" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="60x60" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="72x72" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="76x76" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="114x114" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="120x120" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="144x144" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="152x152" href="http://via.placeholder.com/350x150">
-        <link rel="apple-touch-icon" sizes="180x180" href="http://via.placeholder.com/350x150">
-        <link rel="icon" type="image/png" sizes="192x192" href="http://via.placeholder.com/350x150">
-        <link rel="icon" type="image/png" sizes="32x32" href="http://via.placeholder.com/350x150">
-        <link rel="icon" type="image/png" sizes="96x96" href="http://via.placeholder.com/350x150">
-        <link rel="icon" type="image/png" sizes="16x16" href="http://via.placeholder.com/350x150">
-        <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://via.placeholder.com/350x150">
+    <link rel="icon" type="image/png" sizes="192x192" href="http://via.placeholder.com/350x150">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://via.placeholder.com/350x150">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://via.placeholder.com/350x150">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://via.placeholder.com/350x150">
+    <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
 
-        <link rel="stylesheet" href="{{ asset('/css/semantic.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        <script defer src="{{ asset('/js/semantic.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
-        <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
 
-        @yield('css')
+    @yield('css')
 
-        @if(App::environment('production'))
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113007363-2"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-113007363-2');
-            </script>
-        @endif
+    @if(App::environment('production'))
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113007363-2"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-113007363-2');
+      </script>
+    @endif
 
-        <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-
-        <title>@yield('title')</title>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-        <script>
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            @if(App::environment('production'))
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId: '{{ env('FACEBOOK_ID') }}',
-                        cookie: true,
-                        xfbml: true,
-                        version: 'v3.1'
-                    });
+    <title>@yield('title')</title>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      @if(App::environment('production'))
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId: '{{ env('FACEBOOK_ID') }}',
+            cookie: true,
+            xfbml: true,
+            version: 'v3.1'
+          });
+          FB.AppEvents.logPageView();  
+        };
+      @endif
+    </script>
+    
+    @if(!request()->is('login'))
+      <header class="header-global">
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+          <div class="container">
+            <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
+              <img src="{{ asset('images/logo/logo-1024-white.png') }}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar">
+              <div class="navbar-collapse-header">
+                <div class="row">
+                  <div class="col-6 collapse-brand">
+                    <a href="{{ route('home') }}">
+                      <img src="{{ asset('images/logo/logo-line-black.png') }}">
+                    </a>
+                  </div>
+                  <div class="col-6 collapse-close">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                      <span></span>
+                      <span></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                 
-                    FB.AppEvents.logPageView();  
-                };
-            @endif
-        </script>
-
-        <div class="ui vertical sidebar menu">
-            <div class="item">
-                <div class="ui right aligned">
-                    <a href="javascript:{}" id="close-sidebar-button" class="sidebar close"><i class="mdi mdi-close mdi-36px"></i></a>
-                </div>
+              </ul>
+              <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                <li class="nav-item d-none d-lg-block ml-lg-4">
+                  @auth
+                    <a href="{{ route('me') }}" class="btn btn-primary btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-account mr-2"></i>
+                      </span>
+                      <span class="nav-link-inner--text">
+                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                      </span>
+                    </a>
+                    <a href="{{ route('logout') }}" class="btn btn-dark btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-power"></i>
+                      </span>
+                    </a>
+                  @endauth
+                  
+                  @guest
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-login mr-2"></i>
+                      </span>
+                      <span class="nav-link-inner--text">Login</span>
+                    </a>
+                  @endguest
+                </li>
+              </ul>
             </div>
-            @auth
-                <div class="item">
-                    <div class="header">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
-                    <div class="menu">
-                        <a href="{{ route('me') }}" class="item">Profilul meu</a>
-                        <a href="{{ route('logout') }}" class="item">Deconectare</a>  
-                    </div>
-                </div>
-            @endauth
+          </div>
+        </nav>
+      </header>
+    @endif
 
-            @guest
-                <a href="{{ route('login') }}" class="item"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
-            @endguest
+    <main>
+      @yield('content')
+    </main>
+
+    @if(!request()->is('login'))
+      <footer class="footer has-cards">
+        <div class="container">
+          <div class="row row-grid align-items-center my-md">
+            <div class="col-lg-6">
+              <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+              <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+            </div>
+            <div class="col-lg-6 text-lg-center btn-wrapper">
+              <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
+                <i class="fa fa-dribbble"></i>
+              </a>
+              <a target="_blank" href="https://github.com/creativetimofficial" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
+                <i class="fa fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center justify-content-md-between">
+            <div class="col-md-6">
+              <div class="copyright">
+                &copy; 2018
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <ul class="nav nav-footer justify-content-end">
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </footer>
+    @endif
 
-        <div class="pusher">
-            @if(!request()->is('/'))
-                <div class="ui centered grid">
-                    <div class="column fifteen wide">
-                        <div class="ui container">
-                            <div class="ui master large secondary inverted text menu">
-                                <a class="toc item">
-                                    <i class="mdi mdi-menu mdi-36px"></i>
-                                </a>
-                                <div class="item logo">
-                                    <img src="{{ asset('/images/logo/logo-1024-white.png') }}">
-                                </div>
-
-                                <div class="right item">
-                                    @auth
-                                        <img src="{{ Auth::user()->avatarUrl() }}">
-                                        &nbsp;
-                                        <a href="{{ route('me') }}" class="item">Profilul meu</a>
-                                        <a href="{{ route('logout') }}" class="item">Deconectare</a>
-                                    @endauth
-
-                                    @guest
-                                        <a href="{{ route('login') }}" class="ui inverted button"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
-                                    @endguest
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif             
-            @yield('content')
-        </div>
-
-        <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function($) {
-                $('.ui.sidebar').sidebar('attach events', '.toc.item');
-
-                $('#close-sidebar-button').on('click', function(e) {
-                    $('.ui.sidebar').sidebar('toggle');
-                });
-            });
-        </script>
-
-        @yield('js')
-    </body>
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/vendor/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/js/argon.min.js') }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        //
+      });
+    </script>
+    @yield('js')
+  </body>
 </html>

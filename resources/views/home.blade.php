@@ -3,132 +3,469 @@
 @section('title', 'Alegeri CNE')
 
 @section('content')
-    
-    <div class="ui inverted vertical masthead center aligned segment">
-        <div class="ui masthead image" style="background-image: url({{ asset('/images/ag-8.jpg') }});"></div>
-        <div class="ui container">
-            <div class="ui large secondary inverted pointing home menu">
-                <a class="toc item">
-                    <i class="mdi mdi-menu mdi-36px"></i>
-                </a>
-                <div class="item logo">
-                    <img src="{{ asset('/images/logo/logo-1024-white.png') }}">
-                </div>
-
-                <div class="right item">
-                    @auth
-                        <img src="{{ Auth::user()->avatarUrl() }}">
-                        &nbsp;
-                        <a href="{{ route('me') }}" class="ui inverted icon button"><i class="fa fa-user"></i> &nbsp; Profilul meu</a>
-                        <a href="{{ route('logout') }}" class="ui inverted icon button"><i class="mdi mdi-power"></i></a>
-                    @endauth
-
-                    @guest
-                        <a href="{{ route('login') }}" class="ui inverted button"><i class="fa fa-user-tie"></i> &nbsp; Zona candidaților</a>
-                    @endguest
-                </div>
-            </div>
-        </div>
-        <div class="ui text container">
-            <h1 class="ui inverted header white-text">
-                <u>Fă parte din Consiliul Național al Elevilor.</u>
+<div class="position-relative">
+  <section class="masthead section section-lg section-shaped pb-250" style="background-image: url({{ asset('/images/ag-8.jpg') }});">
+    <div class="shape shape-style-1 shape-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container py-lg-md d-flex">
+      <div class="col px-0">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="display-3  text-white">
+              Consiliul Național al Elevilor
+              <span>pune accentul pe elevi.</span>
             </h1>
-            <br>
-            <a href="javascript:{}" onclick="$.scrollTo('#details', { duration: 1000 });" class="ui big green circular button">
-                Descoperă mai multe &nbsp; <i class="fa fa-arrow-right"></i>
-            </a>
+            <p class="lead  text-white">
+              Pentru că nouă ne plac elevii care sunt puși pe treabă nu ca alți bagabonți care nu vrea să muncește doar salarii mari că e criză.
+            </p>
+            <div class="btn-wrapper">
+              <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                <span class="btn-inner--icon"><i class="mdi mdi-arrow-right"></i></span>
+                <span class="btn-inner--text">Află mai multe</span>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    <div class="ui centered grid">
-        <div class="fifteen wide column">
-            <div class="ui vertical stripe segment">
-                <div class="ui four statistics">
-                    <div class="statistic">
-                        <div class="value">22</div>
-                        <div class="label">
-                            candidaturi depuse
-                        </div>
-                    </div>
-                    <div class="statistic">
-                        <div class="value">22</div>
-                        <div class="label">
-                            județe au aplicat
-                        </div>
-                    </div>
-                    <div class="statistic">
-                        <div class="value">300+</div>
-                        <div class="label">
-                            întrebări puse candidaților
-                        </div>
-                    </div>
-                    <div class="statistic">
-                        <div class="value">30+</div>
-                        <div class="label">
-                            membri în CNE
-                        </div>
-                    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <!-- 1st Hero Variation -->
+</div>
+<section class="section section-lg pt-lg-0 mt--200">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="row row-grid">
+          <div class="col-lg-4">
+            <div class="card card-lift--hover shadow border-0">
+              <div class="card-body py-5">
+                <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                  <i class="ni ni-check-bold"></i>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="ui centered grid">
-        <div class="fifteen wide column">
-            <div class="ui vertical stripe segment" id="details">
-                <div class="ui middle aligned stackable grid container">
-                    <div class="row">
-                        <div class="eight wide column">
-                            <h3 class="ui header"><i class="fa fa-users"></i> &nbsp; Cine suntem?</h3>
-                            <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-                            <h3 class="ui header"><i class="fa fa-user-check"></i> &nbsp; De ce să ni te alături?</h3>
-                            <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                            <h3 class="ui header"><i class="fa fa-band-aid"></i> &nbsp; Ce beneficii ai?</h3>
-                            <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-                        </div>
-                        <div class="six wide right floated column">
-                            <img src="{{ asset('/images/ag-5.jpg') }}" class="ui large bordered rounded image">
-                        </div>
-                    </div>
+                <h6 class="text-primary text-uppercase">Download Argon</h6>
+                <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                <div>
+                  <span class="badge badge-pill badge-primary">design</span>
+                  <span class="badge badge-pill badge-primary">system</span>
+                  <span class="badge badge-pill badge-primary">creative</span>
                 </div>
+                <a href="#" class="btn btn-primary mt-4">Learn more</a>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <div class="ui centered grid">
-        <div class="fifteen wide column">
-            <div class="ui vertical stripe segment">
-                <div class="ui stackable grid container">
-                    <div class="row">
-                        @for($i = 0; $i < 4; $i++)
-                            <div class="column four wide computer eight wide tablet sixteen wide mobile">
-                                <img src="{{ asset('images/profile/patrick.png') }}" class="ui circular tiny image">
-                                <h2 class="ui header">
-                                    Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                                </h2>
-                                <i>&mdash; John Doe, Procuror DNA</i>
-                            </div>
-                        @endfor
-                    </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-lift--hover shadow border-0">
+              <div class="card-body py-5">
+                <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                  <i class="ni ni-istanbul"></i>
                 </div>
+                <h6 class="text-success text-uppercase">Build Something</h6>
+                <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                <div>
+                  <span class="badge badge-pill badge-success">business</span>
+                  <span class="badge badge-pill badge-success">vision</span>
+                  <span class="badge badge-pill badge-success">success</span>
+                </div>
+                <a href="#" class="btn btn-success mt-4">Learn more</a>
+              </div>
             </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-lift--hover shadow border-0">
+              <div class="card-body py-5">
+                <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                  <i class="ni ni-planet"></i>
+                </div>
+                <h6 class="text-warning text-uppercase">Prepare Launch</h6>
+                <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                <div>
+                  <span class="badge badge-pill badge-warning">marketing</span>
+                  <span class="badge badge-pill badge-warning">product</span>
+                  <span class="badge badge-pill badge-warning">launch</span>
+                </div>
+                <a href="#" class="btn btn-warning mt-4">Learn more</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    @guest
-        <div class="ui inverted vertical masthead center aligned segment">
-            <div class="ui masthead image" style="background-image: url({{ asset('/images/ag-6.jpg') }});"></div>
-            <div class="ui text container">
-                <h1 class="ui inverted header white-text">
-                    <u>Înscrie-te și poți candida la orice structură.</u>
-                </h1>
-                <br>
-                <a href="{{ route('login') }}?new=true" id="to-login-button" class="ui big green circular button">
-                    Către înscrieri &nbsp; <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
+  </div>
+</section>
+<section class="section section-lg">
+  <div class="container">
+    <div class="row row-grid align-items-center">
+      <div class="col-md-6 order-md-2">
+        <img src="{{ asset('images/ag-5.jpg') }}" class="img-fluid floating">
+      </div>
+      <div class="col-md-6 order-md-1">
+        <div class="pr-md-5">
+          <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+            <i class="ni ni-settings-gear-65"></i>
+          </div>
+          <h3>Awesome features</h3>
+          <p>
+            The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.
+          </p>
+          <ul class="list-unstyled mt-5">
+            <li class="py-2">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div class="badge badge-circle badge-success mr-3">
+                    <i class="ni ni-settings-gear-65"></i>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="mb-0">Carefully crafted components</h6>
+                </div>
+              </div>
+            </li>
+            <li class="py-2">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div class="badge badge-circle badge-success mr-3">
+                    <i class="ni ni-html5"></i>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="mb-0">Amazing page examples</h6>
+                </div>
+              </div>
+            </li>
+            <li class="py-2">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div class="badge badge-circle badge-success mr-3">
+                    <i class="ni ni-satisfied"></i>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="mb-0">Super friendly support team</h6>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-    @endguest
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-secondary">
+  <div class="container">
+    <div class="row row-grid align-items-center">
+      <div class="col-md-6">
+        <div class="card bg-default shadow border-0">
+          <img src="{{ asset('images/ag-5.jpg') }}" class="card-img-top">
+          <blockquote class="card-blockquote">
+            <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+              <polygon points="0,52 583,95 0,95" class="fill-default" />
+              <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
+            </svg>
+            <h4 class="display-3 font-weight-bold text-white">Design System</h4>
+            <p class="lead text-italic text-white">
+              The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="pl-md-5">
+          <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
+            <i class="ni ni-settings"></i>
+          </div>
+          <h3>Our customers</h3>
+          <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
+          <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+          <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+          <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful websites</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pb-0 bg-gradient-warning">
+  <div class="container">
+    <div class="row row-grid align-items-center">
+      <div class="col-md-6 order-lg-2 ml-lg-auto">
+        <div class="position-relative pl-md-5">
+          <img src="{{ asset('images/ag-5.jpg') }}" class="img-center img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="d-flex px-3">
+          <div>
+            <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+              <i class="ni ni-building text-primary"></i>
+            </div>
+          </div>
+          <div class="pl-4">
+            <h4 class="display-3 text-white">Modern Interface</h4>
+            <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+          </div>
+        </div>
+        <div class="card shadow shadow-lg--hover mt-5">
+          <div class="card-body">
+            <div class="d-flex px-3">
+              <div>
+                <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                  <i class="ni ni-satisfied"></i>
+                </div>
+              </div>
+              <div class="pl-4">
+                <h5 class="title text-success">Awesome Support</h5>
+                <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                <a href="#" class="text-success">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow shadow-lg--hover mt-5">
+          <div class="card-body">
+            <div class="d-flex px-3">
+              <div>
+                <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                  <i class="ni ni-active-40"></i>
+                </div>
+              </div>
+              <div class="pl-4">
+                <h5 class="title text-warning">Modular Components</h5>
+                <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                <a href="#" class="text-warning">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SVG separator -->
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</section>
+<section class="section section-lg">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-lg">
+      <div class="col-lg-8">
+        <h2 class="display-3">The amazing Team</h2>
+        <p class="lead text-muted">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+        <div class="px-4">
+          <img src="{{ asset('images/profile/patrick.png') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+          <div class="pt-4 text-center">
+            <h5 class="title">
+              <span class="d-block mb-1">Ryan Tompson</span>
+              <small class="h6 text-muted">Web Developer</small>
+            </h5>
+            <div class="mt-3">
+              <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                <i class="fa fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+        <div class="px-4">
+          <img src="{{ asset('images/profile/patrick.png') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+          <div class="pt-4 text-center">
+            <h5 class="title">
+              <span class="d-block mb-1">Romina Hadid</span>
+              <small class="h6 text-muted">Marketing Strategist</small>
+            </h5>
+            <div class="mt-3">
+              <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
+                <i class="fa fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+        <div class="px-4">
+          <img src="{{ asset('images/profile/patrick.png') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+          <div class="pt-4 text-center">
+            <h5 class="title">
+              <span class="d-block mb-1">Alexander Smith</span>
+              <small class="h6 text-muted">UI/UX Designer</small>
+            </h5>
+            <div class="mt-3">
+              <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="btn btn-info btn-icon-only rounded-circle">
+                <i class="fa fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+        <div class="px-4">
+          <img src="{{ asset('images/profile/patrick.png') }}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+          <div class="pt-4 text-center">
+            <h5 class="title">
+              <span class="d-block mb-1">John Doe</span>
+              <small class="h6 text-muted">Founder and CEO</small>
+            </h5>
+            <div class="mt-3">
+              <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="btn btn-success btn-icon-only rounded-circle">
+                <i class="fa fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-lg pt-0">
+  <div class="container">
+    <div class="card bg-gradient-warning shadow-lg border-0">
+      <div class="p-5">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h3 class="text-white">We made website building easier for you.</h3>
+            <p class="lead text-white mt-3">I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture.</p>
+          </div>
+          <div class="col-lg-3 ml-lg-auto">
+            <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-block btn-white">Download HTML</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-lg bg-gradient-default">
+  <div class="container pt-lg pb-300">
+    <div class="row text-center justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="display-3 text-white">Build something</h2>
+        <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p>
+      </div>
+    </div>
+    <div class="row row-grid mt-5">
+      <div class="col-lg-4">
+        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+          <i class="ni ni-settings text-primary"></i>
+        </div>
+        <h5 class="text-white mt-3">Building tools</h5>
+        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="col-lg-4">
+        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+          <i class="ni ni-ruler-pencil text-primary"></i>
+        </div>
+        <h5 class="text-white mt-3">Grow your market</h5>
+        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="col-lg-4">
+        <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+          <i class="ni ni-atom text-primary"></i>
+        </div>
+        <h5 class="text-white mt-3">Launch time</h5>
+        <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  <!-- SVG separator -->
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</section>
+<section class="section section-lg">
+  <div class="container">
+    <div class="row row-grid justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="display-3">Do you love this awesome
+          <span class="text-success">Design System for Bootstrap 4?</span>
+        </h2>
+        <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in HTML. Start a new project or give an old Bootstrap project a new look!</p>
+        <div class="btn-wrapper">
+          <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Download HTML</a>
+        </div>
+        <div class="text-center">
+          <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>
+          <div class="row justify-content-center">
+            <div class="col-lg-2 col-4">
+              <a href="https://www.creative-tim.com/product/argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Bootstrap 4 - Most popular front-end component library">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">
+              </a>
+            </div>
+            <div class="col-lg-2 col-4">
+              <a href=" https://www.creative-tim.com/product/vue-argon-design-system" target="_blank" data-toggle="tooltip" data-original-title="Vue.js - The progressive javascript framework">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid">
+              </a>
+            </div>
+            <div class="col-lg-2 col-4">
+              <a href=" https://www.sketchapp.com/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Sketch - Digital design toolkit">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid opacity-3">
+              </a>
+            </div>
+            <div class="col-lg-2 col-4">
+              <a href=" https://www.adobe.com/products/photoshop.html" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid opacity-3">
+              </a>
+            </div>
+            <div class="col-lg-2 col-4">
+              <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Angular - One framework. Mobile &amp; desktop">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid opacity-3">
+              </a>
+            </div>
+            <div class="col-lg-2 col-4">
+              <a href=" https://angularjs.org/" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] React - A JavaScript library for building user interfaces">
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid opacity-3">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
 @endsection
 
 @section('js')
@@ -136,19 +473,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.masthead').visibility({
-                once: false,
-                onBottomPassed: function() {
-                    $('.fixed.menu').transition('fade in');
-                },
-                onBottomPassedReverse: function() {
-                    $('.fixed.menu').transition('fade out');
-                }
-            });
-
-            $('#to-login-button').on('click', function(e) {
-                $(this).toggleClass('loading disabled');
-            });
+          //
         });
     </script>
 @endsection
