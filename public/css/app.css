@@ -13,6 +13,14 @@
   background-position: 50% 50%;
 }
 
+a.btn {
+  padding-bottom: 10px;
+}
+
+.navbar-nav > .nav-item > a {
+  margin-top: 15px;
+}
+
 .login.section {
   position: inherit !important;
 }

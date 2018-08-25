@@ -129,13 +129,13 @@
                     </a>
                   </li>
                 @endauth
-                <li class="nav-link">
-                  @guest
+                @guest
+                  <li class="nav-link">
                     <a href="{{ route('login') }}" class="btn btn-primary">
                       Login
                     </a>
-                  @endguest
-                </li>
+                  </li>
+                @endguest
               </ul>
             </div>
           </div>
@@ -154,17 +154,11 @@
               <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
             </div>
             <div class="col-lg-6 text-lg-center btn-wrapper">
-              <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fa fa-twitter"></i>
+              <a target="_blank" href="https://instagram.com/consilulelevilor" class="btn btn-neutral btn-icon-only btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
+                <i class="mdi mdi-instagram"></i>
               </a>
-              <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-              <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fa fa-dribbble"></i>
-              </a>
-              <a target="_blank" href="https://github.com/creativetimofficial" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
-                <i class="fa fa-github"></i>
+              <a target="_blank" href="https://www.facebook.com/consilulelevilor" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
+                <i class="mdi mdi-facebook-box"></i>
               </a>
             </div>
           </div>
