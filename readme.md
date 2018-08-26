@@ -128,5 +128,10 @@ $ php artisan migrate
 $ php artisan passport:install
 ```
 
+Additionally, make the storage link with public storage:
+```bash
+$ php artisan storage:link
+```
+
 # Final notes
 Your website is available locally, on `https://alegeri.cne.com`. This enables all features, but in case you use webhooks (this project doesn't use webhooks yet), you should use [ngrok](https://ngrok.com). Since this project uses keys for social media, feel free to ask the public and secret keys from the admin or use your own social apps within their respective developer sections.
