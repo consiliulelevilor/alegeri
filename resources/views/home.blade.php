@@ -30,7 +30,7 @@
                 </p>
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="mdi mdi-arrow-right"></i></span>
+                    <span class="btn-inner--icon"><i class="mdi mdi-arrow-right  mdi-18px"></i></span>
                     <span class="btn-inner--text">Află mai multe</span>
                   </a>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="card card-lift--hover shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                      <i class="ni ni-check-bold"></i>
+                      <i class="mdi mdi-account"></i>
                     </div>
                     <h6 class="text-primary text-uppercase">Download Argon</h6>
                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
@@ -73,7 +73,7 @@
                 <div class="card card-lift--hover shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
-                      <i class="ni ni-istanbul"></i>
+                      <i class="mdi mdi-account"></i>
                     </div>
                     <h6 class="text-success text-uppercase">Build Something</h6>
                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
@@ -90,7 +90,7 @@
                 <div class="card card-lift--hover shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                      <i class="ni ni-planet"></i>
+                      <i class="mdi mdi-account"></i>
                     </div>
                     <h6 class="text-warning text-uppercase">Prepare Launch</h6>
                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
@@ -117,7 +117,7 @@
           <div class="col-md-6 order-md-1">
             <div class="pr-md-5">
               <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                <i class="ni ni-settings-gear-65"></i>
+                <i class="mdi mdi-cogs"></i>
               </div>
               <h3>Awesome features</h3>
               <p>
@@ -128,7 +128,7 @@
                   <div class="d-flex align-items-center">
                     <div>
                       <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-settings-gear-65"></i>
+                        <i class="mdi mdi-cogs"></i>
                       </div>
                     </div>
                     <div>
@@ -140,7 +140,7 @@
                   <div class="d-flex align-items-center">
                     <div>
                       <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-html5"></i>
+                        <i class="mdi mdi-cogs"></i>
                       </div>
                     </div>
                     <div>
@@ -152,7 +152,7 @@
                   <div class="d-flex align-items-center">
                     <div>
                       <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-satisfied"></i>
+                        <i class="mdi mdi-cogs"></i>
                       </div>
                     </div>
                     <div>
@@ -187,7 +187,7 @@
           <div class="col-md-6">
             <div class="pl-md-5">
               <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-                <i class="ni ni-settings"></i>
+                <i class="mdi mdi-amazon-drive"></i>
               </div>
               <h3>Our customers</h3>
               <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
@@ -211,7 +211,7 @@
             <div class="d-flex px-3">
               <div>
                 <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                  <i class="ni ni-building text-primary"></i>
+                  <i class="mdi mdi-amazon-drive"></i>
                 </div>
               </div>
               <div class="pl-4">
@@ -224,7 +224,7 @@
                 <div class="d-flex px-3">
                   <div>
                     <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i class="ni ni-satisfied"></i>
+                      <i class="mdi mdi-amazon-drive"></i>
                     </div>
                   </div>
                   <div class="pl-4">
@@ -240,7 +240,7 @@
                 <div class="d-flex px-3">
                   <div>
                     <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                      <i class="ni ni-active-40"></i>
+                      <i class="mdi mdi-amazon-drive"></i>
                     </div>
                   </div>
                   <div class="pl-4">
@@ -279,13 +279,13 @@
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                    <i class="mdi mdi-twitter"></i>
                   </a>
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                    <i class="mdi mdi-facebook"></i>
                   </a>
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                    <i class="mdi mdi-instagram"></i>
                   </a>
                 </div>
               </div>
@@ -300,14 +300,14 @@
                   <small class="h6 text-muted">Marketing Strategist</small>
                 </h5>
                 <div class="mt-3">
-                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-twitter"></i>
                   </a>
-                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-facebook"></i>
                   </a>
-                  <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-instagram"></i>
                   </a>
                 </div>
               </div>
@@ -322,14 +322,14 @@
                   <small class="h6 text-muted">UI/UX Designer</small>
                 </h5>
                 <div class="mt-3">
-                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-twitter"></i>
                   </a>
-                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-facebook"></i>
                   </a>
-                  <a href="#" class="btn btn-info btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-instagram"></i>
                   </a>
                 </div>
               </div>
@@ -344,14 +344,14 @@
                   <small class="h6 text-muted">Founder and CEO</small>
                 </h5>
                 <div class="mt-3">
-                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-twitter"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-twitter"></i>
                   </a>
-                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-facebook"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-facebook"></i>
                   </a>
-                  <a href="#" class="btn btn-success btn-icon-only rounded-circle">
-                    <i class="fa fa-dribbble"></i>
+                  <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="mdi mdi-instagram"></i>
                   </a>
                 </div>
               </div>
@@ -388,21 +388,21 @@
         <div class="row row-grid mt-5">
           <div class="col-lg-4">
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-              <i class="ni ni-settings text-primary"></i>
+              <i class="mdi mdi-instagram"></i>
             </div>
             <h5 class="text-white mt-3">Building tools</h5>
             <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
           <div class="col-lg-4">
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-              <i class="ni ni-ruler-pencil text-primary"></i>
+              <i class="mdi mdi-instagram"></i>
             </div>
             <h5 class="text-white mt-3">Grow your market</h5>
             <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
           <div class="col-lg-4">
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-              <i class="ni ni-atom text-primary"></i>
+              <i class="mdi mdi-instagram"></i>
             </div>
             <h5 class="text-white mt-3">Launch time</h5>
             <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

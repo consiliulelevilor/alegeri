@@ -52,12 +52,12 @@
     @yield('css')
 
     @if(App::environment('production'))
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113007363-2"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}"></script>
       <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'UA-113007363-2');
+          gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
       </script>
     @endif
 
@@ -117,7 +117,10 @@
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                 @auth
                   <li class="nav-item d-lg-block ml-lg-4">
-                    <a href="{{ route('me') }}" class="btn btn-success">
+                    <a href="{{ route('me') }}" class="btn btn-success btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-account-circle mdi-18px mr-2"></i>
+                      </span>
                       <span class="nav-link-inner--text">
                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                       </span>
@@ -130,9 +133,14 @@
                   </li>
                 @endauth
                 @guest
-                  <li class="nav-link">
-                    <a href="{{ route('login') }}" class="btn btn-primary">
-                      Login
+                  <li class="nav-item d-lg-block ml-lg-4">
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-login mdi-18px mr-1"></i>
+                      </span>
+                      <span class="nav-link-inner--text">
+                        Login
+                      </span>
                     </a>
                   </li>
                 @endguest

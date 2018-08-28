@@ -29,17 +29,17 @@
                 <div class="btn-wrapper text-center">
                   <a href="{{ route('social', ['social' => 'facebook']) }}" class="btn btn-facebook btn-icon">
                     <span class="btn-inner--icon">
-                      <i class="mdi mdi-facebook-box"></i>
+                      <i class="mdi mdi-facebook-box mdi-18px"></i>
                     </span>
                   </a>
                   <a href="{{ route('social', ['social' => 'google']) }}" class="btn btn-google-plus btn-icon">
                     <span class="btn-inner--icon">
-                      <i class="mdi mdi-google"></i>
+                      <i class="mdi mdi-google mdi-18px"></i>
                     </span>
                   </a>
                   <a href="{{ route('social', ['social' => 'instagram']) }}" class="btn btn-instagram btn-icon">
                     <span class="btn-inner--icon">
-                      <i class="mdi mdi-instagram"></i>
+                      <i class="mdi mdi-instagram mdi-18px"></i>
                     </span>
                   </a>
                 </div>
