@@ -31,7 +31,7 @@ class UserController extends Controller
         $user = $request->user();
 
         $user->update([
-            'profile_name' => ($request->profile_name) ?: $user->profile_name,
+            'profile_name' => ($request->profile_name) ? str_slug($request->profile_name) : $user->profile_name,
             'name' => ($request->name) ?: $user->name,
             'email' => ($request->email) ?: $user->email,
             'region' => ($request->region) ?: $user->region,
