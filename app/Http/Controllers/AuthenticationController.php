@@ -81,8 +81,7 @@ class AuthenticationController extends Controller
 
         $user = User::create([
             'email' => $socialite->getEmail(),
-            'first_name' => $socialite->getName(),
-            'last_name' => null,
+            'name' => $socialite->getName(),
         ]);
 
         $user->update([

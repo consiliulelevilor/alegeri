@@ -17,17 +17,20 @@ class Users extends Migration
             $table->increments('id');
             $table->string('profile_name')->nullable();
 
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
 
             $table->string('city')->nullable();
             $table->string('region')->nullable();
             $table->string('institution')->nullable();
-            $table->date('starting_year')->nullable();
+            $table->integer('starting_year')->nullable();
 
             $table->text('description')->nullable();
+
+            $table->text('question1')->nullable();
+            $table->text('question2')->nullable();
+            $table->text('question3')->nullable();
+            $table->text('question4')->nullable();
 
             $table->boolean('is_admin')->default(false);
             $table->string('password')->nullable();

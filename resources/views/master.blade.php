@@ -122,7 +122,7 @@
                         <i class="mdi mdi-account-circle mdi-18px mr-2"></i>
                       </span>
                       <span class="nav-link-inner--text">
-                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        {{ Auth::user()->name }}
                       </span>
                     </a>
                   </li>

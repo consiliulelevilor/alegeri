@@ -28,7 +28,6 @@ class User extends Authenticatable implements HasMedia
         'deleted_at',
     ];
     protected $casts = [
-        'starting_year' => 'date:Y',
         'graduation_year' => 'date:Y',
         'is_admin' => 'bool',
     ];
