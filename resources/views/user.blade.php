@@ -28,13 +28,13 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-5 mt-lg-0">
+                <div class="card-profile-actions py-5 mt-lg-0 text-center">
                   @if(Auth::user() && Auth::user()->is($user))
                     <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success">Modifică</a>
-                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-right">Preferințe</a> 
+                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary">Preferințe</a> 
                   @else
                     <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info mr-4 mb-2"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-primary float-right mr-4"><i class="mdi mdi-email mr-2 mb-2"></i> Contact</a>
+                    <a href="javascript:{}" class="btn btn-sm btn-primary mr-4"><i class="mdi mdi-email mr-2 mb-2"></i> Contact</a>
                   @endif
                 </div>
               </div>
