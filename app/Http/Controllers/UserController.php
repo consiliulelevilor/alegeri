@@ -29,6 +29,7 @@ class UserController extends Controller
     public function updateMe(\App\Http\Requests\UpdateMeRequest $request)
     {
         $user = $request->user();
+        $user->load(['facebook', 'google', 'instagram']);
 
         $user->update([
             'profile_name' => ($request->profile_name) ? str_slug($request->profile_name) : $user->profile_name,
@@ -42,7 +43,26 @@ class UserController extends Controller
             'question2' => ($request->question2) ?: $user->question2,
             'question3' => ($request->question3) ?: $user->question3,
             'question4' => ($request->question4) ?: $user->question4,
+            'is_mail_subscribed' => $request->has('is_mail_subscribed'),
         ]);
+
+        if ($user->facebook) {
+            $user->facebook->update([
+                'is_public' => $request->has('make_facebook_public'),
+            ]);
+        }
+
+        if ($user->google) {
+            $user->google->update([
+                'is_public' => $request->has('make_google_public'),
+            ]);
+        }
+
+        if ($user->instagram) {
+            $user->instagram->update([
+                'is_public' => $request->has('make_instagram_public'),
+            ]);
+        }
 
         return redirect(route('me'))->with('success', 'Profilul de candidat a fost actualizat!');
     }

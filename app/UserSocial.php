@@ -23,6 +23,7 @@ class UserSocial extends Model
     ];
     protected $casts = [
         'socialite' => 'object',
+        'is_public' => 'boolean',
     ];
     protected $touches = [
         //

@@ -30,6 +30,7 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'graduation_year' => 'date:Y',
         'is_admin' => 'bool',
+        'is_mail_subscribed' => 'bool',
     ];
     protected $touches = [
         //
@@ -96,6 +97,11 @@ class User extends Authenticatable implements HasMedia
         if (count($media) > 0) {
             return $media->getFirstMediaUrl();
         }
+    }
+
+    public function profileUrl()
+    {
+        return route('user.profile', ['idOrSlug' => $this->profile_name]);
     }
 
     public function canBeEdited()

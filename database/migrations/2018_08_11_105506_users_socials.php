@@ -28,6 +28,8 @@ class UsersSocials extends Migration
             $table->timestamp('token_expiry')->nullable();
             $table->mediumText('socialite')->nullable();
 
+            $table->boolean('is_public')->default(false);
+
             $table->timestamps();
         });
     }

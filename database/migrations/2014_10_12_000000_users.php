@@ -37,7 +37,7 @@ class Users extends Migration
             $table->rememberToken();
 
             $table->uuid('activation_token')->nullable();
-            $table->boolean('is_subscribed')->default(true);
+            $table->boolean('is_mail_subscribed')->default(true);
 
             $table->timestamps();
             $table->softDeletes();

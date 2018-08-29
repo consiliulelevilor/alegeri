@@ -15,9 +15,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/candidați', 'UserController@index')->name('users');
 Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
-Route::get('/profilul-meu', 'UserController@me')->name('me');
-
-Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', 'AuthenticationController@index')->name('login');
@@ -27,5 +24,8 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['authenticated']], function () {
+    Route::get('/profilul-meu', 'UserController@me')->name('me');
+    Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
+
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });

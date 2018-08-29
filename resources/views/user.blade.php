@@ -23,22 +23,22 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ $user->avatarUrl() }}" class="rounded-circle">
+                    <img src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail">
                   </a>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0">
+                <div class="card-profile-actions py-5 mt-lg-0">
                   @if(Auth::user() && Auth::user()->is($user))
-                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success mr-4"><i class="mdi mdi-pencil mr-2"></i> Modifică</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-primary float-right  mr-4"><i class="mdi mdi-help mr-2"></i> Întrebări <span class="badge badge-warning">4</span></a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success">Modifică</a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-right">Preferințe</a> 
                   @else
-                    <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info mr-4"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-primary float-right mr-4"><i class="mdi mdi-email mr-2"></i> Contact</a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info mr-4 mb-2"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
+                    <a href="javascript:{}" class="btn btn-sm btn-primary float-right mr-4"><i class="mdi mdi-email mr-2 mb-2"></i> Contact</a>
                   @endif
                 </div>
               </div>
-              <div class="col-lg-4 order-lg-1">
+              <div class="col-lg-4 order-lg-1 mt-sm-3">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
                     <span class="heading">22</span>
@@ -55,7 +55,7 @@
                 </div>
               </div>
             </div>
-            <div class="text-center mt-5">
+            <div class="text-center mt-sm-5">
               <h3>
                 {{ $user->name }}
               </h3>
@@ -67,13 +67,17 @@
                   Locație necunoscută
                 @endif
               </div>
-              <div>
+              <div class="h6 font-weight-300">
                 <i class="mdi mdi-school mr-2"></i>
                 @if($user->institution)
                   {{ $user->institution }}
                 @else
-                  Fără liceu
+                  Nu a menționat un liceu
                 @endif
+              </div>
+              <div>
+                <i class="mdi mdi-link-variant mr-2"></i>
+                <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
               </div>
             </div>
             <div class="mt-5 py-5 border-top text-left">
@@ -147,20 +151,6 @@
             <form method="POST" action="" id="profile-form">
               @csrf
               @method('PATCH')
-              <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-account mr-2"></i> Informațiile contului</div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Alege un URL pentru profilul tău.</label>
-                    <div class="input-group input-group-alternative mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">{{ env('APP_URL') }}/</span>
-                      </div>
-                      <input class="form-control form-control-alternative" placeholder="popescu-ion" value="{{ old('profile_name') ?? $user->profile_name }}" name="profile_name" type="text">
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-account mr-2"></i> Informații personale</div>
               <div class="row">
                 <div class="col-md-6">
@@ -263,7 +253,7 @@
                   <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') ?? $user->question3 }}</textarea>
                 </div>
-                <div class="col-md-12 mb-4">
+                <div class="col-md-12">
                   <label>Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi?</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') ?? $user->question4 }}</textarea>
                 </div>
@@ -272,6 +262,81 @@
           </div>
           <div class="modal-footer">
             <a href="javascript:{}" onclick="$('#profile-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="preferences-modal" tabindex="-1" role="dialog" aria-labelledby="preferences-modal" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profile-modal">Preferințe</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="" id="preferences-form">
+              @csrf
+              @method('PATCH')
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-link-variant mr-2"></i> Setează URL-ul profilului</div>
+                  <div class="form-group">
+                    <label>{{ env('APP_URL') }}/</label>
+                    <div class="input-group input-group-alternative mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="mdi mdi-link-variant"></i></span>
+                      </div>
+                      <input class="form-control form-control-alternative" placeholder="popescu-ion" value="{{ old('profile_name') ?? $user->profile_name }}" name="profile_name" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-twitter mr-2"></i> Preferințe Social Media</div>
+                  @if($user->facebook)
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" name="make_facebook_public" id="make-facebook-public-check" type="checkbox" @if($user->facebook->is_public) checked @endif>
+                      <label class="custom-control-label" for="make-facebook-public-check">
+                        Doresc ca profilul meu de Facebook să fie făcut public.
+                      </label>
+                    </div>
+                  @endif
+
+                  @if($user->google)
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" name="make_google_public" id="make-google-public-check" type="checkbox" @if($user->google->is_public) checked @endif>
+                      <label class="custom-control-label" for="make-google-public-check">
+                        Doresc ca profilul meu de Google să fie făcut public.
+                      </label>
+                    </div>
+                  @endif
+
+                  @if($user->instagram)
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" name="make_instagram_public" id="make-instagram-public-check" type="checkbox" @if($user->instagram->is_public) checked @endif>
+                      <label class="custom-control-label" for="make-instagram-public-check">
+                        Doresc ca profilul meu de Instagram să fie făcut public.
+                      </label>
+                    </div>
+                  @endif
+                </div>
+              </div>
+              <div class="lead mb-2 mt-2"><i class="mdi mdi-email mr-2"></i> Metode de contact</div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" name="is_mail_subscribed" id="newsletter-check" type="checkbox" @if($user->is_mail_subscribed) checked @endif>
+                    <label class="custom-control-label" for="newsletter-check">
+                      Da, vreau să mă abonez la newsletter pentru a primi informații despre consilii. (Newsletter-ul este săptămânal)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:{}" onclick="$('#preferences-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
           </div>
         </div>
       </div>

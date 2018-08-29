@@ -25,7 +25,7 @@ class UpdateMeRequest extends FormRequest
     {
         return [
             'starting_year' => 'nullable|numeric',
-            'profile_name' => 'unique:users,profile_name,'.$this->user()->id,
+            'profile_name' => 'nullable|unique:users,profile_name,'.$this->user()->id,
         ];
     }
 
