@@ -28,13 +28,13 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-5 mt-lg-0 text-center">
+                <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-center">
                   @if(Auth::user() && Auth::user()->is($user))
                     <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success">Modifică</a>
                     <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary">Preferințe</a> 
                   @else
-                    <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info mr-4 mb-2"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-primary mr-4"><i class="mdi mdi-email mr-2 mb-2"></i> Contact</a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info float-sm-left float-md-left float-lg-none"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
+                    <a href="javascript:{}" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none"><i class="mdi mdi-email"></i> Contact</a>
                   @endif
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 </div>
               </div>
             </div>
-            <div class="text-center mt-sm-5">
+            <div class="text-center">
               <h3>
                 {{ $user->name }}
               </h3>
@@ -80,7 +80,7 @@
                 <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
               </div>
             </div>
-            <div class="mt-5 py-5 border-top text-left">
+            <div class="mt-5 py-2 border-top text-left">
               <div class="lead">
                 <i class="mdi mdi-numeric-1-box-outline mr-2"></i>
                 Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentruj candidezi?

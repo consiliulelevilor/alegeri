@@ -378,7 +378,7 @@
       </div>
     </section>
     <section class="section section-lg bg-gradient-default" id="section-6">
-      <div class="container pt-lg pb-300">
+      <div class="container pt-lg pb-100">
         <div class="row text-center justify-content-center">
           <div class="col-lg-10">
             <h2 class="display-3 text-white">Build something</h2>

@@ -17,6 +17,14 @@
   position: inherit !important;
 }
 
+.rounded-circle {
+  max-width: 140px !important;
+}
+
+.footer.has-cards {
+  margin-top: -520px !important;
+}
+
 .loader {
   border: 2px solid #f3f3f3;
   border-top: 2px solid #222;
