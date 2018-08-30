@@ -81,49 +81,65 @@
               </div>
             </div>
             <div class="mt-5 py-2 border-top text-left">
-              <div class="lead">
-                <i class="mdi mdi-numeric-1-box-outline mr-2"></i>
-                Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentruj candidezi?
-              </div>
+              <h2 class="lead">
+                <i class="mdi mdi-chevron-right"></i>
+                Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentru candidezi?
+              </h2>
               <div class="row justify-content-left">
                 <div class="col-lg-12">
-                  <p>
-                    {{ $user->question1 ?? 'Nu există răspuns.' }}  
+                  <p class="lead ml-md-5 ml-lg-5">
+                    @if($user->question1)
+                      {!! nl2br(e($user->question1)) !!}
+                    @else
+                      Nu există răspuns.
+                    @endif
                   </p>
                 </div>
               </div>
-              <div class="lead">
-                <i class="mdi mdi-numeric-2-box-outline mr-2"></i>
+              <h2 class="lead">
+                <i class="mdi mdi-chevron-right"></i>
                 Care consideri că este misiunea Consiliului Școlar/Județean/Național al Elevilor pentru care candidezi?
-              </div>
+              </h2>
               <div class="row justify-content-left">
                 <div class="col-lg-12">
-                  <p>
-                    {{ $user->question2 ?? 'Nu există răspuns.' }}  
+                  <p class="lead ml-md-5 ml-lg-5">
+                    @if($user->question2)
+                      {!! nl2br(e($user->question2)) !!}
+                    @else
+                      Nu există răspuns.
+                    @endif
                   </p>
                 </div>
               </div>
-              <div class="lead">
-                <i class="mdi mdi-numeric-3-box-outline mr-2"></i>
+              <h2 class="lead">
+                <i class="mdi mdi-chevron-right"></i>
                 Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?
-              </div>
+              </h2>
               <div class="row justify-content-left">
                 <div class="col-lg-12">
-                  <p>
-                    {{ $user->question3 ?? 'Nu există răspuns.' }}  
+                  <p class="lead ml-md-5 ml-lg-5">
+                    @if($user->question3)
+                      {!! nl2br(e($user->question4)) !!}
+                    @else
+                      Nu există răspuns.
+                    @endif
                   </p>
                 </div>
               </div>
-              <div class="lead">
-                <i class="mdi mdi-numeric-4-box-outline mr-2"></i>
+              <h2 class="lead">
+                <i class="mdi mdi-chevron-right"></i>
                 Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi?
-              </div>
-              <div class="row justify-content-left">
+              </h2>
+              <div class="row justify-content-left pb-4">
                 <div class="col-lg-12">
-                  <p>
-                    {{ $user->question4 ?? 'Nu există răspuns.' }}  
+                  <p class="lead ml-md-5 ml-lg-5">
+                    @if($user->question4)
+                      {!! nl2br(e($user->question4)) !!}
+                    @else
+                      Nu există răspuns.
+                    @endif
                   </p>
-                </div>
+                </p>
               </div>
             </div>
           </div>
