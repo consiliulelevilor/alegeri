@@ -36,7 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
-            \App\Http\Middleware\CacheAssetsversion::class,
+            \App\Http\Middleware\CacheAssetsVersion::class,
         ],
 
         'api' => [
