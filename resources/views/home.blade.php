@@ -470,7 +470,7 @@
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

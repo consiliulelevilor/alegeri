@@ -44,8 +44,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="http://via.placeholder.com/350x150">
     <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
 
-    <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}?v={{ cache('v') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ cache('v') }}">
 
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
 
@@ -193,11 +193,11 @@
       </footer>
     @endif
 
-    <script src="{{ asset('/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/vendor/popper/popper.min.js') }}"></script>
-    <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/vendor/headroom/headroom.min.js') }}"></script>
-    <script src="{{ asset('/js/argon.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.min.js') }}?v={{ cache('v') }}"></script>
+    <script src="{{ asset('/vendor/popper/popper.min.js') }}?v={{ cache('v') }}"></script>
+    <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}?v={{ cache('v') }}"></script>
+    <script src="{{ asset('/vendor/headroom/headroom.min.js') }}?v={{ cache('v') }}"></script>
+    <script src="{{ asset('/js/argon.min.js') }}?v={{ cache('v') }}"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
