@@ -28,7 +28,6 @@ class User extends VoyagerUser implements HasMedia
     ];
     protected $casts = [
         'graduation_year' => 'date:Y',
-        'is_admin' => 'bool',
         'is_mail_subscribed' => 'bool',
         'settings' => 'array',
     ];
