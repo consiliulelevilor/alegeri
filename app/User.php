@@ -6,14 +6,13 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\HasActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Rennokki\Guardian\Traits\HasPermissions;
+use TCG\Voyager\Models\User as VoyagerUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasMedia
+class User extends VoyagerUser implements HasMedia
 {
-    use HasActivity, HasApiTokens, HasMediaTrait, HasPermissions, Notifiable, SoftDeletes;
+    use HasActivity, HasApiTokens, HasMediaTrait, Notifiable, SoftDeletes;
 
     protected $table = 'users';
     protected $primaryKey = 'id';
@@ -31,6 +30,7 @@ class User extends Authenticatable implements HasMedia
         'graduation_year' => 'date:Y',
         'is_admin' => 'bool',
         'is_mail_subscribed' => 'bool',
+        'settings' => 'array',
     ];
     protected $touches = [
         //

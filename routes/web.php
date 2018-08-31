@@ -29,3 +29,7 @@ Route::group(['middleware' => ['authenticated']], function () {
 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
