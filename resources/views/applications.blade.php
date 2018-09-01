@@ -55,44 +55,70 @@
             </div>
           </div>
         </div>
-        @foreach($user->applications->chunk(4) as $chunk)
-          <div class="row mt-3">
-            @foreach($chunk as $application)
-              <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card shadow border-0" id="card-{{ $application->id }}">
-                  <img src="{{ $application->campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
-                  <div class="card-body py-2">
-                    <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3 float-right">
-                      @if($application->isApproved()) <i class="mdi mdi-check text-success" data-toggle="tooltip" data-placement="top" title="Aplicația a fost acceptată."></i> @endif
-                      @if($application->isDeclined()) <i class="mdi mdi-cancel text-danger" data-toggle="tooltip" data-placement="top" title="Aplicația a fost respinsă."></i> @endif
-                      @if($application->isPending()) <i class="mdi mdi-clock text-primary" data-toggle="tooltip" data-placement="top" title="Aplicația încă așteaptă răspuns."></i> @endif
-                    </h5>
-                    <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3">
-                      {{ $application->campaign->name }}
-                    </h5>
-                    <div class="danger-text">
-                      @if($application->campaign->type == 'executive')
-                        <i class="mdi mdi-sitemap mr-2"></i> Consiliul Național al Elevilor
-                      @endif
-                      @if($application->campaign->type == 'regional')
-                      <i class="mdi mdi-map-marker-outline mr-2"></i> Consiliul Județean al Elevilor
-                      @endif
-                      @if($application->campaign->type == 'institutional')
-                      <i class="mdi mdi-city-variant-outline mr-2"></i> Consiliul Școlar al Elevilor
+        @if($user->applications->count() == 0)
+          <section class="section section-lg" id="section-1">
+            <div class="container">
+              <div class="card bg-gradient-success shadow-lg border-0">
+                <div class="p-5">
+                  <div class="row align-items-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                      <h3 class="text-white"><i class="mdi mdi-cancel mr-2"></i> Nu există nicio aplicație depusă. </h3>
+                      <p class="lead text-white mt-3">
+                        @if(Auth::user() && Auth::user()->is($user))
+                          Se pare că nu ai trimis nicio aplicație până acum.
+                        @else
+                          {{ $user->name ?? 'Utilizatorul ' }} nu a depus nicio aplicație până acum.
+                        @endif
+                      </p>
+                      @if(Auth::user() && Auth::user()->is($user))
+                        <a href="{{ route('campaigns') }}" class="btn btn-lg btn-white mt-3"><i class="mdi mdi-share mr-2"></i> Aplică acum</a>
                       @endif
                     </div>
-                    <small>
-                      <i class="mdi mdi-calendar mr-2"></i> Trimisă pe {{ $application->created_at->format('d.m.Y H:i') }}
-                    </small>
-                    <p class="description">
-                      <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește întrebările</a>
-                    </p>
                   </div>
                 </div>
               </div>
-            @endforeach
-          </div>
-        @endforeach
+            </div>
+          </section>
+        @else
+          @foreach($user->applications->chunk(4) as $chunk)
+            <div class="row mt-3">
+              @foreach($chunk as $application)
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <div class="card shadow border-0" id="card-{{ $application->id }}">
+                    <img src="{{ $application->campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
+                    <div class="card-body py-2">
+                      <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3 float-right">
+                        @if($application->isApproved()) <i class="mdi mdi-check text-success" data-toggle="tooltip" data-placement="top" title="Aplicația a fost acceptată."></i> @endif
+                        @if($application->isDeclined()) <i class="mdi mdi-cancel text-danger" data-toggle="tooltip" data-placement="top" title="Aplicația a fost respinsă."></i> @endif
+                        @if($application->isPending()) <i class="mdi mdi-clock text-primary" data-toggle="tooltip" data-placement="top" title="Aplicația încă așteaptă răspuns."></i> @endif
+                      </h5>
+                      <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3">
+                        {{ $application->campaign->name }}
+                      </h5>
+                      <div class="danger-text">
+                        @if($application->campaign->type == 'executive')
+                          <i class="mdi mdi-sitemap mr-2"></i> Consiliul Național al Elevilor
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                        <i class="mdi mdi-map-marker-outline mr-2"></i> Consiliul Județean al Elevilor
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                        <i class="mdi mdi-city-variant-outline mr-2"></i> Consiliul Școlar al Elevilor
+                        @endif
+                      </div>
+                      <small>
+                        <i class="mdi mdi-calendar mr-2"></i> Trimisă pe {{ $application->created_at->format('d.m.Y H:i') }}
+                      </small>
+                      <p class="description">
+                        <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește întrebările</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+          @endforeach
+        @endif
       </div>
     </section>
   </main>
