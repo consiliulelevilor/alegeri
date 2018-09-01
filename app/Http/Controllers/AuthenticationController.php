@@ -44,13 +44,19 @@ class AuthenticationController extends Controller
 
         // dd($socialite);
         if ($userSocial) {
-            \Auth::login($userSocial->user()->first());
+            $user = $userSocial->user()->first();
+
+            \Auth::login($user);
 
             $userSocial->update([
                 'token' => $socialite->token,
                 'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
                 'socialite' => $socialite,
             ]);
+
+            if (! $user->canApplyToCampaigns()) {
+                return redirect(route('me').'?open=profile');
+            }
 
             return redirect(route('home'));
         }
@@ -73,6 +79,10 @@ class AuthenticationController extends Controller
                     ]);
 
                     \Auth::login($user);
+
+                    if (! $user->canApplyToCampaigns()) {
+                        return redirect(route('me').'?open=profile');
+                    }
 
                     return redirect(route('me'));
                 }
@@ -102,7 +112,7 @@ class AuthenticationController extends Controller
 
         \Auth::login($user);
 
-        return redirect(route('me'));
+        return redirect(route('me').'?open=profile');
     }
 
     public function logout(Request $request)
