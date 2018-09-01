@@ -10,7 +10,7 @@
   <meta property="og:image" content="{{ $user->avatarUrl() }}" />
 
   @if(Auth::user() && Auth::user()->is($user))
-    <form method="POST" action="{{ route('me.change.picture') }}" enctype="multipart/form-data" id="profile-picture-form" style="display: hidden;">
+    <form method="POST" action="{{ route('me.change.picture') }}" enctype="multipart/form-data" id="profile-picture-form" class="d-none">
       @csrf
       @method('PATCH')
       <input type="hidden" name="ref" value="profile-picture-form">
@@ -37,8 +37,8 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" @if(Auth::user() && Auth::user()->is($user)) id="upload-profile-picture" @endif class="rounded-circle img-thumbnail">
+                  <a id="upload-profile-picture-anchor" href="javascript:{}">
+                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" @if(Auth::user() && Auth::user()->is($user)) id="upload-profile-picture" @endif class="rounded-circle img-thumbnail" style="z-index: 1;">
                   </a>
                 </div>
               </div>
@@ -397,7 +397,7 @@
           });
         }
 
-        $('#upload-profile-picture').on('click', function (e) {
+        $('#upload-profile-picture-anchor').on('click', function (e) {
           $('#profile-picture-input').click();
         });
 
