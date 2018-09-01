@@ -1,8 +1,14 @@
 @extends('master')
 
-@section('title', $user->name)
+@section('title', $user->name.' - Alegeri pentru Consiliul Național al Elevilor')
 
 @section('content')
+  <meta property="og:url" content="{{ request()->url() }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ $user->name }} -  Alegeri pentru Consiliul Național al Elevilor" />
+  <meta property="og:description"content="{{ $user->description }}" />
+  <meta property="og:image" content="{{ $user->avatarUrl() }}" />
+
   <main class="profile-page">
     <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/ag-7.jpg') }});">
       <div class="shape shape-style-1 shape-primary alpha-4">
@@ -23,7 +29,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail">
+                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail">
                   </a>
                 </div>
               </div>

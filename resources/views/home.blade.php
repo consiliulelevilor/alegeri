@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Alegeri CNE')
+@section('title', 'Alegeri pentru Consiliul Național al Elevilor')
 
 @section('content')
   <main>

@@ -12,36 +12,30 @@
 
     <meta name="google-site-verification" content="" />
 
-    <meta name="theme-color" content="#000aee">
-    <meta name="msapplication-navbutton-color" content="#000aee">
-    <meta name="msapplication-TileColor" content="#000aee">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000aee">
-    <meta name="msapplication-TileImage" content="http://via.placeholder.com/350x150">
-
-    <meta property="og:url" content="{{ request()->url() }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="" />
-    <meta property="og:description"content="" />
-    <meta property="og:image" content="{{ asset('/images/renoki-as-open-source-renoki.png') }}" />
+    <meta name="theme-color" content="#222">
+    <meta name="msapplication-navbutton-color" content="#222">
+    <meta name="msapplication-TileColor" content="#FFF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFF">
+    <meta name="msapplication-TileImage" content="{{ asset('/images/favicons/ms-icon-144x144.png') }}?v={{ cache('v') }}">
 
     <meta name="twitter:card" content="summary"></meta>
     <meta name="twitter:creator" content="@rennokki"></meta>
 
     <meta property="fb:app_id" content="{{ env('FACEBOOK_ID') }}">
 
-    <link rel="apple-touch-icon" sizes="57x57" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="60x60" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="72x72" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="76x76" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="114x114" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="120x120" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="144x144" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://via.placeholder.com/350x150">
-    <link rel="apple-touch-icon" sizes="180x180" href="http://via.placeholder.com/350x150">
-    <link rel="icon" type="image/png" sizes="192x192" href="http://via.placeholder.com/350x150">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://via.placeholder.com/350x150">
-    <link rel="icon" type="image/png" sizes="96x96" href="http://via.placeholder.com/350x150">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://via.placeholder.com/350x150">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/favicons/apple-icon-57x57.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/favicons/apple-icon-60x60.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicons/apple-icon-72x72.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/images/favicons/apple-icon-76x76.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/images/favicons/apple-icon-114x114.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/images/favicons/apple-icon-120x120.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/images/favicons/apple-icon-144x144.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/images/favicons/apple-icon-152x152.png') }}?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicons/apple-icon-180x180.png') }}?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/images/favicons/android-icon-192x192.png') }}?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicons/favicon-32x32.png') }}?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/images/favicons/favicon-96x96.png') }}?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicons/favicon-16x16.png') }}?v={{ cache('v') }}">
     <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
 
     <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}?v={{ cache('v') }}">
@@ -91,7 +85,7 @@
         <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
           <div class="container">
             <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
-              <img src="{{ asset('images/logo/logo-1024-white.png') }}">
+              <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-1024-white.png') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -101,7 +95,7 @@
                 <div class="row">
                   <div class="col-6 collapse-brand">
                     <a href="{{ route('home') }}">
-                      <img src="{{ asset('images/logo/logo-line-black.png') }}">
+                      <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-line-black.png') }}">
                     </a>
                   </div>
                   <div class="col-6 collapse-close">

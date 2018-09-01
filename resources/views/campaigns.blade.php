@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Aplică pentru CNE!')
+@section('title', 'Aplică - Alegeri pentru Consiliul Național al Elevilor')
 
 @section('content')
   <main>
@@ -102,7 +102,7 @@
                             </div>
                           </div>
                         @endif
-                        <img src="{{ $campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
+                        <img alt="{{ $campaign->name }}" src="{{ $campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
                         <div class="card-body py-2">
                           <h5 class="text-{{ $campaign->color_scheme }} text-uppercase mt-3">{{ $campaign->name }}</h5>
                           <div class="danger-text">

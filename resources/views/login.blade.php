@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Login')
+@section('title', 'Login - Alegeri pentru Consiliul Național al Elevilor')
 
 @section('content')
   <main>
