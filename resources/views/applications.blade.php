@@ -206,6 +206,17 @@
                 </p>
               </div>
             </div>
+            <h2 class="lead">
+              <i class="mdi mdi-chevron-right"></i>
+              Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
+            </h2>
+            <div class="row justify-content-left">
+              <div class="col-lg-12">
+                <p class="lead ml-md-5 ml-lg-5">
+                  {!! nl2br(e($application->question5)) !!}
+                </p>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <a href="javascript:{}" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close mr-2"></i> Închide</a>

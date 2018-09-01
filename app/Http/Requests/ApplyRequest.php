@@ -28,6 +28,7 @@ class ApplyRequest extends FormRequest
             'question2' => 'required',
             'question3' => 'required',
             'question4' => 'required',
+            'question5' => 'required',
         ];
     }
 
@@ -38,6 +39,7 @@ class ApplyRequest extends FormRequest
             'question2.required' => 'Pentru a candida, trebuie să răspunzi la toate întrebările.',
             'question3.required' => 'Pentru a candida, trebuie să răspunzi la toate întrebările.',
             'question4.required' => 'Pentru a candida, trebuie să răspunzi la toate întrebările.',
+            'question5.required' => 'Pentru a candida, trebuie să răspunzi la toate întrebările.',
         ];
     }
 }

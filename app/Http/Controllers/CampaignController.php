@@ -44,6 +44,7 @@ class CampaignController extends Controller
             'question2' => $request->question2,
             'question3' => $request->question3,
             'question4' => $request->question4,
+            'question5' => $request->question5,
             'status' => 'pending',
         ]);
 

@@ -47,7 +47,7 @@ class Campaign extends Model
                     ->withPivot(
                         'user_name', 'user_email', 'user_city', 'user_region',
                         'user_institution', 'user_starting_year', 'user_description',
-                        'question1', 'question2', 'question3', 'question4',
+                        'question1', 'question2', 'question3', 'question4', 'question5',
                         'status'
                     )->withTimestamps();
     }

@@ -268,7 +268,7 @@
                     <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?</label>
                     <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') }}</textarea>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-12 mb-4">
                     <label>
                       Cum consideri că poți ajuta
                       @if($campaign->type == 'executive')
@@ -283,6 +283,12 @@
                       să se dezvolte organizațional prin funcția la care candidezi?
                     </label>
                     <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') }}</textarea>
+                  </div>
+                  <div class="col-md-12 mb-4">
+                    <label>
+                      Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
+                    </label>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question5">{{ old('question4') }}</textarea>
                   </div>
                 </div>
               </form>
