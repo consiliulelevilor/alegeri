@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -73,5 +74,20 @@ class UserController extends Controller
         }
 
         return redirect(route('me'))->with('success', 'Profilul de candidat a fost actualizat!');
+    }
+
+    public function updateMyProfilePicture(\App\Http\Requests\updateMyProfilePictureRequest $request)
+    {
+        $user = $request->user();
+
+        if ($user->avatar && ! filter_var($user->avatar, FILTER_VALIDATE_URL)) {
+            Storage::delete(public_path($user->avatar));
+        }
+
+        $user->update([
+            'avatar' => $request->file('profile_picture')->store('users/upload'),
+        ]);
+
+        return redirect(route('me'))->with('success', 'Poza de profil a fost actualizată cu succes!');
     }
 }

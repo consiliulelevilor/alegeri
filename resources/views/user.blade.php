@@ -9,6 +9,15 @@
   <meta property="og:description"content="{{ $user->description }}" />
   <meta property="og:image" content="{{ $user->avatarUrl() }}" />
 
+  @if(Auth::user() && Auth::user()->is($user))
+    <form method="POST" action="{{ route('me.change.picture') }}" enctype="multipart/form-data" id="profile-picture-form" style="display: hidden;">
+      @csrf
+      @method('PATCH')
+      <input type="hidden" name="ref" value="profile-picture-form">
+      <input type="file" id="profile-picture-input" accept=".jpg,.jpeg,.png,.gif" name="profile_picture">
+    </form>
+  @endif
+
   <main class="profile-page">
     <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/ag-7.jpg') }});">
       <div class="shape shape-style-1 shape-primary alpha-4">
@@ -29,7 +38,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail">
+                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" @if(Auth::user() && Auth::user()->is($user)) id="upload-profile-picture" @endif class="rounded-circle img-thumbnail">
                   </a>
                 </div>
               </div>
@@ -66,6 +75,17 @@
               </div>
             </div>
             <div class="text-center">
+              <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                  @if($errors->any() && old('ref') == 'profile-picture-form')
+                    <div class="alert alert-danger mb-2" role="alert">
+                      <span class="alert-inner--text">
+                        <strong>Stai puțin, cowboy!</strong> {{ $errors->first() }}
+                      </span>
+                    </div>
+                  @endif
+                </div>
+              </div>
               <h3>
                 {{ $user->name }}
               </h3>
@@ -120,7 +140,7 @@
             </button>
           </div>
           <div class="modal-body">
-            @if($errors->any())
+            @if($errors->any() && old('ref') == 'profile-form')
               <div class="alert alert-danger" role="alert">
                 <strong>Oops!</strong> {{ $errors->first() }}
               </div>
@@ -128,6 +148,7 @@
             <form method="POST" action="" id="profile-form">
               @csrf
               @method('PATCH')
+              <input type="hidden" name="ref" value="profile-form">
               <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-account mr-2"></i> Informații personale</div>
               <div class="row">
                 <div class="col-md-6">
@@ -256,6 +277,7 @@
             <form method="POST" action="" id="preferences-form">
               @csrf
               @method('PATCH')
+              <input type="hidden" name="ref" value="preferences-form">
               <div class="row">
                 <div class="col-md-6">
                   <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-twitter mr-2"></i> Preferințe Social Media</div>
@@ -308,11 +330,15 @@
 @endsection
 
 @section('js')
+  <script src="{{ asset('/js/simpleUpload.min.js') }}?v={{ cache('v') }}"></script>
+
   <script type="text/javascript">
     $(document).ready(function() {
       @if(Auth::user() && Auth::user()->is($user))
         @if($errors->any() || request()->query('open') == 'profile')
-          $('#profile-modal').modal('show');
+          @if(old('ref') == 'profile-form')
+            $('#profile-modal').modal('show');
+          @endif
         @endif
 
         @if(! $user->region)
@@ -370,6 +396,15 @@
             });
           });
         }
+
+        $('#upload-profile-picture').on('click', function (e) {
+          $('#profile-picture-input').click();
+        });
+
+        $('#profile-picture-input').on('change', function (e) {
+          $('#upload-profile-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}');
+          $('#profile-picture-form').submit();
+        });
       @endif
     });
   </script>
