@@ -76,7 +76,7 @@ class UserController extends Controller
         return redirect(route('me'))->with('success', 'Profilul de candidat a fost actualizat!');
     }
 
-    public function updateMyProfilePicture(\App\Http\Requests\updateMyProfilePictureRequest $request)
+    public function updateMyProfilePicture(\App\Http\Requests\UpdateMyProfilePictureRequest $request)
     {
         $user = $request->user();
 
