@@ -27,6 +27,8 @@ Route::group(['middleware' => ['authenticated']], function () {
     Route::get('/profilul-meu', 'UserController@me')->name('me');
     Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
 
+    Route::get('/aplica', 'CampaignController@index')->name('campaigns');
+
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });
 

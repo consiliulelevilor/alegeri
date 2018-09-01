@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}?v={{ cache('v') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ cache('v') }}">
 
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.6.95/css/materialdesignicons.min.css">
 
     @yield('css')
 
@@ -116,8 +116,18 @@
               </ul>
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                 @auth
-                  <li class="nav-item d-lg-block ml-lg-4">
-                    <a href="{{ route('me') }}" class="btn btn-success btn-icon">
+                  <li class="nav-item d-lg-block ml-lg-2 mb-md-2 mb-sm-2 mb-xs-2 mb-lg-0">
+                    <a href="{{ route('campaigns') }}" class="btn btn-sm btn-warning btn-icon">
+                      <span class="btn-inner--icon">
+                        <i class="mdi mdi-share mdi-18px mr-2"></i>
+                      </span>
+                      <span class="nav-link-inner--text">
+                        Aplică
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item d-lg-block ml-lg-2">
+                    <a href="{{ route('me') }}" class="btn btn-success btn-sm btn-icon">
                       <span class="btn-inner--icon">
                         <i class="mdi mdi-account-circle mdi-18px mr-2"></i>
                       </span>
@@ -133,8 +143,8 @@
                   </li>
                 @endauth
                 @guest
-                  <li class="nav-item d-lg-block ml-lg-4">
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
+                  <li class="nav-item d-lg-block ml-lg-2">
+                    <a href="{{ route('login') }}" class="btn btn-primary md-sm btn-icon">
                       <span class="btn-inner--icon">
                         <i class="mdi mdi-login mdi-18px mr-1"></i>
                       </span>

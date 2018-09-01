@@ -13,6 +13,32 @@
   background-position: 50% 50%;
 }
 
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: 99999;
+  opacity: 0.6;
+}
+
+.closed.overlay {
+  background-color: #222;
+}
+
+.applied.overlay {
+  background-color: #1aae6f;
+}
+
+.closed.overlay > .text,
+.applied.overlay > .text {
+  position: relative;
+  left: 42%;
+  top: 12%;
+}
+
 .login.section {
   position: inherit !important;
 }
@@ -56,4 +82,8 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.headroom--not-top {
+  background-color: #222 !important;
 }

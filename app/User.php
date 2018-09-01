@@ -65,6 +65,11 @@ class User extends VoyagerUser implements HasMedia
         return $this->social()->instagram();
     }
 
+    public function applications()
+    {
+        return $this->hasMany('App\Application', 'user_id');
+    }
+
     public function scopeEmail($query, $email)
     {
         return $query->where('email', $email);
@@ -79,6 +84,14 @@ class User extends VoyagerUser implements HasMedia
 
     public function avatarUrl()
     {
+        if ($this->avatar) {
+            if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+                return $this->avatar;
+            }
+
+            return asset('/storage/'.$this->avatar);
+        }
+
         $this->load(['facebook', 'google', 'instagram']);
 
         if ($this->facebook) {
@@ -92,10 +105,6 @@ class User extends VoyagerUser implements HasMedia
         if ($this->instagram) {
             return $this->instagram->avatar_url;
         }
-
-        if (count($media) > 0) {
-            return $media->getFirstMediaUrl();
-        }
     }
 
     public function profileUrl()
@@ -103,12 +112,16 @@ class User extends VoyagerUser implements HasMedia
         return route('user.profile', ['idOrSlug' => $this->profile_name]);
     }
 
-    public function canBeEdited()
+    public function hasAppliedTo(Campaign $campaign)
     {
-        if (request()->query('as_visitor')) {
-            return false;
-        }
+        return (bool) ($this->applications()->onCampaign($campaign)->count() == 1);
+    }
 
-        return (bool) ($this->is(\Auth::user()));
+    public function canApplyToCampaigns()
+    {
+        return (bool) (
+            $this->question1 && $this->question2 && $this->question3 && $this->question4 &&
+            $this->region && $this->institution
+        );
     }
 }

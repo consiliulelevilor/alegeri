@@ -41,7 +41,7 @@
               <div class="col-lg-4 order-lg-1 mt-sm-3">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">22</span>
+                    <span class="heading">{{ $user->applications()->count() }}</span>
                     <span class="description">Candidaturi</span>
                   </div>
                   <div>
@@ -49,8 +49,8 @@
                     <span class="description">Întrebări</span>
                   </div>
                   <div>
-                    <span class="heading">5</span>
-                    <span class="description">răspunsuri</span>
+                    <span class="heading">10</span>
+                    <span class="description">Stele</span>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a href="javascript:{}" onclick="$('#profile-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
+            <a href="javascript:{}" onclick="$(this).html('Așteaptă...'); $('#profile-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
           </div>
         </div>
       </div>
@@ -352,7 +352,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a href="javascript:{}" onclick="$('#preferences-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
+            <a href="javascript:{}" onclick="$(this).html('Așteaptă...'); $('#preferences-form').submit();" class="btn btn-success"><i class="mdi mdi-check mr-2"></i> Salvează</a>
           </div>
         </div>
       </div>

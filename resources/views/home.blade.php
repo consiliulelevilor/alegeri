@@ -470,15 +470,15 @@
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js }}"></script>
+  <script src="{{ asset('/js/jquery-scrollTo.min.js') }}?v={{ cache('v') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#more-button').on('click', function (e) {
-            $(window).scrollTo($('#section-1'), 1000);
-          });
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $('#more-button').on('click', function (e) {
+          $(window).scrollTo($('#section-1'), 1000);
         });
-    </script>
+      });
+  </script>
 @endsection
 
 @section('css')
