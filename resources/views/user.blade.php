@@ -195,7 +195,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>În ce județ locuiești?</label>
+                    <label>În ce județ locuiești? *</label>
                     <div class="input-group input-group-alternative mb-4">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="mdi mdi-map-marker"></i></span>
@@ -228,7 +228,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Ce liceu frecventezi?</label>
+                    <label>Ce liceu frecventezi? *</label>
                     <div class="input-group input-group-alternative mb-4">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="mdi mdi-school"></i></span>
@@ -256,21 +256,21 @@
               <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-vote mr-2"></i> Candidatură</div>
               <div class="row">
                 <div class="col-md-12 mb-4">
-                  <label>Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentruj candidezi?</label>
+                  <label>Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentruj candidezi? *</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question1">{{ old('question1') ?? $user->question1 }}</textarea>
                 </div>
                 <div class="col-md-12 mb-4">
-                  <label>Care consideri că este misiunea Consiliului Școlar/Județean/Național al Elevilor pentru care candidezi?</label>
+                  <label>Care consideri că este misiunea Consiliului Școlar/Județean/Național al Elevilor pentru care candidezi? *</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question2">{{ old('question2') ?? $user->question2 }}</textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 mb-4">
-                  <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?</label>
+                  <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)? *</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') ?? $user->question3 }}</textarea>
                 </div>
                 <div class="col-md-12">
-                  <label>Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi?</label>
+                  <label>Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi? *</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') ?? $user->question4 }}</textarea>
                 </div>
               </div>
@@ -364,7 +364,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       @if(Auth::user() && Auth::user()->is($user))
-        @if($errors->any())
+        @if($errors->any() || request()->query('open') == 'profile')
           $('#profile-modal').modal('show');
         @endif
 

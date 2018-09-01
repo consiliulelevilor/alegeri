@@ -75,6 +75,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
+              @if(! Auth::user()->canApplyToCampaigns())
+                <div class="alert alert-warning mb-2" role="alert">
+                  <span class="alert-inner--text">
+                    <strong>Stai pe loc!</strong> Datele oferite de tine sunt incomplete. Pentru asta, există o probabilitate foarte mare ca aplicațiile tale să nu fie acceptate.
+                  </span>
+                </div>
+                <a href="{{ route('me') }}?open=profile" class="btn btn-md btn-white mb-5"><i class="mdi mdi-arrow-right mr-2"></i> Completează datele</a>
+              @endif
               @foreach($campaigns->chunk(4) as $chunk)
                 <div class="row row-grid">
                   @foreach($chunk as $campaign)
@@ -125,7 +133,11 @@
                             <a href="javascript:{}" class="btn btn-link text-success mt-0 mb-2"><i class="mdi mdi-check mr-2"></i> Ai aplicat!</a>
                           @else
                             @if($campaign->isOpened())
-                              <a href="{{ route('campaigns') }}?campaignId={{ $campaign->id }}&apply=1" id="apply-button" class="btn btn-link text-{{ $campaign->color_scheme }} mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Aplică</a>
+                              @if(! Auth::user()->canApplyToCampaigns())
+                              <a href="javascript:{}" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-cancel mr-2"></i> Nu poți aplica!</a>
+                              @else
+                                <a href="{{ route('campaigns') }}?campaignId={{ $campaign->id }}&apply=1" id="apply-button" class="btn btn-link text-{{ $campaign->color_scheme }} mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Aplică</a>
+                              @endif
                             @else
                               <a href="javascript:{}" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-cancel mr-2"></i> Închisă</a>
                             @endif
