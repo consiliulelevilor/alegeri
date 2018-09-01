@@ -24,13 +24,15 @@ class UpdateMyProfilePictureRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_picture' => 'dimensions:ratio=1/1',
+            'profile_picture' => 'image|max:15360|dimensions:ratio=1/1',
         ];
     }
 
     public function messages()
     {
         return [
+            'profile_picture.image' => 'Poza de profil trebuie să fie imagine',
+            'profile_picture.max' => 'Poza de profil nu poate avea mai mult de 15 MB.',
             'profile_picture.dimensions' => 'Poza încărcată trebuie să fie pătrată.',
         ];
     }

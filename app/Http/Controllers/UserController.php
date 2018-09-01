@@ -78,6 +78,9 @@ class UserController extends Controller
 
     public function updateMyProfilePicture(\App\Http\Requests\UpdateMyProfilePictureRequest $request)
     {
+        ini_set('upload_max_filesize', -1);
+        ini_set('post_max_size', -1);
+
         $user = $request->user();
 
         if ($user->avatar && ! filter_var($user->avatar, FILTER_VALIDATE_URL)) {
