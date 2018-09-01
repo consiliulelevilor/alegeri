@@ -30,8 +30,8 @@
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-center">
                   @if(Auth::user() && Auth::user()->is($user))
-                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success">Modifică</a>
-                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary">Preferințe</a> 
+                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none">Modifică</a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none">Preferințe</a> 
                   @else
                     <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info float-sm-left float-md-left float-lg-none"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
                     <a href="javascript:{}" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none"><i class="mdi mdi-email"></i> Contact</a>
