@@ -21,9 +21,27 @@ class UserController extends Controller
         return view('user', ['user' => $user]);
     }
 
+    public function showApplications($idOrSlug, Request $request)
+    {
+        $user = User::with(['facebook', 'instagram', 'google', 'applications.campaign' => function ($query) {
+            $query->latest('updated_at');
+        }])->profile($idOrSlug)->firstOrFail();
+
+        return view('applications', ['user' => $user]);
+    }
+
     public function me(Request $request)
     {
         return view('user', ['user' => $request->user()]);
+    }
+
+    public function myApplications(Request $request)
+    {
+        $request->user()->load(['applications.campaign' => function ($query) {
+            return $query->latest('updated_at');
+        }]);
+
+        return view('applications', ['user' => $request->user()]);
     }
 
     public function updateMe(\App\Http\Requests\UpdateMeRequest $request)
@@ -39,11 +57,8 @@ class UserController extends Controller
             'city' => ($request->city) ?: $user->city,
             'institution' => ($request->institution) ?: $user->institution,
             'starting_year' => ($request->starting_year) ?: $user->starting_year,
-            'question1' => ($request->question1) ?: $user->question1,
-            'question2' => ($request->question2) ?: $user->question2,
-            'question3' => ($request->question3) ?: $user->question3,
-            'question4' => ($request->question4) ?: $user->question4,
             'is_mail_subscribed' => $request->has('is_mail_subscribed'),
+            'description' => ($request->description) ?: $user->description,
         ]);
 
         if ($user->facebook) {

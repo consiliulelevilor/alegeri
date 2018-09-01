@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/candidați', 'UserController@index')->name('users');
 Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
+Route::get('/candidat/{idOrSlug}/aplicatii', 'UserController@showApplications')->name('user.applications');
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', 'AuthenticationController@index')->name('login');
@@ -27,7 +28,10 @@ Route::group(['middleware' => ['authenticated']], function () {
     Route::get('/profilul-meu', 'UserController@me')->name('me');
     Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
 
+    Route::get('/aplicatiile-mele', 'UserController@myApplications')->name('me.applications');
+
     Route::get('/aplica', 'CampaignController@index')->name('campaigns');
+    Route::post('/aplica/{id}', 'CampaignController@apply')->name('campaign.apply');
 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });

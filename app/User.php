@@ -120,7 +120,6 @@ class User extends VoyagerUser implements HasMedia
     public function canApplyToCampaigns()
     {
         return (bool) (
-            $this->question1 && $this->question2 && $this->question3 && $this->question4 &&
             $this->region && $this->institution
         );
     }

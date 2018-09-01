@@ -63,4 +63,19 @@ class Application extends Model
     {
         return $query->where('campaign_id', $campaign->id);
     }
+
+    public function isPending()
+    {
+        return (bool) ($this->status === 'pending');
+    }
+
+    public function isDeclined()
+    {
+        return (bool) ($this->status === 'declined');
+    }
+
+    public function isApproved()
+    {
+        return (bool) ($this->status === 'approved');
+    }
 }

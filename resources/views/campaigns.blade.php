@@ -86,7 +86,7 @@
               @foreach($campaigns->chunk(4) as $chunk)
                 <div class="row row-grid">
                   @foreach($chunk as $campaign)
-                    <div class="col-lg-4">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <div class="card card-lift--hover shadow border-0" id="card-{{ $campaign->id }}">
                         @if($campaign->isClosed())
                           <div class="closed overlay">
@@ -136,7 +136,7 @@
                               @if(! Auth::user()->canApplyToCampaigns())
                               <a href="javascript:{}" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-cancel mr-2"></i> Nu poți aplica!</a>
                               @else
-                                <a href="{{ route('campaigns') }}?campaignId={{ $campaign->id }}&apply=1" id="apply-button" class="btn btn-link text-{{ $campaign->color_scheme }} mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Aplică</a>
+                                <a href="javascript:{}" onclick="$('#campaign-{{ $campaign->id }}-modal').modal('show');" class="btn btn-link text-{{ $campaign->color_scheme }} mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Aplică</a>
                               @endif
                             @else
                               <a href="javascript:{}" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-cancel mr-2"></i> Închisă</a>
@@ -203,6 +203,98 @@
       </div>
     </section>
   </main>
+
+  @foreach($campaigns as $campaign)
+    @if($campaign->isOpened() && Auth::user()->canApplyToCampaigns())
+      <div class="modal fade" id="campaign-{{ $campaign->id }}-modal" tabindex="-1" role="dialog" aria-labelledby="campaign-{{ $campaign->id }}-modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="campaign-{{ $campaign->id }}-modal">{{ $campaign->name }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                  <strong>Oops!</strong> {{ $errors->first() }}
+                </div>
+              @endif
+              <form method="POST" action="{{ route('campaign.apply', ['id' => $campaign->id]) }}" id="campaign-{{ $campaign->id }}-form">
+                @csrf
+                @method('POST')
+                <input type="hidden" name="refId" value="{{ $campaign->id }}">
+                <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-account-check mr-2"></i> Date personale</div>
+                <p>
+                  Datele tale personale vor fi preluate automat.
+                  Tot ce trebuie să faci este doar să răspunzi la întrebările specifice poziției pentru care aplici.
+                </p>
+                <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-vote mr-2"></i> Candidatură</div>
+                <div class="row">
+                  <div class="col-md-12 mb-4">
+                    <label>
+                      Ce te recomandă pentru funcția în cadrul 
+                      @if($campaign->type == 'executive')
+                        Consiliului Național al Elevilor?
+                      @endif
+                      @if($campaign->type == 'regional')
+                        Consiliului Județean {{ Auth::user()->region }}?
+                      @endif
+                      @if($campaign->type == 'institutional')
+                        Consiliului Școlar?
+                      @endif
+                    </label>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question1">{{ old('question1') }}</textarea>
+                  </div>
+                  <div class="col-md-12 mb-4">
+                    <label>
+                      Care consideri că este misiunea 
+                      @if($campaign->type == 'executive')
+                        Consiliului Național al Elevilor?
+                      @endif
+                      @if($campaign->type == 'regional')
+                        Consiliului Județean {{ Auth::user()->region }}?
+                      @endif
+                      @if($campaign->type == 'institutional')
+                        Consiliului Școlar?
+                      @endif
+                    </label>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question2">{{ old('question2') }}</textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-4">
+                    <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?</label>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') }}</textarea>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      Cum consideri că poți ajuta
+                      @if($campaign->type == 'executive')
+                        Consiliul Național al Elevilor
+                      @endif
+                      @if($campaign->type == 'regional')
+                        Consiliul Județean {{ Auth::user()->region }}
+                      @endif
+                      @if($campaign->type == 'institutional')
+                        Consiliul Școlar {{ Auth::user()->region }}
+                      @endif
+                      să se dezvolte organizațional prin funcția la care candidezi?
+                    </label>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') }}</textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a href="javascript:{}" onclick="$(this).html('Așteaptă...'); $('#campaign-{{ $campaign->id }}-form').submit();" class="btn btn-success"><i class="mdi mdi-send mr-2"></i> Trimite</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
+  @endforeach
 @endsection
 
 @section('js')
@@ -210,6 +302,10 @@
 
   <script type="text/javascript">
       $(document).ready(function() {
+        @if(old('refId'))
+          $('#campaign-{{ old('refId') }}-modal').modal('show');
+        @endif
+
         @if(request()->query('jumpTo'))
           $(window).scrollTo($('#card-{{ request()->query('jumpTo') }}'), 1000);
         @endif
@@ -220,10 +316,6 @@
 
         $('#details-button').on('click', function (e) {
           $(window).scrollTo($('#section-3'), 1000);
-        });
-
-        $('a[id=apply-button]').on('click', function (e) {
-          $(this).html('Așteaptă...');
         });
       });
   </script>

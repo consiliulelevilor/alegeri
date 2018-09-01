@@ -41,7 +41,11 @@
               <div class="col-lg-4 order-lg-1 mt-sm-3">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">{{ $user->applications()->count() }}</span>
+                    <span class="heading">
+                      <a href="@if(Auth::user() && Auth::user()->is($user)) {{ route('me.applications') }} @else {{ route('user.applications', ['idOrSlug' => $user->profile_name]) }} @endif" class="btn-link text-success">
+                        {{ $user->applications()->count() }}
+                      </a>
+                    </span>
                     <span class="description">Candidaturi</span>
                   </div>
                   <div>
@@ -80,66 +84,17 @@
                 <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
               </div>
             </div>
-            <div class="mt-5 py-2 border-top text-left">
-              <h2 class="lead">
-                <i class="mdi mdi-chevron-right"></i>
-                Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentru candidezi?
-              </h2>
-              <div class="row justify-content-left">
+            <div class="mt-5 py-2 border-top">
+              <div class="row justify-content-center">
                 <div class="col-lg-12">
                   <p class="lead ml-md-5 ml-lg-5">
-                    @if($user->question1)
-                      {!! nl2br(e($user->question1)) !!}
+                    @if($user->description)
+                      {!! nl2br(e($user->description)) !!}
                     @else
-                      Nu există răspuns.
+                      Nu există nicio descriere.
                     @endif
                   </p>
                 </div>
-              </div>
-              <h2 class="lead">
-                <i class="mdi mdi-chevron-right"></i>
-                Care consideri că este misiunea Consiliului Școlar/Județean/Național al Elevilor pentru care candidezi?
-              </h2>
-              <div class="row justify-content-left">
-                <div class="col-lg-12">
-                  <p class="lead ml-md-5 ml-lg-5">
-                    @if($user->question2)
-                      {!! nl2br(e($user->question2)) !!}
-                    @else
-                      Nu există răspuns.
-                    @endif
-                  </p>
-                </div>
-              </div>
-              <h2 class="lead">
-                <i class="mdi mdi-chevron-right"></i>
-                Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?
-              </h2>
-              <div class="row justify-content-left">
-                <div class="col-lg-12">
-                  <p class="lead ml-md-5 ml-lg-5">
-                    @if($user->question3)
-                      {!! nl2br(e($user->question4)) !!}
-                    @else
-                      Nu există răspuns.
-                    @endif
-                  </p>
-                </div>
-              </div>
-              <h2 class="lead">
-                <i class="mdi mdi-chevron-right"></i>
-                Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi?
-              </h2>
-              <div class="row justify-content-left pb-4">
-                <div class="col-lg-12">
-                  <p class="lead ml-md-5 ml-lg-5">
-                    @if($user->question4)
-                      {!! nl2br(e($user->question4)) !!}
-                    @else
-                      Nu există răspuns.
-                    @endif
-                  </p>
-                </p>
               </div>
             </div>
           </div>
@@ -253,25 +208,25 @@
                   </div>
                 </div>
               </div>
-              <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-vote mr-2"></i> Candidatură</div>
+              <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-comment-account mr-2"></i> Despre persoana ta</div>
               <div class="row">
                 <div class="col-md-12 mb-4">
-                  <label>Ce te recomandă pentru funcția în cadrul Consiliului Școlar/Județean/Național al Elevilor pentruj candidezi? *</label>
-                  <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question1">{{ old('question1') ?? $user->question1 }}</textarea>
-                </div>
-                <div class="col-md-12 mb-4">
-                  <label>Care consideri că este misiunea Consiliului Școlar/Județean/Național al Elevilor pentru care candidezi? *</label>
-                  <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question2">{{ old('question2') ?? $user->question2 }}</textarea>
+                  <label>Scrie-ne câteva lucruri despre tine. Descrierea va fi făcută publică pe profilul tău.</label>
+                  <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="description">{{ old('description') ?? $user->description }}</textarea>
                 </div>
               </div>
+              <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-link-variant mr-2"></i> Setează URL-ul profilului</div>
               <div class="row">
-                <div class="col-md-12 mb-4">
-                  <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)? *</label>
-                  <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') ?? $user->question3 }}</textarea>
-                </div>
                 <div class="col-md-12">
-                  <label>Cum consideri că poți ajuta Consiliul Școlar/Județean/Național al Elevilor să se dezvolte organizațional prin funcția la care candidezi? *</label>
-                  <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') ?? $user->question4 }}</textarea>
+                  <div class="form-group">
+                    <label>{{ env('APP_URL') }}/</label>
+                    <div class="input-group input-group-alternative mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="mdi mdi-link-variant"></i></span>
+                      </div>
+                      <input class="form-control form-control-alternative" placeholder="popescu-ion" value="{{ old('profile_name') ?? $user->profile_name }}" name="profile_name" type="text">
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -296,18 +251,6 @@
               @csrf
               @method('PATCH')
               <div class="row">
-                <div class="col-md-6">
-                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-link-variant mr-2"></i> Setează URL-ul profilului</div>
-                  <div class="form-group">
-                    <label>{{ env('APP_URL') }}/</label>
-                    <div class="input-group input-group-alternative mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="mdi mdi-link-variant"></i></span>
-                      </div>
-                      <input class="form-control form-control-alternative" placeholder="popescu-ion" value="{{ old('profile_name') ?? $user->profile_name }}" name="profile_name" type="text">
-                    </div>
-                  </div>
-                </div>
                 <div class="col-md-6">
                   <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-twitter mr-2"></i> Preferințe Social Media</div>
                   @if($user->facebook)
@@ -337,10 +280,8 @@
                     </div>
                   @endif
                 </div>
-              </div>
-              <div class="lead mb-2 mt-2"><i class="mdi mdi-email mr-2"></i> Metode de contact</div>
-              <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-email mr-2"></i> Newsletter</div>
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" name="is_mail_subscribed" id="newsletter-check" type="checkbox" @if($user->is_mail_subscribed) checked @endif>
                     <label class="custom-control-label" for="newsletter-check">
