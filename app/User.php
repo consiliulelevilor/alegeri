@@ -84,9 +84,9 @@ class User extends VoyagerUser implements HasMedia
 
     public function avatarUrl()
     {
-        $this->load(['socials', 'facebook', 'google', 'instagram']);
+        $this->load(['facebook', 'google', 'instagram']);
 
-        if ($this->avatar && ! $this->socials) {
+        if ($this->avatar) {
             if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
                 return $this->avatar;
             }

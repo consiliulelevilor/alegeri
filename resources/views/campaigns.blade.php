@@ -216,11 +216,6 @@
               </button>
             </div>
             <div class="modal-body">
-              @if($errors->any())
-                <div class="alert alert-danger" role="alert">
-                  <strong>Oops!</strong> {{ $errors->first() }}
-                </div>
-              @endif
               <form method="POST" action="{{ route('campaign.apply', ['id' => $campaign->id]) }}" id="campaign-{{ $campaign->id }}-form">
                 @csrf
                 @method('POST')

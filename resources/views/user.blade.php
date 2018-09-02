@@ -75,17 +75,6 @@
               </div>
             </div>
             <div class="text-center">
-              <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                  @if($errors->any() && old('ref') == 'profile-picture-form')
-                    <div class="alert alert-danger mb-2" role="alert">
-                      <span class="alert-inner--text">
-                        <strong>Stai puțin, cowboy!</strong> {{ $errors->first() }}
-                      </span>
-                    </div>
-                  @endif
-                </div>
-              </div>
               <h3>
                 {{ $user->name }}
               </h3>
@@ -157,11 +146,6 @@
             </button>
           </div>
           <div class="modal-body">
-            @if($errors->any() && old('ref') == 'profile-form')
-              <div class="alert alert-danger" role="alert">
-                <strong>Oops!</strong> {{ $errors->first() }}
-              </div>
-            @endif
             <form method="POST" action="" id="profile-form">
               @csrf
               @method('PATCH')
@@ -379,10 +363,8 @@
   <script type="text/javascript">
     $(document).ready(function() {
       @if(Auth::user() && Auth::user()->is($user))
-        @if($errors->any() || request()->query('open') == 'profile')
-          @if(old('ref') == 'profile-form' || request()->query('open') == 'profile')
-            $('#profile-modal').modal('show');
-          @endif
+        @if(($errors->any() && old('ref') == 'profile-form') || request()->query('open') == 'profile')
+          $('#profile-modal').modal('show');
         @endif
 
         @if(! $user->region)

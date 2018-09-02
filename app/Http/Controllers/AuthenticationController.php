@@ -59,7 +59,7 @@ class AuthenticationController extends Controller
 
             if ($sessionedUser) {
                 if (! $user->is($sessionedUser)) {
-                    return redirect(route('me'))->with('alert', 'Contul de Social Media este deja asociat cu alt cont.');
+                    return redirect(route('me'))->with('alert', 'Contul de '.ucfirst($social).' este deja asociat cu alt cont.');
                 }
             }
 
@@ -75,12 +75,12 @@ class AuthenticationController extends Controller
                 return redirect(route('me').'?open=profile');
             }
 
-            return redirect(route('home'));
+            return redirect(route('me'))->with('success', 'Bine ai revenit în contul tău!');
         }
 
         if ($sessionedUser) {
             if ($sessionedUser->{$social}) {
-                return redirect(route('me'))->with('alert', 'Contul de Social Media este deja asociat contului!');
+                return redirect(route('me'))->with('alert', 'Contul de '.ucfirst($social).' este deja asociat contului!');
             }
 
             $sessionedUser->socials()->create([
@@ -101,7 +101,7 @@ class AuthenticationController extends Controller
                 return redirect(route('me').'?open=profile');
             }
 
-            return redirect(route('me'));
+            return redirect(route('me'))->with('success', 'Contul de '.ucfirst($social).' a fost adăugat!');
         }
 
         $user = User::with(['facebook', 'google', 'instagram'])->email($socialite->getEmail())->first();
@@ -136,7 +136,7 @@ class AuthenticationController extends Controller
                 return redirect(route('me').'?open=profile');
             }
 
-            return redirect(route('me'));
+            return redirect(route('me'))->with('success', 'Bine ai revenit în contul tău!');
         }
 
         return redirect(route('me').'?open=profile');
@@ -162,7 +162,7 @@ class AuthenticationController extends Controller
 
         $user->{$social}->forceDelete();
 
-        return redirect(route('me'))->with('success', 'Contul de Social Media a fost șters.');
+        return redirect(route('me'))->with('success', 'Contul de '.ucfirst($social).' a fost șters!');
     }
 
     public function logout(Request $request)

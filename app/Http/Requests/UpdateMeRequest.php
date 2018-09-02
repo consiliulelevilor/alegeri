@@ -24,7 +24,7 @@ class UpdateMeRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'nullable|unique:users,profile_name,'.$this->user()->id,
+            'email' => 'nullable|email|unique:users,profile_name,'.$this->user()->id,
             'starting_year' => 'nullable|numeric',
             'profile_name' => 'nullable|unique:users,profile_name,'.$this->user()->id,
         ];
@@ -33,6 +33,7 @@ class UpdateMeRequest extends FormRequest
     public function messages()
     {
         return [
+            'email.email' => 'Adresa de E-Mail trebuie să fie validă.',
             'email.unique' => 'Adresa de E-Mail introdusă este deja folosită.',
             'starting_year.numeric' => 'Anul de începere al cursurilor trebuie să fie un număr.',
             'profile_name.unique' => 'URL-ul pe care îl vrei este deja folosit.',

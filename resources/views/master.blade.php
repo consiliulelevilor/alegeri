@@ -39,6 +39,9 @@
     <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
 
     <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}?v={{ cache('v') }}">
+    <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}?v={{ cache('v') }}">
+    <link rel="stylesheet" href="{{ asset('/css/noty.css') }}?v={{ cache('v') }}">
+    <link rel="stylesheet" href="{{ asset('/css/relax.css') }}?v={{ cache('v') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ cache('v') }}">
 
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.6.95/css/materialdesignicons.min.css">
@@ -223,10 +226,42 @@
     <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}?v={{ cache('v') }}"></script>
     <script src="{{ asset('/vendor/headroom/headroom.min.js') }}?v={{ cache('v') }}"></script>
     <script src="{{ asset('/js/argon.min.js') }}?v={{ cache('v') }}"></script>
+    <script src="{{ asset('/js/noty.min.js') }}?v={{ cache('v') }}"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
-        //
+        @if($errors->any())
+          new Noty({
+            layout: 'topCenter',
+            type: 'error',
+            text: '<i class="mdi mdi-cancel mdi-18px mr-2"></i> {{ $errors->first() }}',
+            theme: 'relax',
+            timeout: 10000,
+            animation: {
+              open: 'animated fadeInDown',
+              close: 'animated fadeOutUp',
+            },
+          }).show();
+        @endif
+        @if(Session::has('alert') || Session::has('success'))
+          new Noty({
+            layout: 'topCenter',
+            @if(Session::has('alert'))
+              type: 'error',
+              text: '<i class="mdi mdi-cancel mdi-18px mr-2"></i> {{ Session::get('alert') }}',
+            @endif
+            @if(Session::has('success'))
+              type: 'success',
+              text: '<i class="mdi mdi-check mdi-18px mr-2"></i> {{ Session::get('success') }}',
+            @endif
+            theme: 'relax',
+            timeout: 6000,
+            animation: {
+              open: 'animated fadeInDown',
+              close: 'animated fadeOutUp',
+            },
+          }).show();
+        @endif
       });
     </script>
     @yield('js')
