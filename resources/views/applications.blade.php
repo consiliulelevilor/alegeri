@@ -32,6 +32,26 @@
               <h3>
                 {{ $user->name }}
               </h3>
+              <div class="h6 font-weight-300">
+                <i class="mdi mdi-map-marker mr-2"></i>
+                @if($user->region && $user->city)
+                  {{ $user->city }}, {{ $user->region }} 
+                @else
+                  Locație necunoscută
+                @endif
+              </div>
+              <div class="h6 font-weight-300">
+                <i class="mdi mdi-school mr-2"></i>
+                @if($user->institution)
+                  {{ $user->institution }}
+                @else
+                  Nu a menționat un liceu
+                @endif
+              </div>
+              <div>
+                <i class="mdi mdi-link-variant mr-2"></i>
+                <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
+              </div>
             </div>
           </div>
         </div>
