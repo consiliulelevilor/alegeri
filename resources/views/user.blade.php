@@ -116,7 +116,7 @@
                   </a>
                 @endif
                 @if($user->google && $user->google->is_public)
-                  <a class="text-danger mr-2" href="https://plus.google.com.com/{{ $user->google->social_id }}" target=_blank>
+                  <a class="text-danger mr-2" href="https://plus.google.com/{{ $user->google->social_id }}" target=_blank>
                     <i class="mdi mdi-24px mdi-google"></i>
                   </a>
                 @endif
