@@ -22,11 +22,14 @@
             <div class="row">
               <div class="col-lg-6">
                 <h1 class="display-3  text-white">
-                  Aplicațiile sunt deschise
-                  <span>pentru candidaturi serioase.</span>
+                  Candidează
+                  <span>și fii vocea colegilor tăi.</span>
                 </h1>
                 <p class="lead text-white">
-                  Pentru că nouă ne plac elevii care sunt puși pe treabă nu ca alți bagabonți care nu vrea să muncește doar salarii mari că e criză.
+                  E momentul să te implici - candidează pentru ocuparea unei funcții în Consiliul Județean al Elevilor!
+                </p>
+                <p class="lead text-white">
+                  Aplicațiile sunt deschise și poți aplica la ele în cel mai ușor mod posibil prin platforma de alegeri.
                 </p>
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
@@ -154,7 +157,7 @@
       </section>
     @endif
     <section class="section section-lg bg-gradient-success" id="section-3">
-      <div class="container pt-lg pb-100">
+      <div class="container">
         <div class="row text-left justify-content-center">
           <div class="col-lg-10">
             <h2 class="display-3 text-white">Nu știi unde să aplici?</h2>

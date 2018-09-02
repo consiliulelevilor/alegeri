@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="{{ asset('/css/relax.css') }}?v={{ cache('v') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ cache('v') }}">
 
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.6.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/materialdesignicons.min.css') }}?v={{ cache('v') }}">
 
     @yield('css')
 
@@ -190,11 +190,11 @@
               <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
             </div>
             <div class="col-lg-6 text-lg-center btn-wrapper">
-              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-icon-only btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
-                <i class="mdi mdi-instagram"></i>
+              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
+                <i class="mdi mdi-instagram mdi-24px"></i>
               </a>
-              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
-                <i class="mdi mdi-facebook-box"></i>
+              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
+                <i class="mdi mdi-facebook-box mdi-24px"></i>
               </a>
             </div>
           </div>
