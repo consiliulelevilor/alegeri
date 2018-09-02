@@ -411,9 +411,9 @@
 
             $.each(cities, function (index, item) {
               if (selectedCity && selectedCity == item) {
-                $('#city-select').append('<option value="' + item + '" selected>' + item + '</option>');
+                $('#city-select').append("<option value='" + item + "' selected>" + item + "</option>");
               } else {
-                $('#city-select').append('<option value="' + item + '">' + item + '</option>');
+                $('#city-select').append("<option value='" + item + "'>" + item + "</option>");
               }
             });
           });
@@ -433,9 +433,9 @@
 
             $.each(institutions, function (index, item) {
               if (selectedInstitution && selectedInstitution == item) {
-                $('#institution-select').append('<option value="' + item + '" selected>' + item + '</option>');
+                $('#institution-select').append("<option value='" + item + "' selected>" + item + "</option>");
               } else {
-                $('#institution-select').append('<option value="' + item + '">' + item + '</option>');
+                $('#institution-select').append("<option value='" + item + "'>" + item + "</option>");
               }
             });
           });
