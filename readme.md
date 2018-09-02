@@ -133,5 +133,20 @@ Additionally, make the storage link with public storage:
 $ php artisan storage:link
 ```
 
+Finally, install Voyager (admin panel):
+```bash
+$ php artisan voyager:install
+```
+
+Now just run the DB seeding for Voyager:
+```bash
+$ php artisan db:seed
+```
+
+To create an admin, run the following command:
+```bash
+$ php artisan voyager:admin [your email] --create
+```
+
 # Final notes
 Your website is available locally, on `https://alegeri.cne.com`. This enables all features, but in case you use webhooks (this project doesn't use webhooks yet), you should use [ngrok](https://ngrok.com). Since this project uses keys for social media, feel free to ask the public and secret keys from the admin or use your own social apps within their respective developer sections.
