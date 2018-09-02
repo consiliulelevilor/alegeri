@@ -56,6 +56,27 @@
     @endif
 
     <title>@yield('title')</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+      window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#000"
+          },
+          "button": {
+            "background": "#f1d600"
+          }
+        },
+        "theme": "classic",
+        "content": {
+          "message": "Nouă ne plac prăjiturelele (cookies).\nNu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre.",
+          "link": "Ce sunt prăjiturelele?"
+        }
+      })});
+    </script>
   </head>
   <body>
     <div id="fb-root"></div>
