@@ -58,7 +58,7 @@
         @if($user->applications->count() == 0)
           <section class="section section-lg" id="section-1">
             <div class="container">
-              <div class="card bg-gradient-success shadow-lg border-0">
+              <div class="card bg-gradient-danger shadow-lg border-0">
                 <div class="p-5">
                   <div class="row align-items-center">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
@@ -70,8 +70,9 @@
                           {{ $user->name ?? 'Utilizatorul ' }} nu a depus nicio aplicație până acum.
                         @endif
                       </p>
+                      <a href="{{ (Auth::user() && Auth::user()->is($user)) ? route('me') : route('user.profile', ['idOrSlug' => $user->profile_name]) }}" class="btn btn-lg btn-white mt-3"><i class="mdi mdi-arrow-left mr-2"></i> Înapoi pe profil</a>
                       @if(Auth::user() && Auth::user()->is($user))
-                        <a href="{{ route('campaigns') }}" class="btn btn-lg btn-white mt-3"><i class="mdi mdi-share mr-2"></i> Aplică acum</a>
+                        <a href="{{ route('campaigns') }}" class="btn btn-lg btn-primary mt-3"><i class="mdi mdi-share mr-2"></i> Aplică acum</a>
                       @endif
                     </div>
                   </div>
@@ -81,6 +82,7 @@
           </section>
         @else
           @foreach($user->applications->chunk(4) as $chunk)
+            <a href="{{ (Auth::user() && Auth::user()->is($user)) ? route('me') : route('user.profile', ['idOrSlug' => $user->profile_name]) }}" class="btn btn-lg btn-danger mt-4 mb-2"><i class="mdi mdi-arrow-left mr-2"></i> Înapoi pe profil</a>
             <div class="row mt-3">
               @foreach($chunk as $application)
                 <div class="col-sm-12 col-md-6 col-lg-4">
@@ -134,7 +136,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <h2 class="lead">
+            <h2 class="lead font-weight-bold">
               <i class="mdi mdi-chevron-right"></i>
               Ce te recomandă pentru funcția în cadrul 
               @if($application->campaign->type == 'executive')
@@ -150,11 +152,11 @@
             <div class="row justify-content-left">
               <div class="col-lg-12">
                 <p class="lead ml-md-5 ml-lg-5">
-                  {!! nl2br(e($application->question1)) !!}
+                  <i>{!! nl2br(e($application->question1)) !!}</i>
                 </p>
               </div>
             </div>
-            <h2 class="lead">
+            <h2 class="lead font-weight-bold">
               <i class="mdi mdi-chevron-right"></i>
               Care consideri că este misiunea 
               @if($application->campaign->type == 'executive')
@@ -170,22 +172,22 @@
             <div class="row justify-content-left">
               <div class="col-lg-12">
                 <p class="lead ml-md-5 ml-lg-5">
-                  {!! nl2br(e($application->question2)) !!}
+                  <i>{!! nl2br(e($application->question2)) !!}</i>
                 </p>
               </div>
             </div>
-            <h2 class="lead">
+            <h2 class="lead font-weight-bold">
               <i class="mdi mdi-chevron-right"></i>
               Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?
             </h2>
             <div class="row justify-content-left">
               <div class="col-lg-12">
                 <p class="lead ml-md-5 ml-lg-5">
-                  {!! nl2br(e($application->question3)) !!}
+                  <i>{!! nl2br(e($application->question3)) !!}</i>
                 </p>
               </div>
             </div>
-            <h2 class="lead">
+            <h2 class="lead font-weight-bold">
               <i class="mdi mdi-chevron-right"></i>
               Cum consideri că poți ajuta
               @if($application->campaign->type == 'executive')
@@ -202,18 +204,18 @@
             <div class="row justify-content-left">
               <div class="col-lg-12">
                 <p class="lead ml-md-5 ml-lg-5">
-                  {!! nl2br(e($application->question4)) !!}
+                  <i>{!! nl2br(e($application->question4)) !!}</i>
                 </p>
               </div>
             </div>
-            <h2 class="lead">
+            <h2 class="lead font-weight-bold">
               <i class="mdi mdi-chevron-right"></i>
               Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
             </h2>
             <div class="row justify-content-left">
               <div class="col-lg-12">
                 <p class="lead ml-md-5 ml-lg-5">
-                  {!! nl2br(e($application->question5)) !!}
+                  <i>{!! nl2br(e($application->question5)) !!}</i>
                 </p>
               </div>
             </div>

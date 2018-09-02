@@ -190,10 +190,10 @@
               <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
             </div>
             <div class="col-lg-6 text-lg-center btn-wrapper">
-              <a target="_blank" href="https://instagram.com/consilulelevilor" class="btn btn-neutral btn-icon-only btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
+              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-icon-only btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
                 <i class="mdi mdi-instagram"></i>
               </a>
-              <a target="_blank" href="https://www.facebook.com/consilulelevilor" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
+              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
                 <i class="mdi mdi-facebook-box"></i>
               </a>
             </div>
@@ -208,12 +208,12 @@
             </div>
             <div class="col-md-6">
               <ul class="nav nav-footer justify-content-end">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Despre noi</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://www.creative-tim.com/presentation" class="nav-link">Echipa</a>
-                </li>
+                </li> --}}
               </ul>
             </div>
           </div>
