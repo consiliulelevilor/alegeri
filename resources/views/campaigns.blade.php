@@ -178,7 +178,7 @@
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
               <i class="mdi mdi-map-marker-outline"></i>
             </div>
-            <h5 class="text-white mt-3">Consilii Județene</h5>
+            <h5 class="text-white mt-3">Consiliul Județean al Elevilor</h5>
             <p class="text-white mt-3">
               Consiliul Național al Elevilor este ca un nod central. Din ele, se bifurcă foarte multe consilii județene.
               Aplicațiile se fac per-județ și vor viza strict județul respectiv.
@@ -188,7 +188,7 @@
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-danger">
                 <i class="mdi mdi-city-variant-outline"></i>
             </div>
-            <h5 class="text-white mt-3">Consilii Școlare</h5>
+            <h5 class="text-white mt-3">Consiliul Școlar al Elevilor <sup><span class="badge badge-pill badge-primary text-uppercase">În curând</span></sup></h5>
             <p class="text-white mt-3">
               La nivel de instituție există un consiliu ce reprezintă elevii din acea instituție.
             </p>
