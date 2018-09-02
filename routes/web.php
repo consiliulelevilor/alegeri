@@ -17,16 +17,17 @@ Route::get('/candidați', 'UserController@index')->name('users');
 Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
 Route::get('/candidat/{idOrSlug}/aplicatii', 'UserController@showApplications')->name('user.applications');
 
+Route::get('/login/social/{social}', 'AuthenticationController@social')->name('social');
+Route::get('/login/social/{social}/confirmation', 'AuthenticationController@socialConfirmation')->name('social.confirmation');
+
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', 'AuthenticationController@index')->name('login');
-
-    Route::get('/login/social/{social}', 'AuthenticationController@social')->name('social');
-    Route::get('/login/social/{social}/confirmation', 'AuthenticationController@socialConfirmation')->name('social.confirmation');
 });
 
 Route::group(['middleware' => ['authenticated']], function () {
     Route::get('/profilul-meu', 'UserController@me')->name('me');
     Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
+    Route::get('/profilul-meu/{social}/deconectare', 'AuthenticationController@socialUnlink')->name('social.unlink');
 
     Route::get('/aplicatiile-mele', 'UserController@myApplications')->name('me.applications');
 

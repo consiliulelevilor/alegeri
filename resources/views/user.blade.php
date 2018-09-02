@@ -38,7 +38,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a id="upload-profile-picture-anchor" href="javascript:{}">
-                    <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" @if(Auth::user() && Auth::user()->is($user)) id="upload-profile-picture" @endif class="rounded-circle img-thumbnail" style="z-index: 1;">
+                    <img data-toggle="tooltip" data-original-title="Fă click pentru a schimba poza!" alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" @if(Auth::user() && Auth::user()->is($user)) id="upload-profile-picture" @endif class="rounded-circle img-thumbnail" style="z-index: 1;">
                   </a>
                 </div>
               </div>
@@ -87,6 +87,7 @@
                 </div>
               </div>
               <h3>
+                {{ Session::get('alert') }}
                 {{ $user->name }}
               </h3>
               <div class="h6 font-weight-300">
@@ -109,6 +110,23 @@
                 <i class="mdi mdi-link-variant mr-2"></i>
                 <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
               </div>
+              <div>
+                @if($user->facebook && $user->facebook->is_public)
+                  <a class="text-primary mr-2" href="https://facebook.com/{{ $user->facebook->social_id }}" target=_blank>
+                    <i class="mdi mdi-24px mdi-facebook-box"></i>
+                  </a>
+                @endif
+                @if($user->google && $user->google->is_public)
+                  <a class="text-danger mr-2" href="https://plus.google.com.com/{{ $user->google->social_id }}" target=_blank>
+                    <i class="mdi mdi-24px mdi-google"></i>
+                  </a>
+                @endif
+                @if($user->instagram && $user->instagram->is_public)
+                  <a class="text-secondary" href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>
+                    <i class="mdi mdi-24px mdi-instagram"></i>
+                  </a>
+                @endif
+            </div>
             </div>
             <div class="mt-5 py-2 border-top">
               <div class="row justify-content-center">
@@ -278,14 +296,14 @@
               @csrf
               @method('PATCH')
               <input type="hidden" name="ref" value="preferences-form">
-              <div class="row">
+              <div class="row mb-3">
                 <div class="col-md-6">
-                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-twitter mr-2"></i> Preferințe Social Media</div>
+                  <div class="lead mb-2 mt-sm-3 pt-0"><i class="mdi mdi-twitter mr-2"></i> Preferințe Social Media</div>
                   @if($user->facebook)
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" name="make_facebook_public" id="make-facebook-public-check" type="checkbox" @if($user->facebook->is_public) checked @endif>
                       <label class="custom-control-label" for="make-facebook-public-check">
-                        Doresc ca profilul meu de Facebook să fie făcut public.
+                        Doresc ca profilul meu de <i class="mdi mdi-facebook-box ml-0"></i> Facebook să fie făcut public.
                       </label>
                     </div>
                   @endif
@@ -294,7 +312,7 @@
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" name="make_google_public" id="make-google-public-check" type="checkbox" @if($user->google->is_public) checked @endif>
                       <label class="custom-control-label" for="make-google-public-check">
-                        Doresc ca profilul meu de Google să fie făcut public.
+                        Doresc ca profilul meu de <i class="mdi mdi-google ml-0"></i> Google să fie făcut public.
                       </label>
                     </div>
                   @endif
@@ -303,19 +321,48 @@
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" name="make_instagram_public" id="make-instagram-public-check" type="checkbox" @if($user->instagram->is_public) checked @endif>
                       <label class="custom-control-label" for="make-instagram-public-check">
-                        Doresc ca profilul meu de Instagram să fie făcut public.
+                        Doresc ca profilul meu de <i class="mdi mdi-instagram ml-0"></i> Instagram să fie făcut public.
                       </label>
                     </div>
                   @endif
                 </div>
                 <div class="col-md-6">
-                  <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-email mr-2"></i> Newsletter</div>
+                  <div class="lead mb-2 mt-sm-3 pt-0"><i class="mdi mdi-email mr-2"></i> Newsletter</div>
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" name="is_mail_subscribed" id="newsletter-check" type="checkbox" @if($user->is_mail_subscribed) checked @endif>
                     <label class="custom-control-label" for="newsletter-check">
                       Da, vreau să mă abonez la newsletter pentru a primi informații despre consilii. (Newsletter-ul este săptămânal)
                     </label>
                   </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="lead mb-0 mt-0"><i class="mdi mdi-google mr-2"></i> Conturile mele</div>
+                    <div>
+                      @if($user->facebook)
+                        <i class="mdi mdi-facebook-box"></i> Conectat ca și <a href="https://facebook.com/{{ $user->facebook->social_id }}" target=_blank>{{ $user->facebook->name }}</a>
+                        (<a href="{{ route('social.unlink', ['social' => 'facebook']) }}">Deconectare</a>)
+                      @else
+                        <i class="mdi mdi-facebook-box"></i> <a href="{{ route('social', ['social' => 'facebook']) }}?link=1">Conectează un cont de Facebook</a>
+                      @endif
+                    </div>
+                    <div>
+                      @if($user->google)
+                        <i class="mdi mdi-google"></i> Conectat ca și <a href="https://plus.google.com/{{ $user->google->social_id }}" target=_blank>{{ $user->google->name }}</a>
+                        (<a href="{{ route('social.unlink', ['social' => 'google']) }}">Deconectare</a>)
+                      @else
+                      <i class="mdi mdi-google"></i> <a href="{{ route('social', ['social' => 'google']) }}?link=1">Conectează un cont de Google</a>
+                      @endif
+                    </div>
+                    <div>
+                      @if($user->instagram)
+                        <i class="mdi mdi-instagram"></i> Conectat ca și <a href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>{{ $user->instagram->name }}</a>
+                        (<a href="{{ route('social.unlink', ['social' => 'instagram']) }}">Deconectare</a>)
+                      @else
+                      <i class="mdi mdi-instagram"></i> <a href="{{ route('social', ['social' => 'instagram']) }}?link=1">Conectează un cont de Instagram</a>
+                      @endif
+                    </div>
                 </div>
               </div>
             </form>
@@ -330,13 +377,11 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('/js/simpleUpload.min.js') }}?v={{ cache('v') }}"></script>
-
   <script type="text/javascript">
     $(document).ready(function() {
       @if(Auth::user() && Auth::user()->is($user))
         @if($errors->any() || request()->query('open') == 'profile')
-          @if(old('ref') == 'profile-form')
+          @if(old('ref') == 'profile-form' || request()->query('open') == 'profile')
             $('#profile-modal').modal('show');
           @endif
         @endif
