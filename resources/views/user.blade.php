@@ -402,7 +402,7 @@
           $('#city-select').empty();
           $('#city-select').prop('disabled', false);
           let selectedCity;
-          $.get('{{ asset('json/regions.json') }}', function (data) {
+          $.get('{{ asset('json/regions.json') }}?v={{ cache('v') }}', function (data) {
             let cities = data[$('#region-select').val()];
 
             @if($user->city)
@@ -424,7 +424,7 @@
           $('#institution-select').prop('disabled', false);
           let selectedInstitution;
           let institutionClient = new XMLHttpRequest();
-          $.get('{{ asset('json/institutions.json') }}', function (data) {
+          $.get('{{ asset('json/institutions.json') }}?v={{ cache('v') }}', function (data) {
             let institutions = data[$('#region-select').val()];
 
             @if($user->institution)
