@@ -87,7 +87,6 @@
                 </div>
               </div>
               <h3>
-                {{ Session::get('alert') }}
                 {{ $user->name }}
               </h3>
               <div class="h6 font-weight-300">
