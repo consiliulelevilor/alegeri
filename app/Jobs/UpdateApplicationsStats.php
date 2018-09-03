@@ -34,12 +34,22 @@ class UpdateApplicationsStats implements ShouldQueue
     public function handle()
     {
         foreach ($this->regions as $region => $cities) {
-            $applications = Application::where('user_region', $region)->get();
+            $applications = Application::with('campaign')->where('user_region', $region)->get();
 
             Cache::put('stats:region:'.$region.':applications:total', $applications->count(), 60);
             Cache::put('stats:region:'.$region.':applications:pending', $applications->where('status', 'pending')->count(), 60);
             Cache::put('stats:region:'.$region.':applications:approved', $applications->where('status', 'approved')->count(), 60);
             Cache::put('stats:region:'.$region.':applications:declined', $applications->where('status', 'declined')->count(), 60);
+
+            Cache::put('stats:region:'.$region.':applications:executive:total', $applications->where('campaign.type' ,'executive')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:pending', $applications->where('campaign.type' ,'executive')->where('status', 'pending')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:approved', $applications->where('campaign.type' ,'executive')->where('status', 'approved')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:declined', $applications->where('campaign.type' ,'executive')->where('status', 'declined')->count(), 60);
+
+            Cache::put('stats:region:'.$region.':applications:regional:total', $applications->where('campaign.type' ,'regional')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:pending', $applications->where('campaign.type' ,'regional')->where('status', 'pending')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:approved', $applications->where('campaign.type' ,'regional')->where('status', 'approved')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:declined', $applications->where('campaign.type' ,'regional')->where('status', 'declined')->count(), 60);
         }
     }
 }
