@@ -137,7 +137,7 @@
                           @else
                             @if($campaign->isOpened())
                               @if(! Auth::user()->canApplyToCampaigns())
-                              <a href="javascript:{}" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-cancel mr-2"></i> Nu poți aplica!</a>
+                              <a href="{{ route('me') }}?open=profile" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Completează datele</a>
                               @else
                                 <a href="javascript:{}" onclick="$('#campaign-{{ $campaign->id }}-modal').modal('show');" class="btn btn-link text-{{ $campaign->color_scheme }} mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Aplică</a>
                               @endif

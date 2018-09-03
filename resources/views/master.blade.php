@@ -106,7 +106,7 @@
     
     @if(!request()->is('login'))
       <header class="header-global">
-        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
             <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
               <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-1024-white.png') }}">
@@ -131,44 +131,31 @@
                 </div>
               </div>
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                @auth
+                  <li class="nav-item">
+                    <a href="{{ route('campaigns') }}" class="nav-link text-warning">
+                      <i class="mdi mdi-share mdi-18px"></i> Aplică
+                    </a>
+                  </li>
+                @endauth
               </ul>
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                 @auth
-                  <li class="nav-item d-lg-block ml-lg-2 mb-md-2 mb-sm-2 mb-xs-2 mb-lg-0">
-                    <a href="{{ route('campaigns') }}" class="btn btn-sm btn-warning btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-share mdi-18px mr-2"></i>
-                      </span>
-                      <span class="nav-link-inner--text">
-                        Aplică
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item d-lg-block ml-lg-2">
-                    <a href="{{ route('me') }}" class="btn btn-success btn-sm btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-account-circle mdi-18px mr-2"></i>
-                      </span>
-                      <span class="nav-link-inner--text">
-                        {{ Auth::user()->name }}
-                      </span>
+                  <li class="nav-item">
+                    <a href="{{ route('me') }}" class="nav-link">
+                      <i class="mdi mdi-account-circle mdi-18px"></i> {{ Auth::user()->name }}
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link">
-                      Deconectare
+                      <i class="mdi mdi-logout mdi-18px"></i> Deconectare
                     </a>
                   </li>
                 @endauth
                 @guest
-                  <li class="nav-item d-lg-block ml-lg-2">
-                    <a href="{{ route('login') }}" class="btn btn-primary md-sm btn-icon">
-                      <span class="btn-inner--icon">
-                        <i class="mdi mdi-login mdi-18px mr-1"></i>
-                      </span>
-                      <span class="nav-link-inner--text">
-                        Login
-                      </span>
+                  <li class="nav-item">
+                    <a href="{{ route('login') }}" class="nav-link text-success">
+                      <i class="mdi mdi-login mdi-18px"></i> Autentificare
                     </a>
                   </li>
                 @endguest
@@ -186,15 +173,19 @@
         <div class="container">
           <div class="row row-grid align-items-center my-md">
             <div class="col-lg-6">
-              <h3 class="text-primary font-weight-light mb-2">Consiliul Elevilor este online.</h3>
+              <h3 class="text-success font-weight-light mb-2">Consiliul Elevilor este online.</h3>
               <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
             </div>
-            <div class="col-lg-6 text-lg-center btn-wrapper">
-              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
-                <i class="mdi mdi-instagram mdi-24px"></i>
+            <div class="col-lg-6 text-center btn-wrapper">
+              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-md btn-instagram" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
+                <span class="btn-inner--icon">
+                  <i class="mdi mdi-instagram mdi-24px"></i>
+                </span>
               </a>
-              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
-                <i class="mdi mdi-facebook-box mdi-24px"></i>
+              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-md btn-facebook" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
+                <span class="btn-inner--icon">
+                  <i class="mdi mdi-facebook-box mdi-24px"></i>
+                </span>
               </a>
             </div>
           </div>

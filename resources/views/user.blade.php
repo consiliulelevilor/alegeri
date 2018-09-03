@@ -48,28 +48,30 @@
                     <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none">Modifică</a>
                     <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none">Preferințe</a> 
                   @else
-                    <a href="javascript:{}" data-toggle="modal" data-target="#question-modal" class="btn btn-sm btn-info float-sm-left float-md-left float-lg-none"><i class="mdi mdi-help mr-2"></i> Întreabă</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none"><i class="mdi mdi-email"></i> Contact</a>
+                    <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Aplicații</a>
+                    <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a>
                   @endif
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1 mt-sm-3">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">
-                      <a href="@if(Auth::user() && Auth::user()->is($user)) {{ route('me.applications') }} @else {{ route('user.applications', ['idOrSlug' => $user->profile_name]) }} @endif" class="btn-link text-success">
-                        {{ $user->applications()->count() }}
-                      </a>
+                    <span title="Aplicațiile depuse de către candidat." class="heading text-center btn-link text-success" data-toggle="tooltip" data-placement="bottom">
+                      <i class="mdi mdi-chart-bubble mr-1"></i>
+                      {{ $user->applications()->count() }}
                     </span>
-                    <span class="description">Candidaturi</span>
                   </div>
                   <div>
-                    <span class="heading">10</span>
-                    <span class="description">Întrebări</span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Rating-ul mediu al candidatului." class="heading text-center btn-link text-warning">
+                      <i class="mdi mdi-star mr-1"></i>
+                      8.7
+                    </span>
                   </div>
                   <div>
-                    <span class="heading">10</span>
-                    <span class="description">Stele</span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Numărul de susținători ai candidatului." class="heading text-center btn-link text-danger">
+                      <i class="mdi mdi-heart mr-1"></i>
+                      12
+                    </span>
                   </div>
                 </div>
               </div>
@@ -116,7 +118,7 @@
                 @endif
             </div>
             </div>
-            <div class="mt-5 py-2 border-top">
+            <div class="mt-3 mb-2 py-2 border-top">
               <div class="row justify-content-center">
                 <div class="col-lg-12">
                   <p class="lead ml-md-5 ml-lg-5">
@@ -131,6 +133,182 @@
             </div>
           </div>
         </div>
+        <h1 id="applications" class="heading-title mt-5 text-success font-weight-bold"><i class="mdi mdi-chart-bubble mr-2"></i> Aplicațiile depuse</h1>
+        @if($user->applications->count() == 0)
+          @if(Auth::user() && Auth::user()->is($user) && ! Auth::user()->canApplyToCampaigns())
+            <div class="card bg-gradient-danger shadow-lg mt-3 border-0">
+              <div class="p-5">
+                <div class="row align-items-center">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <h3 class="text-white"><i class="mdi mdi-cancel mr-2"></i> Ești aproape gata... </h3>
+                    <p class="lead text-white mt-3 mb-0">
+                      Pentru a putea candida, va trebui să îți completezi datele persoane, printre care orașul, județul și instituția din care faci parte.
+                    </p>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-lg btn-dark mt-4"><i class="mdi mdi-share mr-2"></i> Completează datele</a>
+                  </div>
+                </div>
+              </div>
+          @else
+            <div class="card bg-gradient-warning shadow-lg mt-3 border-0">
+              <div class="p-5">
+                <div class="row align-items-center">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <h3 class="text-white"><i class="mdi mdi-cancel mr-2"></i> Nu există nicio aplicație depusă. </h3>
+                    <p class="lead text-white mt-3 mb-0">
+                      @if(Auth::user() && Auth::user()->is($user))
+                        Se pare că nu ai trimis nicio aplicație până acum.
+                      @else
+                        {{ $user->name ?? 'Utilizatorul ' }} nu a depus nicio aplicație până acum.
+                      @endif
+                    </p>
+                    @if(Auth::user() && Auth::user()->is($user))
+                      <a href="{{ route('campaigns') }}" class="btn btn-lg btn-dark mt-4"><i class="mdi mdi-share mr-2"></i> Aplică acum</a>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            @endif
+          </div>
+        @endif
+
+        @foreach($user->applications->chunk(4) as $chunk)
+          <div class="row mt-3">
+            @foreach($chunk as $application)
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card shadow border-0" id="card-{{ $application->id }}">
+                  <img alt="{{ $application->campaign->name }}" src="{{ $application->campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
+                  <div class="card-body py-2">
+                    <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3 float-right">
+                      @if($application->isApproved()) <i class="mdi mdi-check text-success" data-toggle="tooltip" data-placement="top" title="Aplicația a fost acceptată."></i> @endif
+                      @if($application->isDeclined()) <i class="mdi mdi-cancel text-danger" data-toggle="tooltip" data-placement="top" title="Aplicația a fost respinsă."></i> @endif
+                      @if($application->isPending()) <i class="mdi mdi-clock text-primary" data-toggle="tooltip" data-placement="top" title="Aplicația încă așteaptă răspuns."></i> @endif
+                    </h5>
+                    <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3">
+                      {{ $application->campaign->name }}
+                    </h5>
+                    <div class="danger-text">
+                      @if($application->campaign->type == 'executive')
+                        <i class="mdi mdi-sitemap mr-2"></i> Consiliul Național al Elevilor
+                      @endif
+                      @if($application->campaign->type == 'regional')
+                      <i class="mdi mdi-map-marker-outline mr-2"></i> Consiliul Județean al Elevilor
+                      @endif
+                      @if($application->campaign->type == 'institutional')
+                      <i class="mdi mdi-city-variant-outline mr-2"></i> Consiliul Școlar al Elevilor
+                      @endif
+                    </div>
+                    <small>
+                      <i class="mdi mdi-calendar mr-2"></i> Trimisă pe {{ $application->created_at->format('d.m.Y H:i') }}
+                    </small>
+                    <p class="description">
+                      <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește întrebările</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="application-{{ $application->id }}-modal" tabindex="-1" role="dialog" aria-labelledby="application-{{ $application->id }}-modal" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="application-{{ $application->id }}-modal">Aplicația #{{ $application->id }}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h2 class="lead font-weight-bold">
+                        <i class="mdi mdi-chevron-right"></i>
+                        Ce te recomandă pentru funcția în cadrul 
+                        @if($application->campaign->type == 'executive')
+                          Consiliului Național al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliului Județean {{ Auth::user()->region }}?
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliului Școlar?
+                        @endif
+                      </h2>
+                      <div class="row justify-content-left">
+                        <div class="col-lg-12">
+                          <p class="lead ml-md-5 ml-lg-5">
+                            <i>{!! nl2br(e($application->question1)) !!}</i>
+                          </p>
+                        </div>
+                      </div>
+                      <h2 class="lead font-weight-bold">
+                        <i class="mdi mdi-chevron-right"></i>
+                        Care consideri că este misiunea 
+                        @if($application->campaign->type == 'executive')
+                          Consiliului Național al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliului Județean {{ Auth::user()->region }}?
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliului Școlar?
+                        @endif
+                      </h2>
+                      <div class="row justify-content-left">
+                        <div class="col-lg-12">
+                          <p class="lead ml-md-5 ml-lg-5">
+                            <i>{!! nl2br(e($application->question2)) !!}</i>
+                          </p>
+                        </div>
+                      </div>
+                      <h2 class="lead font-weight-bold">
+                        <i class="mdi mdi-chevron-right"></i>
+                        Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?
+                      </h2>
+                      <div class="row justify-content-left">
+                        <div class="col-lg-12">
+                          <p class="lead ml-md-5 ml-lg-5">
+                            <i>{!! nl2br(e($application->question3)) !!}</i>
+                          </p>
+                        </div>
+                      </div>
+                      <h2 class="lead font-weight-bold">
+                        <i class="mdi mdi-chevron-right"></i>
+                        Cum consideri că poți ajuta
+                        @if($application->campaign->type == 'executive')
+                          Consiliul Național al Elevilor
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliul Județean {{ Auth::user()->region }}
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliul Școlar {{ Auth::user()->region }}
+                        @endif
+                        să se dezvolte organizațional prin funcția la care candidezi?
+                      </h2>
+                      <div class="row justify-content-left">
+                        <div class="col-lg-12">
+                          <p class="lead ml-md-5 ml-lg-5">
+                            <i>{!! nl2br(e($application->question4)) !!}</i>
+                          </p>
+                        </div>
+                      </div>
+                      <h2 class="lead font-weight-bold">
+                        <i class="mdi mdi-chevron-right"></i>
+                        Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
+                      </h2>
+                      <div class="row justify-content-left">
+                        <div class="col-lg-12">
+                          <p class="lead ml-md-5 ml-lg-5">
+                            <i>{!! nl2br(e($application->question5)) !!}</i>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="javascript:{}" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close mr-2"></i> Închide</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          </div>
+        @endforeach
       </div>
     </section>
   </main>
@@ -322,28 +500,28 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="lead mb-0 mt-0"><i class="mdi mdi-google mr-2"></i> Conturile mele</div>
-                    <div>
+                    <div class="pb-1 pt-1">
                       @if($user->facebook)
-                        <i class="mdi mdi-facebook-box"></i> Conectat ca și <a href="https://facebook.com/{{ $user->facebook->social_id }}" target=_blank>{{ $user->facebook->name }}</a>
+                        <i class="mdi mdi-facebook-box mr-1"></i> Conectat ca și <a href="https://facebook.com/{{ $user->facebook->social_id }}" target=_blank>{{ $user->facebook->name }}</a>
                         (<a href="{{ route('social.unlink', ['social' => 'facebook']) }}">Deconectare</a>)
                       @else
-                        <i class="mdi mdi-facebook-box"></i> <a href="{{ route('social', ['social' => 'facebook']) }}?link=1">Conectează un cont de Facebook</a>
+                        <i class="mdi mdi-facebook-box mr-1"></i> <a href="{{ route('social', ['social' => 'facebook']) }}?link=1">Conectează un cont de Facebook</a>
                       @endif
                     </div>
-                    <div>
+                    <div class="pb-1 pt-1">
                       @if($user->google)
-                        <i class="mdi mdi-google"></i> Conectat ca și <a href="https://plus.google.com/{{ $user->google->social_id }}" target=_blank>{{ $user->google->name }}</a>
+                        <i class="mdi mdi-google mr-1"></i> Conectat ca și <a href="https://plus.google.com/{{ $user->google->social_id }}" target=_blank>{{ $user->google->name }}</a>
                         (<a href="{{ route('social.unlink', ['social' => 'google']) }}">Deconectare</a>)
                       @else
-                      <i class="mdi mdi-google"></i> <a href="{{ route('social', ['social' => 'google']) }}?link=1">Conectează un cont de Google</a>
+                      <i class="mdi mdi-google mr-1"></i> <a href="{{ route('social', ['social' => 'google']) }}?link=1">Conectează un cont de Google</a>
                       @endif
                     </div>
-                    <div>
+                    <div class="pb-1 pt-1">
                       @if($user->instagram)
-                        <i class="mdi mdi-instagram"></i> Conectat ca și <a href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>{{ $user->instagram->name }}</a>
+                        <i class="mdi mdi-instagram mr-1"></i> Conectat ca și <a href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>{{ $user->instagram->name }}</a>
                         (<a href="{{ route('social.unlink', ['social' => 'instagram']) }}">Deconectare</a>)
                       @else
-                      <i class="mdi mdi-instagram"></i> <a href="{{ route('social', ['social' => 'instagram']) }}?link=1">Conectează un cont de Instagram</a>
+                      <i class="mdi mdi-instagram mr-1"></i> <a href="{{ route('social', ['social' => 'instagram']) }}?link=1">Conectează un cont de Instagram</a>
                       @endif
                     </div>
                 </div>
@@ -360,8 +538,14 @@
 @endsection
 
 @section('js')
+  <script src="{{ asset('/js/jquery-scrollTo.min.js') }}?v={{ cache('v') }}"></script>
+
   <script type="text/javascript">
     $(document).ready(function() {
+      $('#applications-button').on('click', function (e) {
+        $(window).scrollTo($('#applications'), 1000);
+      });
+
       @if(Auth::user() && Auth::user()->is($user))
         @if(($errors->any() && old('ref') == 'profile-form') || request()->query('open') == 'profile')
           $('#profile-modal').modal('show');

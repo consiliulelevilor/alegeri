@@ -33,7 +33,7 @@
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="mdi mdi-arrow-right  mdi-18px"></i></span>
-                    <span class="btn-inner--text">Află mai multe</span>
+                    <span class="btn-inner--text">Citește mai mult</span>
                   </a>
                 </div>
               </div>
@@ -62,8 +62,7 @@
                   Adunări generale
                 </h4>
                 <p class="lead text-italic text-white">
-                  Anual, se organizează adunări generale în care consiliile se întrunesc pentru a organiza speech-uri și
-                  de a dezbate idei.
+                  Anual, CNE organizează Adunări Generale, în care reprezentanții elevilor din toată țara dezbat subiecte de interes pentru sistemul de învățământ.
                 </p>
               </blockquote>
             </div>
@@ -87,9 +86,9 @@
         </div>
       </div>
     </section>
-    <section class="section section-lg" id="section-1">
+    <section class="section section-lg pt-5" id="section-1">
       <div class="container">
-        <div class="card bg-gradient-primary shadow-lg border-0">
+        <div class="card bg-success shadow-lg border-0">
           <div class="p-5">
             <div class="row align-items-center">
               <div class="col-lg-12">
@@ -107,7 +106,7 @@
         </div>
       </div>
     </section>
-    <section class="section" id="section-2">
+    <section class="section pt-0 pb-2" id="section-2">
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-6 order-md-2">
@@ -115,18 +114,16 @@
           </div>
           <div class="col-md-6 order-md-1">
             <div class="pr-md-5">
-              <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                <i class="mdi mdi-reply"></i>
+              <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle mb-5">
+                <i class="mdi mdi-food-apple"></i>
               </div>
-              <h3>Posturi calde!</h3>
+              <h3>Posturi vacante!</h3>
               <p>
-                Punem la bătaie o tonă de posturi libere pentru a te alătura nouă. Toate posturile pot fi vizualizate și poți aplica
-                la ele direct de pe platforma noastră de alegeri. Ai nevoie doar de un profil de candidat creat și apoi poți aplica
-                la toate posturile deschise.
+                Te vrem în echipa noastră. Toate funcțiile vacante pot fi vizualizate și poți
+                aplica pentru una dintre acestea direct de pe platforma noastră de alegeri. 
               </p>
               <p>
-                Platforma noastră acceptă aplicații pentru absolut toate tipurile de posturi, de la cele din
-                Biroul Executiv al Consiliului Național al Elevilor până la cele județene:
+                Îți punem la dispoziție trei secțiuni unde poți aplica liber!
               </p>
               <ul class="list-unstyled mt-5">
                 <li class="py-2">
@@ -192,7 +189,7 @@
             </p>
             <div class="btn-wrapper">
               <a href="{{ (Auth::user()) ? route('campaigns') : route('login') }}" class="btn btn-danger mt-3">
-                <i class="mdi mdi-heart mr-2"></i> Depune prima aplicație
+                <i class="mdi mdi-heart mr-2"></i> Depune aplicația ta!
               </a>
             </div>
           </div>

@@ -15,27 +15,9 @@ class UserController extends Controller
         return view('user', ['user' => $user]);
     }
 
-    public function showApplications($idOrSlug, Request $request)
-    {
-        $user = User::with(['facebook', 'instagram', 'google', 'applications.campaign' => function ($query) {
-            $query->latest('updated_at');
-        }])->profile($idOrSlug)->firstOrFail();
-
-        return view('applications', ['user' => $user]);
-    }
-
     public function me(Request $request)
     {
         return view('user', ['user' => $request->user()]);
-    }
-
-    public function myApplications(Request $request)
-    {
-        $request->user()->load(['applications.campaign' => function ($query) {
-            return $query->latest('updated_at');
-        }]);
-
-        return view('applications', ['user' => $request->user()]);
     }
 
     public function updateMe(\App\Http\Requests\UpdateMeRequest $request)
