@@ -72,22 +72,38 @@ return [
 
     'environments' => [
         'production' => [
-            'main' => [
+            'default' => [
                 'connection' => 'redis',
-                'queue' => ['main'],
+                'queue' => ['default'],
                 'balance' => 'auto',
-                'processes' => 5,
+                'processes' => 1,
+                'tries' => 1,
+                'timeout' => '86400',
+            ],
+            'stats' => [
+                'connection' => 'redis',
+                'queue' => ['stats'],
+                'balance' => 'auto',
+                'processes' => 3,
                 'tries' => 1,
                 'timeout' => '86400',
             ],
         ],
 
         'local' => [
-            'main' => [
+            'default' => [
                 'connection' => 'redis',
-                'queue' => ['main'],
+                'queue' => ['default'],
                 'balance' => 'auto',
-                'processes' => 5,
+                'processes' => 1,
+                'tries' => 1,
+                'timeout' => '86400',
+            ],
+            'stats' => [
+                'connection' => 'redis',
+                'queue' => ['stats'],
+                'balance' => 'auto',
+                'processes' => 3,
                 'tries' => 1,
                 'timeout' => '86400',
             ],
