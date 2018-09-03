@@ -86,27 +86,7 @@
         </div>
       </div>
     </section>
-    <section class="section section-lg pt-5" id="section-1">
-      <div class="container">
-        <div class="card bg-success shadow-lg border-0">
-          <div class="p-5">
-            <div class="row align-items-center">
-              <div class="col-lg-12">
-                <img src="{{ asset('images/profile/patrick.png') }}" class="rounded-circle img-left mb-4 img-fluid shadow shadow-lg--hover" style="width: 200px;">
-                <h3 class="text-white">
-                  <i>
-                    "Echipa este tânără și încrezătoare, și luptă din răsputeri de a menține un echilibru între elevi și
-                    drepturile și obligațiile lor. Este o misiune importantă din punctul meu de vedere, la cât de multă ignoranță
-                    văd când aud de subiectul "elev" pus în contextul actual."</i>
-                </h3>
-                <p class="lead text-white mt-3">- Nume Prenume, Membru în Biroul de Presă</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section pt-0 pb-2" id="section-2">
+    <section class="section pt-5 mt-3 pb-2" id="section-2">
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-6 order-md-2">
