@@ -5,7 +5,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/ag-10.jpg') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-4 pb-250" style="background-image: url({{ asset('/images/ag-10.jpg') }});" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -27,9 +27,6 @@
                 </h1>
                 <p class="lead text-white">
                   E momentul să te implici - candidează pentru ocuparea unei funcții în Consiliul Județean al Elevilor!
-                </p>
-                <p class="lead text-white">
-                  Aplicațiile sunt deschise și poți aplica la ele în cel mai ușor mod posibil prin platforma de alegeri.
                 </p>
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
