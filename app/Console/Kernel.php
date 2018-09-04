@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\GenerateSitemap::class,
+        Commands\UpdateCachedData::class,
         Commands\PurgeAssetsVersion::class,
+        Commands\UpdateApplicationsStats::class,
     ];
 
     /**
