@@ -569,9 +569,7 @@
           $('#city-select').prop('disabled', true);
           $('#city-select').append("<option>Se încarcă orașele...</option>");
           let selectedCity;
-          $.get('{{ route('api.regions') }}', function (data) {
-            let cities = data[$('#region-select').val()];
-
+          $.get('{{ route('api.regions') }}?onlyRegion=' + $('#region-select').val(), function (cities) {
             @if($user->city)
               selectedCity = '{{ $user->city }}';
             @endif
@@ -594,9 +592,7 @@
           $('#institution-select').prop('disabled', true);
           $('#institution-select').append("<option>Se încarcă instituțiile...</option>");
           let selectedInstitution;
-          $.get('{{ route('api.institutions') }}', function (data) {
-            let institutions = data[$('#region-select').val()];
-
+          $.get('{{ route('api.institutions') }}?onlyRegion=' + $('#region-select').val(), function (institutions) {
             @if($user->institution)
               selectedInstitution = '{{ $user->institution }}';
             @endif

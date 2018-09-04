@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,11 +14,6 @@
 */
 
 Route::group(['middleware' => [], 'as' => 'api.'], function () {
-    Route::get('/json/regions', function () {
-        return json_decode(cache('json:regions:raw'), true);
-    })->name('regions');
-    
-    Route::get('/json/institutions', function () {
-        return json_decode(cache('json:institutions:raw'), true);
-    })->name('institutions');
+    Route::get('/json/regions', 'API\JSONController@regions')->name('regions');
+    Route::get('/json/institutions', 'API\JSONController@institutions')->name('institutions');
 });
