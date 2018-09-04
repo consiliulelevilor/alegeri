@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\UpdateApplicationsStats as UpdateApplicationsStatsJob;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
+use App\Jobs\UpdateApplicationsStats as UpdateApplicationsStatsJob;
 
 class UpdateApplicationsStats extends Command
 {
@@ -38,6 +39,6 @@ class UpdateApplicationsStats extends Command
      */
     public function handle()
     {
-        UpdateApplicationsStatsJob::dispatch(json_decode(file_get_contents(public_path('/json/regions.json'))))->onQueue('stats');
+        UpdateApplicationsStatsJob::dispatch()->onQueue('stats');
     }
 }

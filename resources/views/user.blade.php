@@ -362,7 +362,7 @@
                         <span class="input-group-text"><i class="mdi mdi-map-marker"></i></span>
                       </div>
                       <select class="form-control form-control-alternative" name="region" id="region-select">
-                        @foreach(json_decode(file_get_contents(public_path('/json/regions.json'))) as $region => $cities)
+                        @foreach(cache('json:regions') as $region => $cities)
                           <option value="{{ $region }}" @if($region == $user->region) selected @endif>{{ $region }}</option>
                         @endforeach
                       </select>
@@ -566,20 +566,24 @@
 
         function refreshCities() {
           $('#city-select').empty();
-          $('#city-select').prop('disabled', false);
+          $('#city-select').prop('disabled', true);
+          $('#city-select').append("<option>Se încarcă orașele...</option>");
           let selectedCity;
-          $.get('{{ asset('json/regions.json') }}?v={{ cache('v') }}', function (data) {
+          $.get('{{ route('api.regions') }}', function (data) {
             let cities = data[$('#region-select').val()];
 
             @if($user->city)
               selectedCity = '{{ $user->city }}';
             @endif
 
+            $('#city-select').empty();
+            $('#city-select').prop('disabled', false);
+
             $.each(cities, function (index, item) {
-              if (selectedCity && selectedCity == item) {
-                $('#city-select').append("<option value='" + item + "' selected>" + item + "</option>");
+              if (selectedCity && selectedCity == item.name) {
+                $('#city-select').append("<option value='" + item.name + "' selected>" + item.name + "</option>");
               } else {
-                $('#city-select').append("<option value='" + item + "'>" + item + "</option>");
+                $('#city-select').append("<option value='" + item.name + "'>" + item.name + "</option>");
               }
             });
           });
@@ -587,15 +591,18 @@
 
         function refreshInstitutions() {
           $('#institution-select').empty();
-          $('#institution-select').prop('disabled', false);
+          $('#institution-select').prop('disabled', true);
+          $('#institution-select').append("<option>Se încarcă instituțiile...</option>");
           let selectedInstitution;
-          let institutionClient = new XMLHttpRequest();
-          $.get('{{ asset('json/institutions.json') }}?v={{ cache('v') }}', function (data) {
+          $.get('{{ route('api.institutions') }}', function (data) {
             let institutions = data[$('#region-select').val()];
 
             @if($user->institution)
               selectedInstitution = '{{ $user->institution }}';
             @endif
+
+            $('#institution-select').empty();
+            $('#institution-select').prop('disabled', false);
 
             $.each(institutions, function (index, item) {
               if (selectedInstitution && selectedInstitution == item) {

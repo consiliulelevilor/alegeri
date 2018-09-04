@@ -10,3 +10,13 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group(['middleware' => [], 'as' => 'api.'], function () {
+    Route::get('/json/regions', function () {
+        return json_decode(cache('json:regions:raw'), true);
+    })->name('regions');
+    
+    Route::get('/json/institutions', function () {
+        return json_decode(cache('json:institutions:raw'), true);
+    })->name('institutions');
+});

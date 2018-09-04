@@ -14,16 +14,14 @@ class UpdateApplicationsStats implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $regions;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($regions)
+    public function __construct()
     {
-        $this->regions = $regions;
+        //
     }
 
     /**
@@ -33,7 +31,7 @@ class UpdateApplicationsStats implements ShouldQueue
      */
     public function handle()
     {
-        foreach ($this->regions as $region => $cities) {
+        foreach (Cache::get('json:regions') as $region => $cities) {
             $applications = Application::with('campaign')->where('user_region', $region)->get();
 
             Cache::put('stats:region:'.$region.':applications:total', $applications->count(), 60);
@@ -51,5 +49,7 @@ class UpdateApplicationsStats implements ShouldQueue
             Cache::put('stats:region:'.$region.':applications:regional:approved', $applications->where('campaign.type' ,'regional')->where('status', 'approved')->count(), 60);
             Cache::put('stats:region:'.$region.':applications:regional:declined', $applications->where('campaign.type' ,'regional')->where('status', 'declined')->count(), 60);
         }
+
+        $this->line('The applications stats were updated!');
     }
 }
