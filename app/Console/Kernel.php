@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
             $schedule->call('generate:sitemap')->twiceDaily(8, 16);
             $schedule->command('backup:clean')->twiceDaily(7, 15);
             $schedule->command('backup:run')->twiceDaily(8, 16);
+            $schedule->command('update:cached')->dailyAt(12);
             $schedule->command('update:stats:applications')->hourly();
         }
 
