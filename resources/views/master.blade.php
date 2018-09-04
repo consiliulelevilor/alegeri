@@ -6,11 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <meta name="google-site-verification" content="" />
+    <meta name="keywords" content="consiliu, consiliul, national, al, elevilor, scolar, judetean, invatamant, educatie, educatiei, alegeri, vot, voturi, birou, biroul, executiv, presa, cne">
+    <meta name="description" content="Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!">
+    <meta name="author" content="Consiliul Național al Elevilor">
 
     <meta name="theme-color" content="#222">
     <meta name="msapplication-navbutton-color" content="#222">
@@ -22,6 +20,12 @@
     <meta name="twitter:creator" content="@rennokki"></meta>
 
     <meta property="fb:app_id" content="{{ env('FACEBOOK_ID') }}">
+
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Alegeri pentru Consiliul Național al Elevilor" />
+    <meta property="og:description"content="Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!" />
+    <meta property="og:image" content="{{ asset('/images/ag-10.jpg') }}" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/favicons/apple-icon-57x57.png') }}?v={{ cache('v') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/favicons/apple-icon-60x60.png') }}?v={{ cache('v') }}">
