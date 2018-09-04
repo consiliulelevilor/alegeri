@@ -5,7 +5,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-4 pb-250" style="background-image: url({{ asset('/images/ag-10.jpg') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url({{ asset('/images/ag-10.jpg') }});" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
