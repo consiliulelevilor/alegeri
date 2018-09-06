@@ -22,9 +22,9 @@
             <div class="row">
               <div class="col-lg-6">
                 <h1 class="display-3 text-white">
-                  Ce mai aștepți?
+                  E timpul să devii
                   <span>
-                    E timpul să devii chiar tu vocea colegilor tăi.
+                    chiar tu vocea colegilor tăi.
                   </span>
                 </h1>
                 <p class="lead  text-white">
