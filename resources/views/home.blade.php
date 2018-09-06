@@ -5,7 +5,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/ag-8.jpg') }}?v={{ cache('v') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-1.jpg') }}?v={{ cache('v') }});" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -52,7 +52,7 @@
         <div class="row row-grid align-items-center">
           <div class="col-md-6">
             <div class="card bg-default shadow border-0">
-              <img src="{{ asset('images/ag-5.jpg') }}?v={{ cache('v') }}" class="card-img-top">
+              <img src="{{ asset('images/verticals/vertical-1.jpg') }}?v={{ cache('v') }}" class="card-img-top">
               <blockquote class="card-blockquote">
                 <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
                   <polygon points="0,52 583,95 0,95" class="fill-default" />
@@ -90,7 +90,7 @@
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-6 order-md-2">
-            <img src="{{ asset('images/ag-11.jpg') }}?v={{ cache('v') }}" class="img-fluid">
+            <img src="{{ asset('images/verticals/vertical-2.jpg') }}?v={{ cache('v') }}" class="img-fluid">
           </div>
           <div class="col-md-6 order-md-1">
             <div class="pr-md-5">

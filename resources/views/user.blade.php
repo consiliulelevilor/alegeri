@@ -19,7 +19,7 @@
   @endif
 
   <main class="profile-page">
-    <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/ag-7.jpg') }}?v={{ cache('v') }});">
+    <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/mastheads/masthead-3.jpg') }}?v={{ cache('v') }});">
       <div class="shape shape-style-1 shape-primary alpha-4">
         <span></span>
         <span></span>
@@ -201,7 +201,7 @@
                       <i class="mdi mdi-calendar mr-2"></i> Trimisă pe {{ $application->created_at->format('d.m.Y H:i') }}
                     </small>
                     <p class="description">
-                      <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește întrebările</a>
+                      <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește răspunsurile</a>
                     </p>
                   </div>
                 </div>

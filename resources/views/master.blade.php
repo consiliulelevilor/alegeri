@@ -25,7 +25,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Alegeri pentru Consiliul Național al Elevilor" />
     <meta property="og:description"content="Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!" />
-    <meta property="og:image" content="{{ asset('/images/ag-10.jpg') }}" />
+    <meta property="og:image" content="{{ asset('/images/mastheads/masthead-1.jpg') }}" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/favicons/apple-icon-57x57.png') }}?v={{ cache('v') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/favicons/apple-icon-60x60.png') }}?v={{ cache('v') }}">
