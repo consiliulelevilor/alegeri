@@ -19,7 +19,7 @@
   @endif
 
   <main class="profile-page">
-    <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/ag-7.jpg') }});">
+    <section class="masthead section-profile-cover section-shaped my-0" style="background-image: url({{ asset('/images/ag-7.jpg') }}?v={{ cache('v') }});">
       <div class="shape shape-style-1 shape-primary alpha-4">
         <span></span>
         <span></span>
@@ -615,7 +615,7 @@
         });
 
         $('#profile-picture-input').on('change', function (e) {
-          $('#upload-profile-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}');
+          $('#upload-profile-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}?v={{ cache('v') }}');
           $('#profile-picture-form').submit();
         });
       @endif
