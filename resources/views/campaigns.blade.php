@@ -111,7 +111,7 @@
                           @if($campaign->isOpened())
                             @if($campaign->opened_until)
                               @if($campaign->opened_until->isFuture() && $campaign->opened_until->diffInDays(now()) <= 3)
-                                <div class="danger-text">Poziția se închide în {{ $campaign->opened_until->diffInDays(now()) }} zile</div>
+                                <div class="danger-text">Înscrierile se închid în {{ $campaign->opened_until->diffInDays(now()) }} zile</div>
                               @endif
                               <small>Se închide pe {{ $campaign->opened_until->format('d.m.Y H:i') }}</small>
                             @endif
