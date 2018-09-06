@@ -108,19 +108,13 @@
                             <i class="mdi mdi-city-variant-outline mr-2"></i> Consiliul Școlar al Elevilor
                             @endif
                           </div>
+                          @if($campaign->opened_until)
+                            <small>Se închide pe {{ $campaign->opened_until->format('d.m.Y H:i') }}</small>
+                          @endif
                           @if($campaign->isOpened())
-                            @if($campaign->opened_until)
-                              @if($campaign->opened_until->isFuture() && $campaign->opened_until->diffInDays(now()) <= 3)
-                                <div class="danger-text">Înscrierile se închid în {{ $campaign->opened_until->diffInDays(now()) }} zile</div>
-                              @endif
-                              <small>Se închide pe {{ $campaign->opened_until->format('d.m.Y H:i') }}</small>
-                            @endif
                           @else
                             <small>Închisă pe {{ $campaign->closed_at->format('d.m.Y H:i') }}</small>
                           @endif
-                          <p class="description mt-3">
-                            {{ $campaign->description }}
-                          </p>
                           @if(Auth::user()->hasAppliedTo($campaign))
                             <a href="javascript:{}" class="btn btn-link text-success mt-0 mb-2"><i class="mdi mdi-check mr-2"></i> Ai aplicat!</a>
                           @else
