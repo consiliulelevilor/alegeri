@@ -49,7 +49,7 @@
                     <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none">Preferințe</a> 
                   @else
                     <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Aplicații</a>
-                    <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a>
+                    {{-- <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a> --}}
                   @endif
                 </div>
               </div>
@@ -61,7 +61,7 @@
                       {{ $user->applications()->count() }}
                     </span>
                   </div>
-                  <div>
+                  {{-- <div>
                     <span data-toggle="tooltip" data-placement="bottom" title="Rating-ul mediu al candidatului." class="heading text-center btn-link text-warning">
                       <i class="mdi mdi-star mr-1"></i>
                       8.7
@@ -72,7 +72,7 @@
                       <i class="mdi mdi-heart mr-1"></i>
                       12
                     </span>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
