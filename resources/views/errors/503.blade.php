@@ -15,7 +15,7 @@
         <span></span>
         <span></span>
       </div>
-      <div class="container pt-5 mt-5 py-lg-md d-flex">
+      <div class="container py-lg-md d-flex">
         <div class="col ml-3 mr-3 px-0">
           <div class="row">
             <div class="col-lg-6">

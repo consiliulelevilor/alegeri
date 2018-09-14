@@ -108,7 +108,7 @@
       @endif
     </script>
     
-    @if(!\App::isDownForMaintenance())
+    @if(!\App::isDownForMaintenance() && is_null(Auth::check()))
       @if(!request()->is('login'))
         <header class="header-global">
           <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-dark">
