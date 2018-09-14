@@ -21,7 +21,6 @@
             <div class="col-lg-6">
               <h1 class="display-3  text-white">
                 Pagina nu există!
-                <span>Dar dacă nu e așa?</span>
               </h1>
               <p class="lead text-white">
                 Foarte probabil ai primit link-ul greșit. Sau ai făcut ceva de te-a adus aici. Întoarce-te la pagina principală.
