@@ -29,6 +29,7 @@ class UserController extends Controller
             'profile_name' => ($request->profile_name) ? str_slug($request->profile_name) : $user->profile_name,
             'name' => ($request->name) ?: $user->name,
             'email' => ($request->email) ?: $user->email,
+            'phone' => ($request->phone) ?: $user->phone,
             'region' => ($request->region) ?: $user->region,
             'city' => ($request->city) ?: $user->city,
             'institution' => ($request->institution) ?: $user->institution,

@@ -356,6 +356,17 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
+                    <label>Care este numărul tău de telefon?</label>
+                    <div class="input-group input-group-alternative mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="mdi mdi-phone"></i></span>
+                      </div>
+                      <input class="form-control form-control-alternative" placeholder="0712345678" value="{{ old('phone') ?? $user->phone }}" name="phone" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
                     <label>În ce județ locuiești? *</label>
                     <div class="input-group input-group-alternative mb-4">
                       <div class="input-group-prepend">
@@ -369,6 +380,8 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>În ce oraș locuiești?</label>
