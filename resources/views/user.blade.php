@@ -112,7 +112,7 @@
                   </a>
                 @endif
                 @if($user->instagram && $user->instagram->is_public)
-                  <a class="text-secondary" href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>
+                  <a class="text-dark" href="https://instagram.com/{{ $user->instagram->social_id }}" target=_blank>
                     <i class="mdi mdi-24px mdi-instagram"></i>
                   </a>
                 @endif
