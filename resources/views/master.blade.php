@@ -108,112 +108,116 @@
       @endif
     </script>
     
-    @if(!request()->is('login'))
-      <header class="header-global">
-        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-dark">
-          <div class="container">
-            <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
-              <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-1024-white.png') }}">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbar">
-              <div class="navbar-collapse-header">
-                <div class="row">
-                  <div class="col-6 collapse-brand">
-                    <a href="{{ route('home') }}">
-                      <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-line-black.png') }}">
-                    </a>
-                  </div>
-                  <div class="col-6 collapse-close">
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                      <span></span>
-                      <span></span>
-                    </button>
+    @if(!\App::isDownForMaintenance())
+      @if(!request()->is('login'))
+        <header class="header-global">
+          <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
+                <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-1024-white.png') }}">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbar">
+                <div class="navbar-collapse-header">
+                  <div class="row">
+                    <div class="col-6 collapse-brand">
+                      <a href="{{ route('home') }}">
+                        <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-line-black.png') }}">
+                      </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                      </button>
+                    </div>
                   </div>
                 </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                  @auth
+                    <li class="nav-item">
+                      <a href="{{ route('campaigns') }}" class="nav-link text-warning">
+                        <i class="mdi mdi-share mdi-18px"></i> Aplică
+                      </a>
+                    </li>
+                  @endauth
+                </ul>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                  @auth
+                    <li class="nav-item">
+                      <a href="{{ route('me') }}" class="nav-link">
+                        <i class="mdi mdi-account-circle mdi-18px"></i> {{ Auth::user()->name }}
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('logout') }}" class="nav-link">
+                        <i class="mdi mdi-logout mdi-18px"></i> Deconectare
+                      </a>
+                    </li>
+                  @endauth
+                  @guest
+                    <li class="nav-item">
+                      <a href="{{ route('login') }}" class="nav-link text-success">
+                        <i class="mdi mdi-login mdi-18px"></i> Autentificare
+                      </a>
+                    </li>
+                  @endguest
+                </ul>
               </div>
-              <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                @auth
-                  <li class="nav-item">
-                    <a href="{{ route('campaigns') }}" class="nav-link text-warning">
-                      <i class="mdi mdi-share mdi-18px"></i> Aplică
-                    </a>
-                  </li>
-                @endauth
-              </ul>
-              <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-                @auth
-                  <li class="nav-item">
-                    <a href="{{ route('me') }}" class="nav-link">
-                      <i class="mdi mdi-account-circle mdi-18px"></i> {{ Auth::user()->name }}
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link">
-                      <i class="mdi mdi-logout mdi-18px"></i> Deconectare
-                    </a>
-                  </li>
-                @endauth
-                @guest
-                  <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link text-success">
-                      <i class="mdi mdi-login mdi-18px"></i> Autentificare
-                    </a>
-                  </li>
-                @endguest
-              </ul>
             </div>
-          </div>
-        </nav>
-      </header>
+          </nav>
+        </header>
+      @endif
     @endif
 
     @yield('content')
 
-    @if(!request()->is('login'))
-      <footer class="footer has-cards">
-        <div class="container">
-          <div class="row row-grid align-items-center my-md">
-            <div class="col-lg-6">
-              <h3 class="text-primary font-weight-light mb-2">Consiliul Elevilor este online.</h3>
-              <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
-            </div>
-            <div class="col-lg-6 text-center btn-wrapper">
-              <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-md btn-instagram" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
-                <span class="btn-inner--icon">
-                  <i class="mdi mdi-instagram mdi-24px"></i>
-                </span>
-              </a>
-              <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-md btn-facebook" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
-                <span class="btn-inner--icon">
-                  <i class="mdi mdi-facebook-box mdi-24px"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <hr>
-          <div class="row align-items-center justify-content-md-between">
-            <div class="col-md-6">
-              <div class="copyright">
-                &copy; {{ now()->format('Y') }}
-                <a href="{{ env('MAIN_URL') }}" target="_blank">Consiliul Național al Elevilor</a>.
+    @if(!\App::isDownForMaintenance())
+      @if(!request()->is('login'))
+        <footer class="footer has-cards">
+          <div class="container">
+            <div class="row row-grid align-items-center my-md">
+              <div class="col-lg-6">
+                <h3 class="text-primary font-weight-light mb-2">Consiliul Elevilor este online.</h3>
+                <h4 class="mb-0 font-weight-light">Ne găsești oricând pe social media.</h4>
+              </div>
+              <div class="col-lg-6 text-center btn-wrapper">
+                <a target="_blank" href="https://instagram.com/consiliulelevilor" class="btn btn-neutral btn-md btn-instagram" data-toggle="tooltip" data-original-title="Urmărește-ne pe Instagram!">
+                  <span class="btn-inner--icon">
+                    <i class="mdi mdi-instagram mdi-24px"></i>
+                  </span>
+                </a>
+                <a target="_blank" href="https://facebook.com/consiliulelevilor" class="btn btn-neutral btn-md btn-facebook" data-toggle="tooltip" data-original-title="Dă-ne un like pe Facebook!">
+                  <span class="btn-inner--icon">
+                    <i class="mdi mdi-facebook-box mdi-24px"></i>
+                  </span>
+                </a>
               </div>
             </div>
-            <div class="col-md-6">
-              <ul class="nav nav-footer justify-content-end">
-                {{-- <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Despre noi</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link">Echipa</a>
-                </li> --}}
-              </ul>
+            <hr>
+            <div class="row align-items-center justify-content-md-between">
+              <div class="col-md-6">
+                <div class="copyright">
+                  &copy; {{ now()->format('Y') }}
+                  <a href="{{ env('MAIN_URL') }}" target="_blank">Consiliul Național al Elevilor</a>.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <ul class="nav nav-footer justify-content-end">
+                  {{-- <li class="nav-item">
+                    <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Despre noi</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com/presentation" class="nav-link">Echipa</a>
+                  </li> --}}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      @endif
     @endif
 
     <script src="{{ asset('/js/jquery.min.js') }}?v={{ cache('v') }}"></script>
