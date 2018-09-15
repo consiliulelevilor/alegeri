@@ -18,8 +18,8 @@ class Campaigns extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('image')->nullable();
-            $table->enum('color_scheme', ['default', 'primary', 'secondary', 'info', 'success', 'danger', 'warning'])->default('success');
-            $table->enum('type', ['executive', 'regional', 'institutional'])->default('executive');
+            $table->string('color_scheme')->default('success');
+            $table->string('type')->default('executive');
             $table->timestamp('closed_at')->nullable();
             $table->timestamp('opened_until')->nullable();
             $table->boolean('is_visible')->default(true);
@@ -42,7 +42,7 @@ class Campaigns extends Migration
             $table->text('user_question2')->nullable();
             $table->text('user_question3')->nullable();
             $table->text('user_question4')->nullable();
-            $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

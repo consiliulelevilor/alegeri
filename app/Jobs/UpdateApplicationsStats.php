@@ -39,15 +39,15 @@ class UpdateApplicationsStats implements ShouldQueue
             Cache::put('stats:region:'.$region.':applications:approved', $applications->where('status', 'approved')->count(), 60);
             Cache::put('stats:region:'.$region.':applications:declined', $applications->where('status', 'declined')->count(), 60);
 
-            Cache::put('stats:region:'.$region.':applications:executive:total', $applications->where('campaign.type' ,'executive')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:executive:pending', $applications->where('campaign.type' ,'executive')->where('status', 'pending')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:executive:approved', $applications->where('campaign.type' ,'executive')->where('status', 'approved')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:executive:declined', $applications->where('campaign.type' ,'executive')->where('status', 'declined')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:total', $applications->where('campaign.type', 'executive')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:pending', $applications->where('campaign.type', 'executive')->where('status', 'pending')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:approved', $applications->where('campaign.type', 'executive')->where('status', 'approved')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:executive:declined', $applications->where('campaign.type', 'executive')->where('status', 'declined')->count(), 60);
 
-            Cache::put('stats:region:'.$region.':applications:regional:total', $applications->where('campaign.type' ,'regional')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:regional:pending', $applications->where('campaign.type' ,'regional')->where('status', 'pending')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:regional:approved', $applications->where('campaign.type' ,'regional')->where('status', 'approved')->count(), 60);
-            Cache::put('stats:region:'.$region.':applications:regional:declined', $applications->where('campaign.type' ,'regional')->where('status', 'declined')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:total', $applications->where('campaign.type', 'regional')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:pending', $applications->where('campaign.type', 'regional')->where('status', 'pending')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:approved', $applications->where('campaign.type', 'regional')->where('status', 'approved')->count(), 60);
+            Cache::put('stats:region:'.$region.':applications:regional:declined', $applications->where('campaign.type', 'regional')->where('status', 'declined')->count(), 60);
         }
 
         $this->line('The applications stats were updated!');

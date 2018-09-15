@@ -51,7 +51,7 @@ sites:
         php: "7.2"
         schedule: true
 databases:
-    - alegeri
+    - homestead
 name: alegeri
 hostname: alegeri
 ```

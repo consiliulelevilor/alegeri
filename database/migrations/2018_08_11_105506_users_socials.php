@@ -17,7 +17,7 @@ class UsersSocials extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('social_id');
-            $table->enum('social_type', ['facebook', 'google', 'instagram']);
+            $table->string('social_type');
 
             $table->string('email')->nullable();
             $table->string('nickname')->nullable();

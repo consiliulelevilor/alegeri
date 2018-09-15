@@ -13,7 +13,6 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/candidați', 'UserController@index')->name('users');
 Route::get('/candidat/{idOrSlug}', 'UserController@show')->name('user.profile');
 
 Route::get('/login/social/{social}', 'AuthenticationController@social')->name('social');

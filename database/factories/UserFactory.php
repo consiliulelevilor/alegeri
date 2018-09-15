@@ -17,8 +17,9 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'profile_name' => 'profile-name-'.mt_rand(1000, 9999),
         'phone' => mt_rand(1000000000, 9999999999),
-        'city' => 'București',
+        'city' => 'BUCUREȘTI',
         'region' => 'Sector 5',
         'institution' => 'Colegiul '.str_random(10),
         'starting_year' => now()->subYears(4)->format('Y'),

@@ -24,9 +24,10 @@ script:
   - php artisan key:generate
   - php artisan config:clear
   - php artisan config:cache
-  - php artisan migrate
+  - php artisan migrate --seed
   - php artisan passport:install
   - php artisan storage:link
+  - php artisan voyager:install
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
@@ -37,3 +38,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - ./deploy.sh
