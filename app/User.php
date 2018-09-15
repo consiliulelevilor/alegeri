@@ -38,7 +38,11 @@ class User extends VoyagerUser implements HasMedia
     public $timestamps = true;
 
     protected static $logAttributes = ['*'];
+    protected static $logAttributesToIgnore = [
+        'password', 'remember_token',
+    ];
     protected static $logOnlyDirty = false;
+    protected static $logName = 'user';
 
     public function socials()
     {

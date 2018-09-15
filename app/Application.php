@@ -32,7 +32,11 @@ class Application extends Model
     public $timestamps = true;
 
     protected static $logAttributes = ['*'];
+    protected static $logAttributesToIgnore = [
+        //
+    ];
     protected static $logOnlyDirty = false;
+    protected static $logName = 'application';
 
     public function campaign()
     {
