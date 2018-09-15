@@ -7,7 +7,6 @@ addons:
   chrome: stable
 
 php:
-  - 7.1
   - 7.2
 
 cache:
@@ -38,4 +37,5 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - chmod 777 deploy.sh
   - ./deploy.sh
