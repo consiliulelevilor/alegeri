@@ -50,8 +50,8 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-right">
-                  <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Vezi aplicațiile</a>
+                <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-center">
+                  <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-right float-md-right float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Vezi aplicațiile</a>
                   {{-- <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a> --}}
                 </div>
               </div>
