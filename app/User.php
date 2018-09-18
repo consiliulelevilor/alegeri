@@ -94,7 +94,7 @@ class User extends VoyagerUser implements HasMedia
                 return $this->avatar;
             }
 
-            if ($this->avatar_disk === 'public') {
+            if (is_null($this->avatar_disk) || $this->avatar_disk === 'public') {
                 return asset('/storage/'.$this->avatar);
             }
 
