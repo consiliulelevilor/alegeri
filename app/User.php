@@ -110,6 +110,23 @@ class User extends VoyagerUser implements HasMedia
         }
     }
 
+    public function coverUrl()
+    {
+        if ($this->cover) {
+            if (filter_var($this->cover, FILTER_VALIDATE_URL)) {
+                return $this->cover;
+            }
+
+            if (is_null($this->cover_disk) || $this->cover_disk === 'public') {
+                return asset('/storage/'.$this->cover);
+            }
+
+            if (in_array($this->cover_disk, ['gcs', 's3'])) {
+                return Storage::disk('gcs')->url($this->cover);
+            }
+        }
+    }
+
     public function profileUrl()
     {
         return route('user.profile', ['idOrSlug' => $this->profile_name]);

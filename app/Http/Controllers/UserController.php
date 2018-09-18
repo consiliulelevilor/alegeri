@@ -70,4 +70,27 @@ class UserController extends Controller
 
         return redirect(route('me'))->with('success', 'Poza de profil a fost actualizată cu succes!');
     }
+
+    public function updateMyCoverPicture(\App\Http\Requests\UpdateMyCoverPictureRequest $request)
+    {
+        ini_set('upload_max_filesize', -1);
+        ini_set('post_max_size', -1);
+
+        $user = $request->user();
+
+        if ($user->cover_disk == 'public') {
+            Storage::disk('public')->delete(public_path($user->cover));
+        }
+
+        if (in_array($user->cover_disk, ['gcs', 's3'])) {
+            Storage::disk('gcs')->delete($user->cover);
+        }
+
+        $user->update([
+            'cover' => Storage::putFile('', $request->file('cover_picture')),
+            'cover_disk' => env('FILESYSTEM_DRIVER'),
+        ]);
+
+        return redirect(route('me'))->with('success', 'Poza de copertă a fost actualizată cu succes!');
+    }
 }

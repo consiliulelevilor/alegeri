@@ -16,10 +16,17 @@
       <input type="hidden" name="ref" value="profile-picture-form">
       <input type="file" id="profile-picture-input" accept=".jpg,.jpeg,.png,.gif" name="profile_picture">
     </form>
+
+    <form method="POST" action="{{ route('me.change.cover') }}" enctype="multipart/form-data" id="cover-picture-form" class="d-none">
+      @csrf
+      @method('PATCH')
+      <input type="hidden" name="ref" value="cover-picture-form">
+      <input type="file" id="cover-picture-input" accept=".jpg,.jpeg,.png,.gif" name="cover_picture">
+    </form>
   @endif
 
   <main class="profile-page">
-    <section class="masthead section-profile-cover section-shaped my-0" style="background-repeat: repeat; background-size: inherit; background-image: url({{ asset('/images/patterns/school.png') }}?v={{ cache('v') }});">
+    <section class="masthead section-profile-cover section-shaped my-0" style="background-size: cover; background-image: url({{ $user->coverUrl() }}?v={{ cache('v') }});">
       <div class="shape shape-style-1 shape-primary alpha-4">
         <span></span>
         <span></span>
@@ -43,22 +50,23 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-center">
-                  @if(Auth::user() && Auth::user()->is($user))
-                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none">Modifică</a>
-                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-sm-right float-md-right float-lg-none">Preferințe</a> 
-                  @else
-                    <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Aplicații</a>
-                    {{-- <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a> --}}
-                  @endif
+                <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-right">
+                  <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Vezi aplicațiile</a>
+                  {{-- <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a> --}}
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1 mt-sm-3">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span title="Aplicațiile depuse de către candidat." class="heading text-center btn-link text-success" data-toggle="tooltip" data-placement="bottom">
+                    <span title="Numărul de aplicații depuse de către {{ $user->name }}." class="heading text-center btn-link text-success" data-toggle="tooltip" data-placement="bottom">
                       <i class="mdi mdi-chart-bubble mr-1"></i>
                       {{ $user->applications()->count() }}
+                    </span>
+                  </div>
+                  <div>
+                    <span title="{{ $user->name }} are o vechime de {{ $user->created_at->diffInDays(now()) }} zile în platformă." class="heading text-center btn-link text-warning" data-toggle="tooltip" data-placement="bottom">
+                      <i class="mdi mdi-clock mr-1"></i>
+                      {{ $user->created_at->diffInDays(now()) }}
                     </span>
                   </div>
                   {{-- <div>
@@ -116,7 +124,12 @@
                     <i class="mdi mdi-24px mdi-instagram"></i>
                   </a>
                 @endif
-            </div>
+              </div>
+              <div class="pt-3 pb-2">
+                <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success mt-2">Modifică profil</a>
+                <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary mt-2">Preferințe</a>
+                <a href="javascript:{}" id="upload-cover-picture-anchor" class="btn btn-sm btn-danger mt-2">Schimbă coperta</a>
+              </div>
             </div>
             <div class="mt-3 mb-2 py-2 border-top">
               <div class="row justify-content-center">
@@ -627,9 +640,18 @@
           $('#profile-picture-input').click();
         });
 
+        $('#upload-cover-picture-anchor').on('click', function (e) {
+          $('#cover-picture-input').click();
+        });
+
         $('#profile-picture-input').on('change', function (e) {
           $('#upload-profile-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}?v={{ cache('v') }}');
           $('#profile-picture-form').submit();
+        });
+
+        $('#cover-picture-input').on('change', function (e) {
+          // $('#upload-cover-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}?v={{ cache('v') }}');
+          $('#cover-picture-form').submit();
         });
       @endif
     });
