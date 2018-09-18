@@ -64,8 +64,8 @@
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
       window.addEventListener("load", function(){
       window.cookieconsent.initialise({
@@ -79,8 +79,10 @@
         },
         "theme": "classic",
         "content": {
-          "message": "Nouă ne plac prăjiturelele (cookies).\nNu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre.",
-          "link": "Ce sunt prăjiturelele?"
+          "message": "Nouă ne plac prăjiturelele (cookies). Nu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre.",
+          "dismiss": "Am înțeles!",
+          "link": "Ce sunt prăjiturelele?",
+          "href": "{{ env('GDPR_URL') }}"
         }
       })});
     </script>
