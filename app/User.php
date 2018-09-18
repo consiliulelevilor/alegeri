@@ -3,6 +3,7 @@
 namespace App;
 
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\HasActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -88,26 +89,24 @@ class User extends VoyagerUser implements HasMedia
 
     public function avatarUrl()
     {
-        $this->load(['facebook', 'google', 'instagram']);
-
         if ($this->avatar) {
             if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
                 return $this->avatar;
             }
 
-            return asset('/storage/'.$this->avatar);
+            if ($this->avatar_disk === 'public') {
+                return asset('/storage/'.$this->avatar);
+            }
+
+            if (in_array($this->avatar_disk, ['gcs', 's3'])) {
+                return Storage::disk('gcs')->url($this->avatar);
+            }
         }
 
-        if ($this->facebook) {
-            return $this->facebook->avatar_url;
-        }
+        $this->load(['socials']);
 
-        if ($this->google) {
-            return $this->google->avatar_url;
-        }
-
-        if ($this->instagram) {
-            return $this->instagram->avatar_url;
+        foreach ($this->socials as $social) {
+            return $social->avatar_url;
         }
     }
 

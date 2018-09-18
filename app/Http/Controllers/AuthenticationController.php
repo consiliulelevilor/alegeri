@@ -114,7 +114,7 @@ class AuthenticationController extends Controller
                 'avatar' => asset('/images/profile/patrick.png'),
             ]);
 
-            $user->load(['facebook', 'google', 'instagram']);
+            $user->load($social);
         }
 
         if (! $user->{$social}) {
@@ -150,7 +150,7 @@ class AuthenticationController extends Controller
 
         $user = $request->user();
 
-        $user->load(['facebook', 'google', 'instagram', 'socials']);
+        $user->load(['socials', $social]);
 
         if (! $user->{$social}) {
             return redirect(route('me'));

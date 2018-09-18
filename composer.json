@@ -29,6 +29,7 @@
         "spatie/laravel-backup": "^5.10",
         "spatie/laravel-medialibrary": "^7.3",
         "spatie/laravel-sitemap": "^5.2",
+        "superbalist/laravel-google-cloud-storage": "^2.0",
         "tcg/voyager": "^1.1",
         "webpatser/laravel-uuid": "^3.0"
     },

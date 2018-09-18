@@ -23,7 +23,6 @@ class UserController extends Controller
     public function updateMe(\App\Http\Requests\UpdateMeRequest $request)
     {
         $user = $request->user();
-        $user->load(['facebook', 'google', 'instagram']);
 
         $user->update([
             'profile_name' => ($request->profile_name) ? str_slug($request->profile_name) : $user->profile_name,
@@ -38,21 +37,11 @@ class UserController extends Controller
             'description' => ($request->description) ?: $user->description,
         ]);
 
-        if ($user->facebook) {
-            $user->facebook->update([
-                'is_public' => $request->has('make_facebook_public'),
-            ]);
-        }
+        $user->load(['socials']);
 
-        if ($user->google) {
-            $user->google->update([
-                'is_public' => $request->has('make_google_public'),
-            ]);
-        }
-
-        if ($user->instagram) {
-            $user->instagram->update([
-                'is_public' => $request->has('make_instagram_public'),
+        foreach ($user->socials as $social) {
+            $user->{$social->social_type}->update([
+                'is_public' => $request->has('make_'.$social->social_type.'_public'),
             ]);
         }
 
@@ -66,12 +55,17 @@ class UserController extends Controller
 
         $user = $request->user();
 
-        if ($user->avatar && ! filter_var($user->avatar, FILTER_VALIDATE_URL)) {
-            Storage::delete(public_path($user->avatar));
+        if ($user->avatar_disk == 'public') {
+            Storage::disk('public')->delete(public_path($user->avatar));
+        }
+
+        if (in_array($user->avatar_disk, ['gcs', 's3'])) {
+            Storage::disk('gcs')->delete($user->avatar);
         }
 
         $user->update([
-            'avatar' => $request->file('profile_picture')->store('users/upload'),
+            'avatar' => Storage::putFile('', $request->file('profile_picture')),
+            'avatar_disk' => env('FILESYSTEM_DRIVER'),
         ]);
 
         return redirect(route('me'))->with('success', 'Poza de profil a fost actualizată cu succes!');
