@@ -125,11 +125,13 @@
                   </a>
                 @endif
               </div>
-              <div class="pt-3 pb-2">
-                <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success mt-2">Modifică profil</a>
-                <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary mt-2">Preferințe</a>
-                <a href="javascript:{}" id="upload-cover-picture-anchor" class="btn btn-sm btn-danger mt-2">Schimbă coperta</a>
-              </div>
+              @if(Auth::user() && Auth::user()->is($user))
+                <div class="pt-3 pb-2">
+                  <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success mt-2">Modifică profil</a>
+                  <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary mt-2">Preferințe</a>
+                  <a href="javascript:{}" id="upload-cover-picture-anchor" class="btn btn-sm btn-danger mt-2">Schimbă coperta</a>
+                </div>
+              @endif
             </div>
             <div class="mt-3 mb-2 py-2 border-top">
               <div class="row justify-content-center">
