@@ -1,4 +1,4 @@
 #!/bin/bash
 if [ "$TRAVIS_BRANCH" == "master" ]; then
-  curl -X POST ${PLOI_PRODUCTION_URL}
+  curl -X POST ${PRODUCTION_DEPLOYMENT_URL}
 fi
