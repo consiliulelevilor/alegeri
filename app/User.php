@@ -99,7 +99,7 @@ class User extends VoyagerUser implements HasMedia
             }
 
             if (in_array($this->avatar_disk, ['gcs', 's3'])) {
-                return Storage::disk('gcs')->url($this->avatar);
+                return Storage::disk($this->avatar_disk)->url($this->avatar);
             }
         }
 
@@ -122,7 +122,7 @@ class User extends VoyagerUser implements HasMedia
             }
 
             if (in_array($this->cover_disk, ['gcs', 's3'])) {
-                return Storage::disk('gcs')->url($this->cover);
+                return Storage::disk($this->cover_disk)->url($this->cover);
             }
         }
     }
