@@ -88,11 +88,21 @@ class Campaign extends Model
 
     public function imageUrl()
     {
-        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
-            return $this->image;
+        if ($this->image) {
+            if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+                return $this->image;
+            }
+
+            if (config('voyager.storage.disk') == 'public') {
+                return asset('/storage/'.$this->image);
+            }
+
+            if (in_array(config('voyager.storage.disk'), ['gcs', 's3'])) {
+                return Storage::disk(config('voyager.storage.disk'))->url($this->image);
+            }
         }
 
-        return asset('/storage/'.$this->image);
+        return null;
     }
 
     public function isOpened()
