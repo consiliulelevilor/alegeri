@@ -45,6 +45,9 @@ return [
         'client_id' => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT_URL'),
+        'analytics' => [
+            'tracking_id' => env('GOOGLE_ANALYTICS_ID'),
+        ],
     ],
 
     'instagram' => [

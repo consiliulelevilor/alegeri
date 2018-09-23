@@ -453,7 +453,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>{{ env('APP_URL') }}/</label>
+                    <label>{{ config('app.url') }}/</label>
                     <div class="input-group input-group-alternative mb-4">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="mdi mdi-link-variant"></i></span>

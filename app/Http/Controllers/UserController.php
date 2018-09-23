@@ -65,7 +65,7 @@ class UserController extends Controller
 
         $user->update([
             'avatar' => Storage::putFile('', $request->file('profile_picture')),
-            'avatar_disk' => env('FILESYSTEM_DRIVER'),
+            'avatar_disk' => config('filesystems.default'),
         ]);
 
         return redirect(route('me'))->with('success', 'Poza de profil a fost actualizată cu succes!');
@@ -88,7 +88,7 @@ class UserController extends Controller
 
         $user->update([
             'cover' => Storage::putFile('', $request->file('cover_picture')),
-            'cover_disk' => env('FILESYSTEM_DRIVER'),
+            'cover_disk' => config('filesystems.default'),
         ]);
 
         return redirect(route('me'))->with('success', 'Poza de copertă a fost actualizată cu succes!');

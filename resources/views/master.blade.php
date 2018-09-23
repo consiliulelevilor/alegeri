@@ -19,7 +19,7 @@
     <meta name="twitter:card" content="summary"></meta>
     <meta name="twitter:creator" content="@rennokki"></meta>
 
-    <meta property="fb:app_id" content="{{ env('FACEBOOK_ID') }}">
+    <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}">
 
     <meta property="og:url" content="{{ request()->url() }}" />
     <meta property="og:type" content="website" />
@@ -53,12 +53,12 @@
     @yield('css')
 
     @if(App::environment('production'))
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics.tracking_id') }}"></script>
       <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+          gtag('config', '{{ config('services.google.analytics.tracking_id') }}');
       </script>
     @endif
 
@@ -82,7 +82,7 @@
           "message": "Nouă ne plac prăjiturelele (cookies). Nu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre.",
           "dismiss": "Am înțeles!",
           "link": "Ce sunt prăjiturelele?",
-          "href": "{{ env('GDPR_URL') }}"
+          "href": "{{ config('app.main_url') }}"
         }
       })});
     </script>
@@ -100,7 +100,7 @@
       @if(App::environment('production'))
         window.fbAsyncInit = function() {
           FB.init({
-            appId: '{{ env('FACEBOOK_ID') }}',
+            appId: '{{ config('services.facebook.client_id') }}',
             cookie: true,
             xfbml: true,
             version: 'v3.1'
@@ -203,7 +203,7 @@
               <div class="col-md-6">
                 <div class="copyright">
                   &copy; {{ now()->format('Y') }}
-                  <a href="{{ env('MAIN_URL') }}" target="_blank">Consiliul Național al Elevilor</a>.
+                  <a href="{{ config('app.main_url') }}" target="_blank">Consiliul Național al Elevilor</a>.
                 </div>
               </div>
               <div class="col-md-6">
