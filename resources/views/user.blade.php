@@ -45,9 +45,9 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   @if(Auth::user() && Auth::user()->is($user))
-                  <a id="upload-profile-picture-anchor" href="javascript:{}">
+                    <a id="upload-profile-picture-anchor" href="javascript:{}">
                       <img data-toggle="tooltip" data-original-title="Fă click pentru a schimba poza!" alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail" style="z-index: 1;">
-                  </a>
+                    </a>
                   @else
                     <img alt="{{ $user->name }}" src="{{ $user->avatarUrl() }}" class="rounded-circle img-thumbnail" style="z-index: 1;">
                   @endif
@@ -524,7 +524,7 @@
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" name="is_mail_subscribed" id="newsletter-check" type="checkbox" @if($user->is_mail_subscribed) checked @endif>
                     <label class="custom-control-label" for="newsletter-check">
-                      Da, vreau să mă abonez la newsletter pentru a primi informații despre consilii. (Newsletter-ul este săptămânal)
+                      Da, vreau să mă abonez la newsletter pentru a primi informații despre Consiliul Elevilor.
                     </label>
                   </div>
                 </div>

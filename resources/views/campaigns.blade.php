@@ -5,7 +5,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-7.jpg') }}?v={{ cache('v') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-14.jpg') }}?v={{ cache('v') }});" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -21,17 +21,14 @@
           <div class="col px-0">
             <div class="row">
               <div class="col-lg-6">
-                <h1 class="display-3  text-white">
+                <h1 class="display-3 pt-3 pb-3 text-white">
                   Candidează
-                  <span>și fii vocea colegilor tăi.</span>
+                  <span>și fii vocea colegilor tăi!</span>
                 </h1>
-                <p class="lead text-white">
-                  E momentul să te implici - candidează pentru ocuparea unei funcții în Consiliul Județean al Elevilor!
-                </p>
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="mdi mdi-arrow-right mdi-18px"></i></span>
-                    <span class="btn-inner--text">Vezi posturile libere</span>
+                    <span class="btn-inner--text">Vezi posturile vacante</span>
                   </a>
                 </div>
               </div>
@@ -143,9 +140,16 @@
       <div class="container">
         <div class="row text-left justify-content-center">
           <div class="col-lg-10">
-            <h2 class="display-3 text-white">Nu știi unde să aplici?</h2>
+            <h2 class="display-3 text-white">
+              Indiferent dacă ești
+              <span>
+                la prima sau la ultima candidatură,<br>venim în ajutorul tău!
+              </span>
+            </h2>
             <p class="lead text-white">
-              Drumul tău în Consiliul Național al Elevilor este o alegere, pe are o poți face liber, încă de la prima aplicație depusă!
+              Consultă ghidul Prima candidatură în Consiliul Elevilor și vei regăsi în el sfaturi utile despre cum să construiești o strategie de dezvoltare și un plan de acțiune
+              care să fie relevante, ce trebuie să conțină dosarul tău de candidatură pentru funcțiile din Biroul Executiv, dar și valori/principii esențiale după care să te ghidezi pe
+              tot parcursul mandatului tău.
             </p>
           </div>
         </div>

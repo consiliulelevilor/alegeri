@@ -5,7 +5,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-1.jpg') }}?v={{ cache('v') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-12.jpg') }}?v={{ cache('v') }});" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -27,8 +27,8 @@
                     chiar tu vocea colegilor tăi.
                   </span>
                 </h1>
-                <p class="lead  text-white">
-                  Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!
+                <p class="lead text-white">
+                  Implică-te în Consiliul Elevilor, structura de reprezentare la nivel școlar, județean și național!
                 </p>
                 <div class="btn-wrapper">
                   <a href="javascript:{}" id="more-button" class="btn btn-success btn-icon mb-3 mb-sm-0">
@@ -52,17 +52,17 @@
         <div class="row row-grid align-items-center">
           <div class="col-md-6">
             <div class="card bg-default shadow border-0">
-              <img src="{{ asset('images/verticals/vertical-1.jpg') }}?v={{ cache('v') }}" class="card-img-top">
+              <img src="{{ asset('images/verticals/vertical-4.jpg') }}?v={{ cache('v') }}" class="card-img-top">
               <blockquote class="card-blockquote">
                 <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
                   <polygon points="0,52 583,95 0,95" class="fill-default" />
                   <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
                 </svg>
                 <h4 class="display-3 font-weight-bold text-white">
-                  Adunări generale
+                  Mai mult decât atât,
                 </h4>
                 <p class="lead text-italic text-white">
-                  Anual, CNE organizează Adunări Generale, în care reprezentanții elevilor din toată țara dezbat subiecte de interes pentru sistemul de învățământ.
+                  suntem un exemplu clar de bună practică în ceea ce privește transparența și modul de vot, un exercițiu democratic pe care-l repetăm an de an.
                 </p>
               </blockquote>
             </div>
@@ -76,10 +76,13 @@
                 Cine suntem și ce facem?
               </h3>
               <p class="lead">
-                Consiliul Școlar al Elevilor este organismul care militează pentru respectarea drepturilor elevilor la nivelul unității de învățământ preuniversitar.
+                Consiliul Elevilor, prin structurile sale, la nivel școlar, județean și național, monitorizează respectarea drepturilor pe care 
+                le au elevii și intervine în rezolvarea unor probleme concrete cu care se confruntă aceștia,
               </p>
               <p>
-                Mai mult decât atât, ca membru CȘE, vei avea ocazia să te implici în procesul decizional și să contribui, alături de colegii tăi, la transformarea pozitivă a climatului educațional la nivelul școlii tale.
+                de la decontul integral pentru elevii navetiști,
+                la lipsa unei reforme reale ale planurilor-cadru pentru învățământul liceal.
+                De altfel, implementează proiecte de dezvoltare personală/profesională care să satisfacă nevoile și interesele elevilor.
               </p>
             </div>
           </div>
@@ -90,7 +93,7 @@
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-6 order-md-2">
-            <img src="{{ asset('images/verticals/vertical-2.jpg') }}?v={{ cache('v') }}" class="img-fluid">
+            <img src="{{ asset('images/verticals/vertical-5.jpg') }}?v={{ cache('v') }}" class="img-fluid">
           </div>
           <div class="col-md-6 order-md-1">
             <div class="pr-md-5">
@@ -139,7 +142,7 @@
                     </div>
                     <div>
                       <h6 class="mb-0">Consiliul Școlar al Elevilor
-                          <span class="badge badge-pill badge-primary text-uppercase">În curând</span>
+                        <span class="badge badge-pill badge-primary text-uppercase">În curând</span>
                       </h6>
                     </div>
                   </div>
@@ -155,17 +158,19 @@
         <div class="row row-grid justify-content-center">
           <div class="col-lg-10 text-left">
             <h2 class="display-3">
-              Îți place la noi?
+              Te-am convins?
               <span class="text-danger">Poate fi "dragoste la prima aplicație"! <i class="mdi mdi-heart text-danger ml-1"></i></span>
             </h2>
             <p class="lead">
-                Suntem convinși de faptul că, cel puțin o dată în viața ta de elev, te-ai confruntat cu un abuz în mediul școlar,
-                abuz care te-a motivat să crezi că există o multitudine de aspecte în sistemul de învățământ care trebuie să fie reglementate,
-                pentru binele nostru, al principalilor beneficiari ai educației. 
+              A fi elev reprezentant înseamnă, mai presus de toate, a fi vocea colegilor tăi.
+              De-a lungul timpului, Consiliul Național al Elevilor a militat pentru o reformă a sistemului de învățământ românesc,
+              astfel încât acesta să devină cu adevărat centrat pe nevoile elevilor.
             </p>
             <p>
-              Reprezentanții elevilor la nivel județean sunt cei care militează pentru respectarea drepturilor
-              și intereselor elevilor din județul respectiv, precum și pentru solidificarea parteneriatului dintre elevi și decidenți.
+              Demersuri precum aprobarea Statutului Elevului, strângerea a <b>138.000</b> de semnături pentru elaborarea unor noi planuri-cadru pentru
+              învățământul liceal și militarea pentru obținerea burselor în toate localitățile din România sunt doar câteva dintre reușitele cu care ne mândrim.
+              Pentru a afla mai multe despre ce înseamnă să fii parte din structura de reprezentare a elevilor la nivel național, te invităm să accesezi site-ul nostru,
+              <a href="{{ config('app.main_url') }}" target=_blank> www.consiliulelevilor.com <i class="mdi mdi-open-in-new"></i></a>
             </p>
             <div class="btn-wrapper">
               <a href="{{ (Auth::user()) ? route('campaigns') : route('login') }}" class="btn btn-danger mt-3">
