@@ -32,7 +32,7 @@ class UserController extends Controller
             'region' => ($request->region) ?: $user->region,
             'city' => ($request->city) ?: $user->city,
             'institution' => ($request->institution) ?: $user->institution,
-            'starting_year' => ($request->starting_year) ?: $user->starting_year,
+            'class' => ($request->class) ?: $user->class,
             'is_mail_subscribed' => $request->has('is_mail_subscribed'),
             'description' => ($request->description) ?: $user->description,
         ]);

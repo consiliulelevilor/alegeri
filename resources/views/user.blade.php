@@ -436,12 +436,16 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>În ce an ai început cursurile la liceu?</label>
+                    <label>În ce clasă ești?</label>
                     <div class="input-group input-group-alternative mb-4">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        <span class="input-group-text"><i class="mdi mdi-school"></i></span>
                       </div>
-                      <input class="form-control form-control-alternative" placeholder="2016" value="{{ old('starting_year') ?? $user->starting_year }}" name="starting_year" type="text">
+                      <select class="form-control form-control-alternative" name="class">
+                        <option value="IX" @if(old('class') == 'IX' || $user->class == 'IX') selected @endif>Clasa a IXa</option>
+                        <option value="X" @if(old('class') == 'X' || $user->class == 'X') selected @endif>Clasa a Xa</option>
+                        <option value="XI" @if(old('class') == 'XI' || $user->class == 'XI') selected @endif>Clasa a XIa</option>
+                      </select>
                     </div>
                   </div>
                 </div>

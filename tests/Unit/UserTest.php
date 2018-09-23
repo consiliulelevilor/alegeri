@@ -69,7 +69,7 @@ class UserTest extends TestCase
             'user_city' => $user->city,
             'user_region' => $user->region,
             'user_institution' => $user->institution,
-            'user_starting_year' => $user->starting_year,
+            'user_class' => $user->class,
             'user_description' => $user->description,
             'question1' => 'Just a bunch of questions here.',
             'question2' => 'Just a bunch of questions here.',

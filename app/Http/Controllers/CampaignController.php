@@ -38,7 +38,7 @@ class CampaignController extends Controller
             'user_city' => $user->city,
             'user_region' => $user->region,
             'user_institution' => $user->institution,
-            'user_starting_year' => $user->starting_year,
+            'user_class' => $user->class,
             'user_description' => $user->description,
             'question1' => $request->question1,
             'question2' => $request->question2,
