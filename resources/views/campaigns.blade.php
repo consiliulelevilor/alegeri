@@ -91,7 +91,7 @@
                             </div>
                           </div>
                         @endif
-                        <img alt="{{ $campaign->name }}" src="{{ $campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
+                        <img alt="{{ $campaign->name }}" src="{{ $campaign->imageUrl() }}" class="img-fluid rounded" style="height: 150px; min-height: 150px;">
                         <div class="card-body py-2">
                           <h5 class="text-{{ $campaign->color_scheme }} text-uppercase mt-3">{{ $campaign->name }}</h5>
                           <div class="danger-text">
