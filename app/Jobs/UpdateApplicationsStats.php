@@ -49,7 +49,5 @@ class UpdateApplicationsStats implements ShouldQueue
             Cache::put('stats:region:'.$region.':applications:regional:approved', $applications->where('campaign.type', 'regional')->where('status', 'approved')->count(), 60);
             Cache::put('stats:region:'.$region.':applications:regional:declined', $applications->where('campaign.type', 'regional')->where('status', 'declined')->count(), 60);
         }
-
-        $this->line('The applications stats were updated!');
     }
 }
