@@ -100,7 +100,7 @@
               <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle mb-5">
                 <i class="mdi mdi-food-apple"></i>
               </div>
-              <h3>Posturi vacante!</h3>
+              <h3>Cum te poți implica?</h3>
               <p>
                 Te vrem în echipa noastră. Toate funcțiile vacante pot fi vizualizate și poți
                 aplica pentru una dintre acestea direct de pe platforma noastră de alegeri. 
