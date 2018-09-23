@@ -76,6 +76,14 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        'custom' => [
+            'driver' => 'custom',
+            'via' => \KABBOUCHI\LoggerDiscordChannel\DiscordLogger::class,
+            'webhook' => env('LOG_DISCORD_WEBHOOK_URL'),
+            'level' => 'error',
+            'role_id' => null,
+        ],
     ],
 
 ];
