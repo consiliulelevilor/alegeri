@@ -77,6 +77,11 @@ class Campaign extends Model
         return $query->where('type', 'executive');
     }
 
+    public function scopeScholarExecutive($query)
+    {
+        return $query->where('type', 'executive-scholar');
+    }
+
     public function scopeRegional($query)
     {
         return $query->where('type', 'regional');

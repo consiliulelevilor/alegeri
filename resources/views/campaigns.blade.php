@@ -98,6 +98,9 @@
                             @if($campaign->type == 'executive')
                               <i class="mdi mdi-sitemap mr-2"></i> Consiliul Național al Elevilor
                             @endif
+                            @if($campaign->type == 'executive-scholar')
+                              <i class="mdi mdi-sitemap mr-2"></i> Consiliul Școlar al Elevilor
+                            @endif
                             @if($campaign->type == 'regional')
                             <i class="mdi mdi-map-marker-outline mr-2"></i> Consiliul Județean al Elevilor
                             @endif
@@ -223,6 +226,9 @@
                       @if($campaign->type == 'executive')
                         Consiliului Național al Elevilor?
                       @endif
+                      @if($campaign->type == 'executive-scholar')
+                        Consiliului Școlar al Elevilor?
+                      @endif
                       @if($campaign->type == 'regional')
                         Consiliului Județean {{ Auth::user()->region }}?
                       @endif
@@ -237,6 +243,9 @@
                       Care consideri că este misiunea 
                       @if($campaign->type == 'executive')
                         Consiliului Național al Elevilor?
+                      @endif
+                      @if($campaign->type == 'executive-scholar')
+                        Consiliului Școlar al Elevilor?
                       @endif
                       @if($campaign->type == 'regional')
                         Consiliului Județean {{ Auth::user()->region }}?
@@ -258,6 +267,9 @@
                       Cum consideri că poți ajuta
                       @if($campaign->type == 'executive')
                         Consiliul Național al Elevilor
+                      @endif
+                      @if($campaign->type == 'executive-scholar')
+                        Consiliul Școlar al Elevilor
                       @endif
                       @if($campaign->type == 'regional')
                         Consiliul Județean {{ Auth::user()->region }}
