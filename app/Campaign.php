@@ -102,8 +102,6 @@ class Campaign extends Model
                 return Storage::disk(config('voyager.storage.disk'))->url($this->image);
             }
         }
-
-        return null;
     }
 
     public function isOpened()

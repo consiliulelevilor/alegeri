@@ -81,7 +81,7 @@
               </p>
               <p>
                 de la decontul integral pentru elevii navetiști,
-                la lipsa unei reforme reale ale planurilor-cadru pentru învățământul liceal.
+                la lipsa unor reforme reale ale planurilor-cadru pentru învățământul liceal.
                 De altfel, implementează proiecte de dezvoltare personală/profesională care să satisfacă nevoile și interesele elevilor.
               </p>
             </div>
