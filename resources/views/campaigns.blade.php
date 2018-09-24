@@ -150,9 +150,11 @@
               </span>
             </h2>
             <p class="lead text-white">
-              Consultă ghidul Prima candidatură în Consiliul Elevilor și vei regăsi în el sfaturi utile despre cum să construiești o strategie de dezvoltare și un plan de acțiune
-              care să fie relevante, ce trebuie să conțină dosarul tău de candidatură pentru funcțiile din Biroul Executiv, dar și valori/principii esențiale după care să te ghidezi pe
-              tot parcursul mandatului tău.
+              Indiferent dacă ești la prima sau la ultima candidatură în această structură
+              de reprezentare a elevilor, venim în ajutorul tău! Consultă pagina <a href="https://facebook.com/consiliulelevilor" class="text-neutral" target=_blank>Consiliul Național al Elevilor <i class="mdi mdi-open-in-new"></i></a>
+              și vei regăsi acolo sfaturi utile despre cum să construiești o strategie de dezvoltare și un plan de acțiune
+              care să fie relevante, ce trebuie să conțină dosarul tău de candidatură pentru funcțiile din Biroul Executiv,
+              dar și valori/principii esențiale după care să te ghidezi pe tot parcursul mandatului tău.
             </p>
           </div>
         </div>
@@ -163,27 +165,30 @@
             </div>
             <h5 class="text-white mt-3">Consiliul Național al Elevilor</h5>
             <p class="text-white mt-3">
-              Consiliul Național al Elevilor este structura administrativă.
-              Este format dintr-un Birou Executiv și un Birou de Presă care coordonează acțiunile.
+              Consiliul Național al Elevilor este structura de reprezentare a elevilor la nivel național.
+              Acesta este format din două organisme principale: Biroul Executiv și Adunarea Generală,
+              formată din președinții Consiliilor Județene ale Elevilor.
             </p>
           </div>
           <div class="col-lg-4">
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
               <i class="mdi mdi-map-marker-outline"></i>
             </div>
-            <h5 class="text-white mt-3">Consiliul Județean al Elevilor</h5>
+            <h5 class="text-white mt-3">Consiliul Județean al Elevilor<sup><span class="badge badge-pill badge-primary text-uppercase">În curând</span></sup></h5>
             <p class="text-white mt-3">
-              Consiliul Național al Elevilor este ca un nod central. Din ele, se bifurcă foarte multe consilii județene.
-              Aplicațiile se fac per-județ și vor viza strict județul respectiv.
+              Consiliul Județean al Elevilor este substructura CNE responsabilă de reprezentarea elevilor
+              de pe raza unui anumit județ. Acesta monitorizează Consiliile Școlare ale Elevilor,
+              inițiată demerusi și proiecte care să răspundă nevoilor din acel județ.
             </p>
           </div>
           <div class="col-lg-4">
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-danger">
-                <i class="mdi mdi-city-variant-outline"></i>
+              <i class="mdi mdi-city-variant-outline"></i>
             </div>
-            <h5 class="text-white mt-3">Consiliul Școlar al Elevilor <sup><span class="badge badge-pill badge-primary text-uppercase">În curând</span></sup></h5>
+            <h5 class="text-white mt-3">Consiliul Școlar al Elevilor</h5>
             <p class="text-white mt-3">
-              La nivel de instituție există un consiliu ce reprezintă elevii din acea instituție.
+              Consiliul Școlar al Elevilor militează pentru reprezentarea elevilor dintr-o școală,
+              implicându-se în soluționarea problemelor pe care acestea le întâmpină în mediul educațional.
             </p>
           </div>
         </div>

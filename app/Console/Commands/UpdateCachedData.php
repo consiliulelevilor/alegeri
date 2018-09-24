@@ -41,6 +41,11 @@ class UpdateCachedData extends Command
         $regions = file_get_contents(public_path('/json/regions.json'));
         $institutions = file_get_contents(public_path('/json/institutions.json'));
 
+        Cache::forget('json:regions:raw');
+        Cache::forget('json:institutions:raw');
+        Cache::forget('json:regions');
+        Cache::forget('json:institutions');
+
         Cache::rememberForever('json:regions:raw', function () use ($regions) {
             return $regions;
         });

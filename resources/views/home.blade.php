@@ -129,7 +129,7 @@
                       </div>
                     </div>
                     <div>
-                      <h6 class="mb-0">Consiliul Județean al Elevilor</h6>
+                      <h6 class="mb-0">Consiliul Județean al Elevilor <span class="badge badge-pill badge-primary text-uppercase">În curând</span></h6>
                     </div>
                   </div>
                 </li>
@@ -141,9 +141,7 @@
                       </div>
                     </div>
                     <div>
-                      <h6 class="mb-0">Consiliul Școlar al Elevilor
-                        <span class="badge badge-pill badge-primary text-uppercase">În curând</span>
-                      </h6>
+                      <h6 class="mb-0">Consiliul Școlar al Elevilor</h6>
                     </div>
                   </div>
                 </li>
