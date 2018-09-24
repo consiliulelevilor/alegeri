@@ -481,7 +481,7 @@
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <p>
-                    Consiliul Național al Elevilor se angazează să nu ofere niciunei terțe persoane acces la date confidențiale aferente celor care se înregistrează
+                    Consiliul Național al Elevilor se angajează să nu ofere niciunei terțe persoane acces la date confidențiale aferente celor care se înregistrează
                     pe această platformă. Totodată, CNE va păstra datele pe unități de stocare personale, în medii securizate,
                     și va folosi informațiile în cauză doar pentru a eficientiza strângerea unei baze de date cu toți elevii reprezentanți
                     din România, pentru a atesta că aparțin unei persoane reale, pentru a contacta membrii platformei, dacă este nevoie.
