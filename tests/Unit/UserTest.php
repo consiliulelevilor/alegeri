@@ -59,7 +59,11 @@ class UserTest extends TestCase
         $user->update([
             'institution' => 'Școala cu clasele X',
         ]);
+        $this->assertFalse($user->canApplyToCampaigns());
 
+        $user->update([
+            'accepted_gdpr' => true,
+        ]);
         $this->assertTrue($user->canApplyToCampaigns());
 
         $application = $user->applications()->create([

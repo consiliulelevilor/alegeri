@@ -140,7 +140,7 @@ class User extends VoyagerUser implements HasMedia
     public function canApplyToCampaigns()
     {
         return (bool) (
-            $this->region && $this->institution
+            $this->accepted_gdpr && $this->region && $this->institution
         );
     }
 }

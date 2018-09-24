@@ -140,6 +140,14 @@
             <div class="mt-3 mb-2 py-2 border-top">
               <div class="row justify-content-center">
                 <div class="col-lg-12">
+                  @if(Auth::user() && Auth::user()->is($user) && ! Auth::user()->accepted_gdpr)
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <span class="alert-inner--icon"><i class="mdi mdi-sign-caution"></i></span>
+                      <span class="alert-inner--text">
+                        <strong>Hey!</strong> Nu ești de acord cu politica GDPR. Fără acceptul tău, nu vei putea aplica la niciun post din platformă.
+                      </span>
+                    </div>
+                  @endif
                   <p class="lead ml-md-5 ml-lg-5">
                     @if($user->description)
                       {!! nl2br(e($user->description)) !!}
@@ -467,6 +475,24 @@
                 <div class="col-md-12 mb-4">
                   <label>Scrie-ne câteva lucruri despre tine. Descrierea va fi făcută publică pe profilul tău.</label>
                   <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="description">{{ old('description') ?? $user->description }}</textarea>
+                </div>
+              </div>
+              <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-lock mr-2"></i> Securitate & Confidențialitate</div>
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <p>
+                    Consiliul Național al Elevilor se angazează să nu ofere niciunei terțe persoane acces la date confidențiale aferente celor care se înregistrează
+                    pe această platformă. Totodată, CNE va păstra datele pe unități de stocare personale, în medii securizate,
+                    și va folosi informațiile în cauză doar pentru a eficientiza strângerea unei baze de date cu toți elevii reprezentanți
+                    din România, pentru a atesta că aparțin unei persoane reale, pentru a contacta membrii platformei, dacă este nevoie.
+                    De altfel, aceștia pot cere ca datele lor personale să fie șterse; cererile pot fi trimise la adresa de mail <a href="mailto:cne.secretariat@gmail.com">cne.secretariat@gmail.com</a>
+                  </p>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" name="accepted_gdpr" id="accepted-gdpr" type="checkbox" @if($user->accepted_gdpr) checked @endif>
+                    <label class="custom-control-label" for="accepted-gdpr">
+                      DA, sunt de acord cu procesarea datelor mele personale.
+                    </label>
+                  </div>
                 </div>
               </div>
               <div class="lead mb-2 mt-0 pt-0"><i class="mdi mdi-link-variant mr-2"></i> Setează URL-ul profilului</div>

@@ -34,6 +34,7 @@ class UserController extends Controller
             'institution' => ($request->institution) ?: $user->institution,
             'class' => ($request->class) ?: $user->class,
             'is_mail_subscribed' => $request->has('is_mail_subscribed'),
+            'accepted_gdpr' => $request->has('accepted_gdpr'),
             'description' => ($request->description) ?: $user->description,
         ]);
 
