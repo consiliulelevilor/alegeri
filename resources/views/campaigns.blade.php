@@ -150,8 +150,7 @@
               </span>
             </h2>
             <p class="lead text-white">
-              Indiferent dacă ești la prima sau la ultima candidatură în această structură
-              de reprezentare a elevilor, venim în ajutorul tău! Consultă pagina <a href="https://facebook.com/consiliulelevilor" class="text-neutral" target=_blank>Consiliul Național al Elevilor <i class="mdi mdi-open-in-new"></i></a>
+              Consultă pagina <a href="https://facebook.com/consiliulelevilor" class="text-neutral" target=_blank>Consiliul Național al Elevilor <i class="mdi mdi-open-in-new"></i></a>
               și vei regăsi acolo sfaturi utile despre cum să construiești o strategie de dezvoltare și un plan de acțiune
               care să fie relevante, ce trebuie să conțină dosarul tău de candidatură pentru funcțiile din Biroul Executiv,
               dar și valori/principii esențiale după care să te ghidezi pe tot parcursul mandatului tău.
