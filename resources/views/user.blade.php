@@ -112,7 +112,7 @@
                 <i class="mdi mdi-link-variant mr-2"></i>
                 <a href="{{ $user->profileUrl() }}" target=_blank>{{ $user->profileUrl() }}</a>
               </div>
-              <div>
+              <div class="mt-3">
                 @if($user->facebook && $user->facebook->is_public)
                   <a class="text-primary mr-2" href="https://facebook.com/{{ $user->facebook->social_id }}" target=_blank>
                     <i class="mdi mdi-24px mdi-facebook-box"></i>
@@ -169,7 +169,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <h3 class="text-white"><i class="mdi mdi-cancel mr-2"></i> Ești aproape gata... </h3>
                     <p class="lead text-white mt-3 mb-0">
-                      Pentru a putea candida, va trebui să îți completezi datele persoane, printre care orașul, județul și instituția din care faci parte.
+                      Pentru a putea candida, va trebui să îți completezi datele personale, printre care orașul, județul și instituția din care faci parte.
                     </p>
                     <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-lg btn-dark mt-4"><i class="mdi mdi-share mr-2"></i> Completează datele</a>
                   </div>
