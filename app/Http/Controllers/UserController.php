@@ -24,6 +24,23 @@ class UserController extends Controller
     {
         $user = $request->user();
 
+        if ($request->region) {
+            $cities = collect(json_decode(cache('json:regions:raw'), true)[$request->region]);
+            $institutions = json_decode(cache('json:institutions:raw'), true)[$request->region];
+
+            if ($request->city) {
+                if (! $cities->where('name', $request->city)->first()) {
+                    return redirect(route('me'))->with('alert', 'Orașul nu există în județul selectat.');
+                }
+            }
+    
+            if ($request->institution) {
+                if (! in_array($request->institution, $institutions)) {
+                    return redirect(route('me'))->with('alert', 'Școala sau liceul selectat nu există în județul selectat.');
+                } 
+            }
+        }
+
         $user->update([
             'profile_name' => ($request->profile_name) ? str_slug($request->profile_name) : $user->profile_name,
             'name' => ($request->name) ?: $user->name,

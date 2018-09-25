@@ -645,7 +645,7 @@
           let selectedCity;
           $.get('{{ route('api.regions') }}?onlyRegion=' + $('#region-select').val(), function (cities) {
             @if($user->city)
-              selectedCity = '{{ $user->city }}';
+              selectedCity = '{!! htmlspecialchars_decode($user->city) !!}';
             @endif
 
             $('#city-select').empty();
@@ -668,7 +668,7 @@
           let selectedInstitution;
           $.get('{{ route('api.institutions') }}?onlyRegion=' + $('#region-select').val(), function (institutions) {
             @if($user->institution)
-              selectedInstitution = '{{ $user->institution }}';
+              selectedInstitution = '{!! htmlspecialchars_decode($user->institution) !!}';
             @endif
 
             $('#institution-select').empty();
