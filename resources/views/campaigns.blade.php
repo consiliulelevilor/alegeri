@@ -99,7 +99,7 @@
                               <i class="mdi mdi-sitemap mr-2"></i> Consiliul Național al Elevilor
                             @endif
                             @if($campaign->type == 'executive-scholar')
-                              <i class="mdi mdi-sitemap mr-2"></i> Consiliul Școlar al Elevilor
+                              <i class="mdi mdi-hexagon-slice-4 mr-2"></i> Consiliul Școlar al Elevilor
                             @endif
                             @if($campaign->type == 'regional')
                             <i class="mdi mdi-map-marker-outline mr-2"></i> Consiliul Județean al Elevilor

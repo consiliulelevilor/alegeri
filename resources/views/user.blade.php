@@ -203,7 +203,7 @@
             @foreach($chunk as $application)
               <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card shadow border-0" id="card-{{ $application->id }}">
-                  <img alt="{{ $application->campaign->name }}" src="{{ $application->campaign->imageUrl() }}" class="img-fluid rounded" style="height: 190px; min-height: 190px;">
+                  <img alt="{{ $application->campaign->name }}" src="{{ $application->campaign->imageUrl() }}" class="img-fluid rounded" style="height: 130px; min-height: 130px;">
                   <div class="card-body py-2">
                     <h5 class="text-{{ $application->campaign->color_scheme }} text-uppercase mt-3 float-right">
                       @if($application->isApproved()) <i class="mdi mdi-check text-success" data-toggle="tooltip" data-placement="top" title="Aplicația a fost acceptată."></i> @endif
