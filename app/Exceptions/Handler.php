@@ -46,12 +46,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if (app()->bound('sentry') && $this->shouldReport($exception)) {
+            app('sentry')->captureException($exception);
+        }
+
         if ($exception instanceof \Laravel\Socialite\Two\InvalidStateException) {
-            return redirect(route('login'));
+            return redirect(route('login'))->with('alert', 'Oops, se pare că trebuie să te conectezi din nou!');
         }
 
         if ($exception instanceof \GuzzleHttp\Exception\ClientException) {
-            return redirect(route('home'));
+            return redirect(route('home'))->with('alert', 'Oops, e o mică problemă! Am fost informați și o rezolvăm cât mai repede!');
         }
 
         return parent::render($request, $exception);
