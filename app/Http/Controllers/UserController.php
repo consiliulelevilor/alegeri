@@ -33,11 +33,11 @@ class UserController extends Controller
                     return redirect(route('me'))->with('alert', 'Orașul nu există în județul selectat.');
                 }
             }
-    
+
             if ($request->institution) {
                 if (! in_array($request->institution, $institutions)) {
                     return redirect(route('me'))->with('alert', 'Școala sau liceul selectat nu există în județul selectat.');
-                } 
+                }
             }
         }
 
