@@ -176,6 +176,8 @@
 
     @yield('content')
 
+    <div class="fb-customerchat" page_id="{{ config('services.facebook.page_id') }}"></div>
+
     @if(!\App::isDownForMaintenance())
       @if(!request()->is('login'))
         <footer class="footer has-cards">
