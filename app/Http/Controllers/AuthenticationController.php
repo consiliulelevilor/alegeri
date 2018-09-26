@@ -39,7 +39,7 @@ class AuthenticationController extends Controller
             $scopes = ['basic'];
         }
 
-        return Socialite::driver($social)->scopes($scopes)->redirect();
+        return Socialite::driver($social)->scopes($scopes)->stateless()->redirect();
     }
 
     public function socialConfirmation($social, Request $request)
@@ -48,7 +48,7 @@ class AuthenticationController extends Controller
             return redirect(route('login'));
         }
 
-        $socialite = Socialite::driver($social)->user();
+        $socialite = Socialite::driver($social)->stateless()->user();
         $userSocial = UserSocial::{$social}()->socialId($socialite->getId())->first();
         $sessionedUser = User::with(['facebook', 'google', 'instagram'])->find(Session::get('user_id'));
 
