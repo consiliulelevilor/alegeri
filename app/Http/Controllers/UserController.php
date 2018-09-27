@@ -10,13 +10,21 @@ class UserController extends Controller
 {
     public function show($idOrSlug, Request $request)
     {
-        $user = User::with(['facebook', 'instagram', 'google'])->profile($idOrSlug)->firstOrFail();
+        $user = User::with([
+            'facebook', 'instagram', 'google',
+            'applications.campaign',
+        ])->profile($idOrSlug)->firstOrFail();
 
         return view('user', ['user' => $user]);
     }
 
     public function me(Request $request)
     {
+        $request->user()->load([
+            'facebook', 'instagram', 'google',
+            'applications.campaign',
+        ]);
+
         return view('user', ['user' => $request->user()]);
     }
 

@@ -82,4 +82,18 @@ class Application extends Model
     {
         return (bool) ($this->status === 'approved');
     }
+
+    public function campaignAcceptsApplications()
+    {
+        return $this->campaign()->first()->acceptsApplications();
+    }
+
+    public function canBeEdited()
+    {
+        if (! $this->isPending() || ! $this->campaignAcceptsApplications()) {
+            return false;
+        }
+
+        return true;
+    }
 }

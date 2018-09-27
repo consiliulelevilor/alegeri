@@ -111,14 +111,13 @@
                           @if($campaign->opened_until)
                             <small>Se închide pe {{ $campaign->opened_until->format('d.m.Y H:i') }}</small>
                           @endif
-                          @if($campaign->isOpened())
-                          @else
+                          @if(!$campaign->acceptsApplications())
                             <small>Închisă pe {{ $campaign->closed_at->format('d.m.Y H:i') }}</small>
                           @endif
                           @if(Auth::user()->hasAppliedTo($campaign))
                             <a href="javascript:{}" class="btn btn-link text-success mt-0 mb-2"><i class="mdi mdi-check mr-2"></i> Ai aplicat!</a>
                           @else
-                            @if($campaign->isOpened())
+                            @if($campaign->acceptsApplications())
                               @if(! Auth::user()->canApplyToCampaigns())
                               <a href="{{ route('me') }}?open=profile" class="btn btn-link text-danger mt-3 mb-2"><i class="mdi mdi-arrow-right mr-2"></i> Completează datele</a>
                               @else
@@ -202,12 +201,12 @@
   </main>
 
   @foreach($campaigns as $campaign)
-    @if($campaign->isOpened() && Auth::user()->canApplyToCampaigns())
+    @if($campaign->acceptsApplications() && Auth::user()->canApplyToCampaigns())
       <div class="modal fade" id="campaign-{{ $campaign->id }}-modal" tabindex="-1" role="dialog" aria-labelledby="campaign-{{ $campaign->id }}-modal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="campaign-{{ $campaign->id }}-modal">{{ $campaign->name }}</h5>
+              <h5 class="modal-title" id="campaign-{{ $campaign->id }}-title">{{ $campaign->name }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -289,7 +288,7 @@
                     <label>
                       Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
                     </label>
-                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question5">{{ old('question4') }}</textarea>
+                    <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question5">{{ old('question5') }}</textarea>
                   </div>
                 </div>
               </form>

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['authenticated']], function () {
 
     Route::patch('/me/picture', 'UserController@updateMyProfilePicture')->name('me.change.picture');
     Route::patch('/me/cover', 'UserController@updateMyCoverPicture')->name('me.change.cover');
+    Route::patch('/me/application/{id}', 'CampaignController@updateMyApplication')->name('me.edit.application');
 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });

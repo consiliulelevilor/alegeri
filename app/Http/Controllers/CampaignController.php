@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
+use App\Application;
 use Illuminate\Http\Request;
 
 class CampaignController extends Controller
@@ -49,5 +50,37 @@ class CampaignController extends Controller
         ]);
 
         return redirect(route('campaigns').'?jumpTo='.$campaign->id)->with('success', 'Ai aplicat cu succes!');
+    }
+
+    public function updateMyApplication($id, \App\Http\Requests\UpdateMyApplicationRequest $request)
+    {
+        $application = Application::find($id);
+        $user = $request->user();
+
+        if (! $application) {
+            return redirect(route('me'))->with('alert', 'A apărut o eroare la modificarea aplicației.');
+        }
+
+        if (! $application->canBeEdited()) {
+            return redirect(route('me'))->with('alert', 'Aplicația nu mai poate fi modificată.');
+        }
+
+        $application->update([
+            'user_name' => $user->name,
+            'user_email' => $user->email,
+            'user_city' => $user->city,
+            'user_region' => $user->region,
+            'user_institution' => $user->institution,
+            'user_class' => $user->class,
+            'user_description' => $user->description,
+            'question1' => $request->question1,
+            'question2' => $request->question2,
+            'question3' => $request->question3,
+            'question4' => $request->question4,
+            'question5' => $request->question5,
+            'status' => $application->status,
+        ]);
+
+        return redirect(route('me'))->with('success', 'Aplicația a fost modificată cu succes!');
     }
 }

@@ -232,6 +232,13 @@
                     </small>
                     <p class="description">
                       <a href="javascript:{}" onclick="$('#application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0"><i class="mdi mdi-eye mr-2"></i> Citește răspunsurile</a>
+                      @if(Auth::user() && Auth::user()->is($user))
+                        @if($application->canBeEdited())
+                          <a href="javascript:{}" onclick="$('#edit-application-{{ $application->id }}-modal').modal('show');" class="btn btn-link text-primary pb-0 pl-0">
+                            <i class="mdi mdi-pencil text-primary mr-2"></i> Modifică
+                          </a>
+                        @endif
+                      @endif
                     </p>
                   </div>
                 </div>
@@ -608,6 +615,104 @@
         </div>
       </div>
     </div>
+
+    @foreach($user->applications as $application)
+      @if($application->canBeEdited())
+        <div class="modal fade" id="edit-application-{{ $application->id }}-modal" tabindex="-1" role="dialog" aria-labelledby="edit-application-{{ $application->id }}-modal" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="edit-application-{{ $application->id }}-title">Modifică aplicația ta #{{ $application->id }} ({{ $application->campaign->name }})</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="{{ route('me.edit.application', ['id' => $application->id]) }}" id="application-{{ $application->id }}-form">
+                  @csrf
+                  @method('PATCH')
+                  <input type="hidden" name="ref" value="application">
+                  <input type="hidden" name="refId" value="{{ $application->id }}">
+                  <div class="lead mb-2 mt-2 pt-0"><i class="mdi mdi-vote mr-2"></i> Candidatură</div>
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <label>
+                        Ce te recomandă pentru funcția în cadrul 
+                        @if($application->campaign->type == 'executive')
+                          Consiliului Național al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'executive-scholar')
+                          Consiliului Școlar al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliului Județean {{ Auth::user()->region }}?
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliului Școlar?
+                        @endif
+                      </label>
+                      <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question1">{{ old('question1') ?? $application->question1 }}</textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                      <label>
+                        Care consideri că este misiunea 
+                        @if($application->campaign->type == 'executive')
+                          Consiliului Național al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'executive-scholar')
+                          Consiliului Școlar al Elevilor?
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliului Județean {{ Auth::user()->region }}?
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliului Școlar?
+                        @endif
+                      </label>
+                      <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question2">{{ old('question2') ?? $application->question2 }}</textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <label>Care a fost cea mai importantă activitate comunitară sau cel mai important proiect în care ai fost implicat(ă)?</label>
+                      <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question3">{{ old('question3') ?? $application->question3 }}</textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                      <label>
+                        Cum consideri că poți ajuta
+                        @if($application->campaign->type == 'executive')
+                          Consiliul Național al Elevilor
+                        @endif
+                        @if($application->campaign->type == 'executive-scholar')
+                          Consiliul Școlar al Elevilor
+                        @endif
+                        @if($application->campaign->type == 'regional')
+                          Consiliul Județean {{ Auth::user()->region }}
+                        @endif
+                        @if($application->campaign->type == 'institutional')
+                          Consiliul Școlar {{ Auth::user()->region }}
+                        @endif
+                        să se dezvolte organizațional prin funcția la care candidezi?
+                      </label>
+                      <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question4">{{ old('question4') ?? $application->question4 }}</textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                      <label>
+                        Descrie succint două dintre cele mai importante demersuri/proiecte pe care le ai în vedere în viitorul mandat.
+                      </label>
+                      <textarea class="form-control form-control-alternative" rows="5" placeholder="Scrie aici..." name="question5">{{ old('question5') ?? $application->question5 }}</textarea>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a href="javascript:{}" onclick="$(this).html('Așteaptă...'); $('#application-{{ $application->id }}-form').submit();" class="btn btn-primary"><i class="mdi mdi-pencil mr-2"></i> Modifică</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endif
+    @endforeach
   @endif
 @endsection
 
@@ -623,6 +728,10 @@
       @if(Auth::user() && Auth::user()->is($user))
         @if(($errors->any() && old('ref') == 'profile-form') || request()->query('open') == 'profile')
           $('#profile-modal').modal('show');
+        @endif
+
+        @if($errors->any() && old('ref') == 'application')
+          $('#edit-application-{{ old('refId') }}-modal').modal('show');
         @endif
 
         @if(! $user->region)
