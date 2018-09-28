@@ -115,6 +115,8 @@ class AuthenticationController extends Controller
             ]);
 
             $user->load($social);
+            
+            \Auth::login($user);
         }
 
         if (! $user->{$social}) {
