@@ -55,8 +55,12 @@
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions pt-sm-5 pt-md-5 pt-lg-0 pb-0 mt-lg-0 text-center">
-                  <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-right float-md-right float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Vezi aplicațiile</a>
-                  {{-- <a href="javascript:{}" class="btn btn-sm btn-danger float-sm-right float-md-right float-lg-none"><i class="mdi mdi-heart mr-2"></i> Susține</a> --}}
+                  @if(Auth::user() && Auth::user()->is($user))
+                    <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success float-sm-left float-md-left float-lg-none">Modifică profil</a>
+                    <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary float-sm-left float-md-left float-lg-none">Preferințe</a>
+                  @else
+                    <a href="javascript:{}" id="applications-button" class="btn btn-sm btn-success float-sm-right float-md-right float-lg-none"><i class="mdi mdi-chart-bubble mr-2"></i> Vezi aplicațiile</a>
+                  @endif
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1 mt-sm-3">
@@ -73,18 +77,6 @@
                       {{ $user->created_at->diffInDays(now()) }}
                     </span>
                   </div>
-                  {{-- <div>
-                    <span data-toggle="tooltip" data-placement="bottom" title="Rating-ul mediu al candidatului." class="heading text-center btn-link text-warning">
-                      <i class="mdi mdi-star mr-1"></i>
-                      8.7
-                    </span>
-                  </div>
-                  <div>
-                    <span data-toggle="tooltip" data-placement="bottom" title="Numărul de susținători ai candidatului." class="heading text-center btn-link text-danger">
-                      <i class="mdi mdi-heart mr-1"></i>
-                      12
-                    </span>
-                  </div> --}}
                 </div>
               </div>
             </div>
@@ -129,13 +121,6 @@
                   </a>
                 @endif
               </div>
-              @if(Auth::user() && Auth::user()->is($user))
-                <div class="pt-3 pb-2">
-                  <a href="javascript:{}" data-toggle="modal" data-target="#profile-modal" class="btn btn-sm btn-success mt-2">Modifică profil</a>
-                  <a href="javascript:{}" data-toggle="modal" data-target="#preferences-modal" class="btn btn-sm btn-primary mt-2">Preferințe</a>
-                  <a href="javascript:{}" id="upload-cover-picture-anchor" class="btn btn-sm btn-danger mt-2">Schimbă coperta</a>
-                </div>
-              @endif
             </div>
             <div class="mt-3 mb-2 py-2 border-top">
               <div class="row justify-content-center">

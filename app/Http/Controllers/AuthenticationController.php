@@ -123,7 +123,7 @@ class AuthenticationController extends Controller
                 'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
                 'socialite' => $socialite,
             ]);
-            
+
             \Auth::login($user);
 
             if (! $user->canApplyToCampaigns()) {
@@ -133,7 +133,25 @@ class AuthenticationController extends Controller
             return redirect(route('me'))->with('success', 'Bine ai venit în contul tău!');
         }
 
-        return redirect(route('me').'?open=profile');
+        $user->socials()->create([
+            'social_id' => $socialite->getId(),
+            'social_type' => $social,
+            'email' => $socialite->getEmail(),
+            'nickname' => $socialite->getNickname(),
+            'name' => $socialite->getName(),
+            'avatar_url' => str_replace(['?sz=50', '?type=normal'], '?type=large', $socialite->getAvatar()),
+            'token' => $socialite->token,
+            'token_expiry' => ($socialite->expiresIn) ? now()->addSeconds($socialite->expiresIn) : null,
+            'socialite' => $socialite,
+        ]);
+
+        \Auth::login($user);
+
+        if (! $user->canApplyToCampaigns()) {
+            return redirect(route('me').'?open=profile');
+        }
+
+        return redirect(route('me'))->with('success', 'Bine ai venit în contul tău!');
     }
 
     public function socialUnlink($social, Request $request)
