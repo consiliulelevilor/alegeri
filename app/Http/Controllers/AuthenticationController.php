@@ -130,7 +130,7 @@ class AuthenticationController extends Controller
                 return redirect(route('me').'?open=profile');
             }
 
-            return redirect(route('me'))->with('success', 'Bine ai revenit în contul tău!');
+            return redirect(route('me'))->with('success', 'Bine ai venit în contul tău!');
         }
 
         return redirect(route('me').'?open=profile');
