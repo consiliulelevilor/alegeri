@@ -20,7 +20,6 @@ $factory->define(App\Campaign::class, function (Faker $faker) {
         'image' => 'https://via.placeholder.com/381x315',
         'color_scheme' => 'success',
         'type' => 'executive',
-        'closed_at' => null,
         'opened_until' => now()->addDays(1),
         'is_visible' => true,
     ];

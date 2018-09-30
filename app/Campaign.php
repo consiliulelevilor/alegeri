@@ -22,7 +22,6 @@ class Campaign extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-        'closed_at',
         'opened_until',
     ];
     protected $casts = [
@@ -55,11 +54,6 @@ class Campaign extends Model
                         'question1', 'question2', 'question3', 'question4', 'question5',
                         'status'
                     )->withTimestamps();
-    }
-
-    public function scopeClosed($query)
-    {
-        return $query->whereNotNull('closed_at');
     }
 
     public function scopeVisible($query)
@@ -109,25 +103,13 @@ class Campaign extends Model
         }
     }
 
-    public function isOpened()
-    {
-        return (bool) is_null($this->closed_at);
-    }
-
     public function isExpired()
     {
         return (bool) ($this->opened_until && $this->opened_until->isPast());
     }
 
-    public function isClosed()
-    {
-        return (bool) (! $this->isOpened());
-    }
-
     public function acceptsApplications()
     {
-        return (bool) (
-            $this->isOpened() && ! $this->isExpired()
-        );
+        return (bool) (! $this->isExpired());
     }
 }

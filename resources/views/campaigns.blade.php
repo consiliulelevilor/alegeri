@@ -77,7 +77,7 @@
                   @foreach($chunk as $campaign)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                       <div class="card card-lift--hover shadow border-0" id="card-{{ $campaign->id }}">
-                        @if($campaign->isClosed())
+                        @if($campaign->isExpired())
                           <div class="closed overlay">
                             <div class="text text-white">
                               <i class="mdi mdi-cancel mdi-48px"></i>
