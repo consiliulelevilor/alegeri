@@ -111,9 +111,6 @@
                           @if($campaign->opened_until)
                             <small>Se închide pe {{ $campaign->opened_until->format('d.m.Y H:i') }}</small>
                           @endif
-                          @if(!$campaign->acceptsApplications())
-                            <small>Aplicațiile sunt închise.</small>
-                          @endif
                           @if(Auth::user()->hasAppliedTo($campaign))
                             <a href="javascript:{}" class="btn btn-link text-success mt-0 mb-2"><i class="mdi mdi-check mr-2"></i> Ai aplicat!</a>
                           @else
