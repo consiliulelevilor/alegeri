@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserSocial extends Model
 {
-    use LogsActivity, SoftDeletes;
+    use LogsActivity;
 
     protected $table = 'users_socials';
     protected $primaryKey = 'id';
@@ -20,7 +19,6 @@ class UserSocial extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at',
         'token_expiry',
     ];
     protected $casts = [
