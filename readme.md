@@ -45,7 +45,7 @@ folders:
         to: /leave/this/path/like/it/was/generated
 sites:
     -
-        map: alegeri.cne.com
+        map: alegeri.test.com
         to: /home/vagrant/code/public
         type: "apache"
         php: "7.2"
@@ -72,7 +72,7 @@ folders:
         to: /leave/this/path/like/it/was/generated
 sites:
     -
-        map: alegeri.cne.com
+        map: alegeri.test.com
         to: /home/vagrant/code/public
 >>      type: "apache"
 >>      php: "7.2"
@@ -99,7 +99,7 @@ $ cd code
 # Configuring your hosts file
 Because the VM is running on a local IP, we should use a name instead of the IP, for various reasons. The most valuable reason is that it should have a name, like a website name. And this can be done in local environment. In case you are on Linux, the file can be found in your `/etc/hosts`. Otherwise, you find your file in `C:\System32\drivers\etc\hosts`. Make sure you edit it with Administrator rights and add the following line:
 ```
-192.168.10.10 alegeri.cne.com
+192.168.10.10 alegeri.test.com
 ```
 
 In case you have a different IP or a different name, feel free to change it.
@@ -149,4 +149,4 @@ $ php artisan voyager:admin [your email] --create
 ```
 
 # Final notes
-Your website is available locally, on `https://alegeri.cne.com`. This enables all features, but in case you use webhooks (this project doesn't use webhooks yet), you should use [ngrok](https://ngrok.com). Since this project uses keys for social media, feel free to ask the public and secret keys from the admin or use your own social apps within their respective developer sections.
+Your website is available locally, on `https://alegeri.test.com`. This enables all features, but in case you use webhooks (this project doesn't use webhooks yet), you should use [ngrok](https://ngrok.com). Since this project uses keys for social media, feel free to ask the public and secret keys from the admin or use your own social apps within their respective developer sections.
