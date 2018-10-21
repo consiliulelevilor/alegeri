@@ -50,6 +50,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($request->is('api/*')) {
+            if ($exception instanceof \Illuminate\Validation\ValidationException) {
+                return responder()->error('invalid_data', collect($exception->validator->getMessageBag())->first()[0])->data([
+                    'fields' => $request->except(['password', 'password_confirmation']),
+                ])->respond(400);
+            }
+
+            if ($exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
+                return responder()->error('denied_access', 'You have insufficient permissions.')->respond(401);
+            }
+
+            if ($exception instanceof \Illuminate\Database\QueryException) {
+                return responder()->error('error', 'There is a problem going down. Try again later.')->respond(500);
+            }
+        }
+
         if ($exception instanceof \Laravel\Socialite\Two\InvalidStateException) {
             return redirect(route('login'))->with('alert', 'Oops, se pare că trebuie să te conectezi din nou!');
         }

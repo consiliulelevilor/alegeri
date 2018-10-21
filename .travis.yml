@@ -19,12 +19,14 @@ before_script:
 script:
   - chmod -R 777 bootstrap/cache/ storage/logs/
   - cp .env.testing .env
-  - travis_retry composer update --no-interaction --no-progress
+  - travis_retry composer update --no-interaction --no-progress --ignore-platform-reqs
+  - npm install
+  - npm run dev
   - php artisan key:generate
   - php artisan config:clear
   - php artisan config:cache
   - php artisan migrate --seed
-  - php artisan passport:install
+  - php artisan passport:keys
   - php artisan storage:link
   - php artisan voyager:install
   - export DISPLAY=:99.0

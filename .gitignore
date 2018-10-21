@@ -15,3 +15,11 @@ yarn-error.log
 package-lock.json
 composer.lock
 .env.backup
+laravel-echo-server.json
+/public/app.css
+/public/app.js
+/public/fonts/*
+/public/images/*
+/public/vendor/*
+!.gitkeep
+mix-manifest.json

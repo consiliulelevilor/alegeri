@@ -1,0 +1,1 @@
+<script type="text/javascript" src="https://code.jquery.com/jquery-{{ $version ?? '3.3.1' }}.min.js"></script>

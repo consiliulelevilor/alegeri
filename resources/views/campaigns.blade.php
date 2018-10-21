@@ -2,10 +2,38 @@
 
 @section('title', 'Aplică - Alegeri pentru Consiliul Național al Elevilor')
 
+@section('css')
+@endsection
+
+@section('prejs')
+@endsection
+
+@section('postjs')
+  <script type="text/javascript">
+    $(document).ready(function () {
+      @if(old('refId'))
+        $('#campaign-{{ old('refId') }}-modal').modal('show');
+      @endif
+
+      @if(request()->query('jumpTo'))
+        $(window).scrollTo($('#card-{{ request()->query('jumpTo') }}'), 1000);
+      @endif
+
+      $('#more-button').on('click', function (e) {
+        $(window).scrollTo($('#section-1'), 1000);
+      });
+
+      $('#details-button').on('click', function (e) {
+        $(window).scrollTo($('#section-3'), 1000);
+      });
+    });
+  </script>
+@endsection
+
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-14.jpg') }}?v={{ cache('v') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url('/images/mastheads/masthead-14.jpg?v={{ cache('v') }}');" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -298,32 +326,4 @@
       </div>
     @endif
   @endforeach
-@endsection
-
-@section('js')
-  <script src="{{ asset('/js/jquery-scrollTo.min.js') }}?v={{ cache('v') }}"></script>
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-        @if(old('refId'))
-          $('#campaign-{{ old('refId') }}-modal').modal('show');
-        @endif
-
-        @if(request()->query('jumpTo'))
-          $(window).scrollTo($('#card-{{ request()->query('jumpTo') }}'), 1000);
-        @endif
-
-        $('#more-button').on('click', function (e) {
-          $(window).scrollTo($('#section-1'), 1000);
-        });
-
-        $('#details-button').on('click', function (e) {
-          $(window).scrollTo($('#section-3'), 1000);
-        });
-      });
-  </script>
-@endsection
-
-@section('css')
-
 @endsection

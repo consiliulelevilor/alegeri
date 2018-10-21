@@ -2,10 +2,26 @@
 
 @section('title', 'Alegeri pentru Consiliul Național al Elevilor')
 
+@section('css')
+@endsection
+
+@section('prejs')
+@endsection
+
+@section('postjs')
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#more-button').on('click', function (e) {
+        $(window).scrollTo($('#section-0'), 1000);
+      });
+    });
+  </script>
+@endsection
+
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url({{ asset('/images/mastheads/masthead-12.jpg') }}?v={{ cache('v') }});" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url('/images/mastheads/masthead-12.jpg?v={{ cache('v') }}');" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -52,7 +68,7 @@
         <div class="row row-grid align-items-center">
           <div class="col-md-6">
             <div class="card bg-default shadow border-0">
-              <img src="{{ asset('images/verticals/vertical-4.jpg') }}?v={{ cache('v') }}" class="card-img-top">
+              <img src="/images/verticals/vertical-4.jpg?v={{ cache('v') }}" class="card-img-top">
               <blockquote class="card-blockquote">
                 <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
                   <polygon points="0,52 583,95 0,95" class="fill-default" />
@@ -93,7 +109,7 @@
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-6 order-md-2">
-            <img src="{{ asset('images/verticals/vertical-5.jpg') }}?v={{ cache('v') }}" class="img-fluid">
+            <img src="/images/verticals/vertical-5.jpg?v={{ cache('v') }}" class="img-fluid">
           </div>
           <div class="col-md-6 order-md-1">
             <div class="pr-md-5">
@@ -103,7 +119,7 @@
               <h3>Cum te poți implica?</h3>
               <p>
                 Te vrem în echipa noastră. Toate funcțiile vacante pot fi vizualizate și poți
-                aplica pentru una dintre acestea direct de pe platforma noastră de alegeri. 
+                aplica pentru una dintre acestea direct de pe platforma noastră de alegeri.
               </p>
               <p>
                 Îți punem la dispoziție trei secțiuni unde poți aplica liber!
@@ -180,20 +196,4 @@
       </div>
     </section>
   </main>
-@endsection
-
-@section('js')
-  <script src="{{ asset('/js/jquery-scrollTo.min.js') }}?v={{ cache('v') }}"></script>
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-        $('#more-button').on('click', function (e) {
-          $(window).scrollTo($('#section-0'), 1000);
-        });
-      });
-  </script>
-@endsection
-
-@section('css')
-
 @endsection

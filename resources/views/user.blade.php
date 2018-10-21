@@ -1,14 +1,118 @@
 @extends('master')
 
 @section('title', $user->name.' - Alegeri pentru Consiliul Național al Elevilor')
+@section('seo_title', $user->name)
+@section('seo_description', $user->description)
+@section('seo_image', $user->avatarUrl())
+
+@section('css')
+@endsection
+
+@section('prejs')
+@endsection
+
+@section('postjs')
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#applications-button').on('click', function (e) {
+        $(window).scrollTo($('#applications'), 1000);
+      });
+
+      @if(Auth::user() && Auth::user()->is($user))
+        @if(($errors->any() && old('ref') == 'profile-form') || request()->query('open') == 'profile')
+          $('#profile-modal').modal('show');
+        @endif
+
+        @if($errors->any() && old('ref') == 'application')
+          $('#edit-application-{{ old('refId') }}-modal').modal('show');
+        @endif
+
+        @if(! $user->region)
+          $('#city-select').prop('disabled', false);
+          $('#institution-select').prop('disabled', false);
+        @else
+          refreshCities();
+          refreshInstitutions();
+        @endif
+
+        $('#region-select').on('change', function (e) {
+          refreshCities();
+          refreshInstitutions();
+        });
+
+        function refreshCities() {
+          $('#city-select').empty();
+          $('#city-select').prop('disabled', true);
+          $('#city-select').append("<option>Se încarcă orașele...</option>");
+
+          let selectedCity;
+
+          $.get('{{ route('api.regions') }}?onlyRegion=' + $('#region-select').val(), function (cities) {
+            @if($user->city)
+              selectedCity = '{!! htmlspecialchars_decode($user->city) !!}';
+            @endif
+
+            $('#city-select').empty();
+            $('#city-select').prop('disabled', false);
+
+            $.each(cities, function (index, item) {
+              if (selectedCity && selectedCity == item.name) {
+                $('#city-select').append("<option value='" + item.name + "' selected>" + item.name + "</option>");
+              } else {
+                $('#city-select').append("<option value='" + item.name + "'>" + item.name + "</option>");
+              }
+            });
+          });
+        }
+
+        function refreshInstitutions() {
+          $('#institution-select').empty();
+          $('#institution-select').prop('disabled', true);
+          $('#institution-select').append("<option>Se încarcă instituțiile...</option>");
+
+          let selectedInstitution;
+
+          $.get('{{ route('api.institutions') }}?onlyRegion=' + $('#region-select').val(), function (institutions) {
+            @if($user->institution)
+              selectedInstitution = '{!! htmlspecialchars_decode($user->institution) !!}';
+            @endif
+
+            $('#institution-select').empty();
+            $('#institution-select').prop('disabled', false);
+
+            $.each(institutions, function (index, item) {
+              if (selectedInstitution && selectedInstitution == item) {
+                $('#institution-select').append("<option value='" + item + "' selected>" + item + "</option>");
+              } else {
+                $('#institution-select').append("<option value='" + item + "'>" + item + "</option>");
+              }
+            });
+          });
+        }
+
+        $('#upload-profile-picture-anchor').on('click', function (e) {
+          $('#profile-picture-input').click();
+        });
+
+        $('#upload-cover-picture-anchor').on('click', function (e) {
+          $('#cover-picture-input').click();
+        });
+
+        $('#profile-picture-input').on('change', function (e) {
+          $('#upload-profile-picture').attr('src', '/images/loaders/profile.gif?v={{ cache('v') }}');
+          $('#profile-picture-form').submit();
+        });
+
+        $('#cover-picture-input').on('change', function (e) {
+          // $('#upload-cover-picture').attr('src', '/images/loaders/profile.gif?v={{ cache('v') }}');
+          $('#cover-picture-form').submit();
+        });
+      @endif
+    });
+  </script>
+@endsection
 
 @section('content')
-  <meta property="og:url" content="{{ request()->url() }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ $user->name }} -  Alegeri pentru Consiliul Național al Elevilor" />
-  <meta property="og:description"content="{{ $user->description }}" />
-  <meta property="og:image" content="{{ $user->avatarUrl() }}" />
-
   @if(Auth::user() && Auth::user()->is($user))
     <form method="POST" action="{{ route('me.change.picture') }}" enctype="multipart/form-data" id="profile-picture-form" class="d-none">
       @csrf
@@ -699,107 +803,4 @@
       @endif
     @endforeach
   @endif
-@endsection
-
-@section('js')
-  <script src="{{ asset('/js/jquery-scrollTo.min.js') }}?v={{ cache('v') }}"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#applications-button').on('click', function (e) {
-        $(window).scrollTo($('#applications'), 1000);
-      });
-
-      @if(Auth::user() && Auth::user()->is($user))
-        @if(($errors->any() && old('ref') == 'profile-form') || request()->query('open') == 'profile')
-          $('#profile-modal').modal('show');
-        @endif
-
-        @if($errors->any() && old('ref') == 'application')
-          $('#edit-application-{{ old('refId') }}-modal').modal('show');
-        @endif
-
-        @if(! $user->region)
-          $('#city-select').prop('disabled', false);
-          $('#institution-select').prop('disabled', false);
-        @else
-          refreshCities();
-          refreshInstitutions();
-        @endif
-
-        $('#region-select').on('change', function (e) {
-          refreshCities();
-          refreshInstitutions();
-        });
-
-        function refreshCities() {
-          $('#city-select').empty();
-          $('#city-select').prop('disabled', true);
-          $('#city-select').append("<option>Se încarcă orașele...</option>");
-          let selectedCity;
-          $.get('{{ route('api.regions') }}?onlyRegion=' + $('#region-select').val(), function (cities) {
-            @if($user->city)
-              selectedCity = '{!! htmlspecialchars_decode($user->city) !!}';
-            @endif
-
-            $('#city-select').empty();
-            $('#city-select').prop('disabled', false);
-
-            $.each(cities, function (index, item) {
-              if (selectedCity && selectedCity == item.name) {
-                $('#city-select').append("<option value='" + item.name + "' selected>" + item.name + "</option>");
-              } else {
-                $('#city-select').append("<option value='" + item.name + "'>" + item.name + "</option>");
-              }
-            });
-          });
-        }
-
-        function refreshInstitutions() {
-          $('#institution-select').empty();
-          $('#institution-select').prop('disabled', true);
-          $('#institution-select').append("<option>Se încarcă instituțiile...</option>");
-          let selectedInstitution;
-          $.get('{{ route('api.institutions') }}?onlyRegion=' + $('#region-select').val(), function (institutions) {
-            @if($user->institution)
-              selectedInstitution = '{!! htmlspecialchars_decode($user->institution) !!}';
-            @endif
-
-            $('#institution-select').empty();
-            $('#institution-select').prop('disabled', false);
-
-            $.each(institutions, function (index, item) {
-              if (selectedInstitution && selectedInstitution == item) {
-                $('#institution-select').append("<option value='" + item + "' selected>" + item + "</option>");
-              } else {
-                $('#institution-select').append("<option value='" + item + "'>" + item + "</option>");
-              }
-            });
-          });
-        }
-
-        $('#upload-profile-picture-anchor').on('click', function (e) {
-          $('#profile-picture-input').click();
-        });
-
-        $('#upload-cover-picture-anchor').on('click', function (e) {
-          $('#cover-picture-input').click();
-        });
-
-        $('#profile-picture-input').on('change', function (e) {
-          $('#upload-profile-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}?v={{ cache('v') }}');
-          $('#profile-picture-form').submit();
-        });
-
-        $('#cover-picture-input').on('change', function (e) {
-          // $('#upload-cover-picture').attr('src', '{{ asset('/images/loaders/profile.gif') }}?v={{ cache('v') }}');
-          $('#cover-picture-form').submit();
-        });
-      @endif
-    });
-  </script>
-@endsection
-
-@section('css')
-
 @endsection

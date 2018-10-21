@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
+    protected static $allowedSocials = [
+        'google', 'facebook', 'instagram',
+    ];
+
     public function index(Request $request)
     {
         return view('login');
@@ -17,7 +21,7 @@ class AuthenticationController extends Controller
 
     public function social($social, Request $request)
     {
-        if (! in_array($social, ['google', 'facebook', 'instagram'])) {
+        if (! in_array($social, self::$allowedSocials)) {
             return redirect(route('login'));
         }
 
@@ -44,7 +48,7 @@ class AuthenticationController extends Controller
 
     public function socialConfirmation($social, Request $request)
     {
-        if (! in_array($social, ['google', 'facebook', 'instagram'])) {
+        if (! in_array($social, self::$allowedSocials)) {
             return redirect(route('login'));
         }
 
@@ -156,12 +160,11 @@ class AuthenticationController extends Controller
 
     public function socialUnlink($social, Request $request)
     {
-        if (! in_array($social, ['google', 'facebook', 'instagram'])) {
+        if (! in_array($social, self::$allowedSocials)) {
             return redirect(route('me'));
         }
 
         $user = $request->user();
-
         $user->load(['socials', $social]);
 
         if (! $user->{$social}) {

@@ -2,6 +2,24 @@
 
 @section('title', 'Login - Alegeri pentru Consiliul Național al Elevilor')
 
+@section('css')
+@endsection
+
+@section('prejs')
+@endsection
+
+@section('postjs')
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#loader').hide();
+
+      $('a.btn:not(#back-button)').on('click', function (e) {
+        $('#loader').fadeIn();
+      });
+    });
+  </script>
+@endsection
+
 @section('content')
   <main>
     <section class="login section section-shaped section-lg">
@@ -57,20 +75,4 @@
       </div>
     </section>
   </main>
-@endsection
-
-@section('js')
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#loader').hide();
-
-      $('a.btn:not(#back-button)').on('click', function(e) {
-        $('#loader').fadeIn();
-      });
-    });
-  </script>
-@endsection
-
-@section('css')
-
 @endsection

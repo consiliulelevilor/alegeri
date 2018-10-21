@@ -1,122 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="keywords" content="consiliu, consiliul, national, al, elevilor, scolar, judetean, invatamant, educatie, educatiei, alegeri, vot, voturi, birou, biroul, executiv, presa, cne">
-    <meta name="description" content="Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="@yield('seo_tags', 'consiliu, consiliul, national, al, elevilor, scolar, judetean, invatamant, educatie, educatiei, alegeri, vot, voturi, birou, biroul, executiv, presa, cne')">
+    <meta name="description" content="@yield('seo_description', 'Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!')">
     <meta name="author" content="Consiliul Național al Elevilor">
 
-    <meta name="theme-color" content="#222">
-    <meta name="msapplication-navbutton-color" content="#222">
-    <meta name="msapplication-TileColor" content="#FFF">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#FFF">
-    <meta name="msapplication-TileImage" content="{{ asset('/images/favicons/ms-icon-144x144.png') }}?v={{ cache('v') }}">
+    <meta name="theme-color" content="@yield('appbar_hex_color', '#222')">
+    <meta name="msapplication-navbutton-color" content="@yield('appbar_hex_color', '#222')">
+    <meta name="msapplication-TileColor" content="@yield('appbar_hex_color', '#FFF')">
+    <meta name="apple-mobile-web-app-status-bar-style" content="@yield('appbar_hex_color', '#FFF')">
+    <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png?v={{ cache('v') }}">
 
-    <meta name="twitter:card" content="summary"></meta>
-    <meta name="twitter:creator" content="@rennokki"></meta>
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@yield('seo_title', 'Alegeri pentru Consiliul Național al Elevilor')" />
+    <meta property="og:description"content="@yield('seo_description', 'Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!')" />
+    <meta property="og:image" content="@yield('seo_image', '/images/mastheads/masthead-1.jpg')" />
 
+    <meta name="twitter:card" content="summary" />
     <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}">
 
     <meta property="og:url" content="{{ request()->url() }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Alegeri pentru Consiliul Național al Elevilor" />
-    <meta property="og:description"content="Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!" />
-    <meta property="og:image" content="{{ asset('/images/mastheads/masthead-1.jpg') }}" />
+    <meta property="og:title" content="@yield('seo_title', 'Alegeri pentru Consiliul Național al Elevilor')" />
+    <meta property="og:description"content="@yield('seo_description', 'Implică-te în Consiliul Școlar al Elevilor, structura de reprezentare a elevilor din școala ta!')" />
+    <meta property="og:image" content="@yield('seo_image', '/images/mastheads/masthead-1.jpg')" />
 
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/favicons/apple-icon-57x57.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/favicons/apple-icon-60x60.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicons/apple-icon-72x72.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/images/favicons/apple-icon-76x76.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/images/favicons/apple-icon-114x114.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/images/favicons/apple-icon-120x120.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/images/favicons/apple-icon-144x144.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/images/favicons/apple-icon-152x152.png') }}?v={{ cache('v') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicons/apple-icon-180x180.png') }}?v={{ cache('v') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/images/favicons/android-icon-192x192.png') }}?v={{ cache('v') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicons/favicon-32x32.png') }}?v={{ cache('v') }}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/images/favicons/favicon-96x96.png') }}?v={{ cache('v') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicons/favicon-16x16.png') }}?v={{ cache('v') }}">
-    <link rel="manifest" href="{{ asset('/images/favicons/manifest.json') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-icon-60x60.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-icon-72x72.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-icon-76x76.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-icon-114x114.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-icon-120x120.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-icon-144x144.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-icon-152x152.png?v={{ cache('v') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-icon-180x180.png?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-icon-192x192.png?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/favicon-96x96.png?v={{ cache('v') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v={{ cache('v') }}">
+    <link rel="manifest" href="/images/favicons/manifest.json">
 
-    <link rel="stylesheet" href="{{ asset('/css/argon.min.css') }}?v={{ cache('v') }}">
-    <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}?v={{ cache('v') }}">
-    <link rel="stylesheet" href="{{ asset('/css/noty.css') }}?v={{ cache('v') }}">
-    <link rel="stylesheet" href="{{ asset('/css/relax.css') }}?v={{ cache('v') }}">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}?v={{ cache('v') }}">
-
-    <link rel="stylesheet" href="{{ asset('/css/materialdesignicons.min.css') }}?v={{ cache('v') }}">
+    <css :file="mix('/app.css')" />
 
     @yield('css')
+    @yield('prejs')
 
     @if(App::environment('production'))
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics.tracking_id') }}"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '{{ config('services.google.analytics.tracking_id') }}');
-      </script>
+      <google-analytics :trackingCode="config('services.google.analytics.tracking_id')" />
     @endif
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-    <script>
-      window.addEventListener("load", function(){
-      window.cookieconsent.initialise({
-        "palette": {
-          "popup": {
-            "background": "#000"
-          },
-          "button": {
-            "background": "#f1d600"
-          }
-        },
-        "theme": "classic",
-        "content": {
-          "message": "Nouă ne plac prăjiturelele (cookies). Nu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre.",
-          "dismiss": "Am înțeles!",
-          "link": "Ce sunt prăjiturelele?",
-          "href": "{{ config('app.main_url') }}"
-        }
-      })});
-    </script>
+    <cookie-consent
+      bg="#000" buttonBg="#f1d600" theme="classic"
+      message="Nouă ne plac prăjiturelele (cookies). Nu le folosim pentru marketing, ci ne ajută să îți îmbunătățim experiența între platformele noastre."
+      dismiss="Am înțeles!"
+      question="Ce sunt prăjiturelele?"
+      :href="config('app.main_url')"
+    />
   </head>
   <body>
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-      @if(App::environment('production'))
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId: '{{ config('services.facebook.client_id') }}',
-            cookie: true,
-            xfbml: true,
-            version: 'v3.1'
-          });
-          FB.AppEvents.logPageView();  
-        };
-      @endif
-    </script>
-    
+    <facebook :appId="config('services.facebook.client_id')" version="3.1" />
+
     @if(!\App::isDownForMaintenance())
       @if(!request()->is('login'))
         <header class="header-global">
           <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
               <a class="navbar-brand mr-lg-5" href="{{ route('home') }}">
-                <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-1024-white.png') }}">
+                <img alt="Consiliul Național al Elevilor" src="/images/logo/logo-1024-white.png">
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -126,7 +85,7 @@
                   <div class="row">
                     <div class="col-6 collapse-brand">
                       <a href="{{ route('home') }}">
-                        <img alt="Consiliul Național al Elevilor" src="{{ asset('images/logo/logo-line-black.png') }}">
+                        <img alt="Consiliul Național al Elevilor" src="/images/logo/logo-line-black.png">
                       </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -176,7 +135,7 @@
 
     @yield('content')
 
-    <div class="fb-customerchat" page_id="{{ config('services.facebook.page_id') }}"></div>
+    <facebook-messenger :pageId="config('services.facebook.page_id')" />
 
     @if(!\App::isDownForMaintenance())
       @if(!request()->is('login'))
@@ -224,49 +183,28 @@
       @endif
     @endif
 
-    <script src="{{ asset('/js/jquery.min.js') }}?v={{ cache('v') }}"></script>
-    <script src="{{ asset('/vendor/popper/popper.min.js') }}?v={{ cache('v') }}"></script>
-    <script src="{{ asset('/vendor/bootstrap/bootstrap.min.js') }}?v={{ cache('v') }}"></script>
-    <script src="{{ asset('/vendor/headroom/headroom.min.js') }}?v={{ cache('v') }}"></script>
-    <script src="{{ asset('/js/argon.min.js') }}?v={{ cache('v') }}"></script>
-    <script src="{{ asset('/js/noty.min.js') }}?v={{ cache('v') }}"></script>
+    <jquery version="3.3.1" />
+    <js file="/vendor/popper/popper.min.js" />
+    <js file="/vendor/headroom/headroom.min.js" />
+    <js file="/vendor/bootstrap/bootstrap.min.js" />
+    <js :file="mix('/app.js')" />
 
     <script type="text/javascript">
-      $(document).ready(function() {
+      $(document).ready(function () {
         @if($errors->any())
-          new Noty({
-            layout: 'topCenter',
-            type: 'error',
-            text: '<i class="mdi mdi-cancel mdi-18px mr-2"></i> {{ $errors->first() }}',
-            theme: 'relax',
-            timeout: 10000,
-            animation: {
-              open: 'animated fadeInDown',
-              close: 'animated fadeOutUp',
-            },
-          }).show();
+          sendNotification('{{ $errors->first() }}', '@mdi('cancel', 'mdi-18px mr-2')', 'error');
         @endif
-        @if(Session::has('alert') || Session::has('success'))
-          new Noty({
-            layout: 'topCenter',
-            @if(Session::has('alert'))
-              type: 'error',
-              text: '<i class="mdi mdi-cancel mdi-18px mr-2"></i> {{ Session::get('alert') }}',
-            @endif
-            @if(Session::has('success'))
-              type: 'success',
-              text: '<i class="mdi mdi-check mdi-18px mr-2"></i> {{ Session::get('success') }}',
-            @endif
-            theme: 'relax',
-            timeout: 6000,
-            animation: {
-              open: 'animated fadeInDown',
-              close: 'animated fadeOutUp',
-            },
-          }).show();
+
+        @if(Session::has('alert'))
+          sendNotification('{{ Session::get('alert') }}', '@mdi('cancel', 'mdi-18px mr-2')', 'error');
+        @endif
+
+        @if(Session::has('success'))
+          sendNotification('{{ Session::get('success') }}', '@mdi('check', 'mdi-18px mr-2')', 'success');
         @endif
       });
     </script>
-    @yield('js')
+
+    @yield('postjs')
   </body>
 </html>
