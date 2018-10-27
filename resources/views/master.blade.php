@@ -47,7 +47,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v={{ cache('v') }}">
     <link rel="manifest" href="/images/favicons/manifest.json">
 
-    <css :file="mix('/app.css')" />
+    <css file="/css/materialdesignicons.css" />
+    <css file="/css/animate.css" />
+    <css file="/css/noty.css" />
+    <css file="/css/noty.relax.css" />
+    <css file="/css/argon.css" />
+    <css file="/css/custom.css" />
 
     @yield('css')
     @yield('prejs')
@@ -187,7 +192,10 @@
     <js file="/vendor/popper/popper.min.js" />
     <js file="/vendor/headroom/headroom.min.js" />
     <js file="/vendor/bootstrap/bootstrap.min.js" />
-    <js :file="mix('/app.js')" />
+    <js file="/js/noty.js" />
+    <js file="/js/jquery.scrollTo.js" />
+    <js file="/js/argon.js" />
+    <js file="/js/custom.js" />
 
     <script type="text/javascript">
       $(document).ready(function () {
