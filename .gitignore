@@ -14,6 +14,7 @@ yarn-error.log
 .env
 package-lock.json
 composer.lock
+yarn.lock
 .env.backup
 laravel-echo-server.json
 /public/app.css
