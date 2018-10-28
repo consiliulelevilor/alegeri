@@ -78,9 +78,6 @@
                         <div class="card-body py-5">
                           <img class="icon img fluid rounded-circle mb-2" src="{{ $user->avatarUrl() }}" />
                           <h6 class="text-primary text-uppercase">{{ $user->name }}</h6>
-                          <p class="description mt-3">
-                            {{ $user->description }}
-                          </p>
                           <div>
                             <i class="mdi mdi-school mr-2"></i>
                             @if($user->institution)
