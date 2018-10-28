@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
@@ -13,7 +14,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class User extends VoyagerUser implements HasMedia
 {
-    use HasActivity, HasApiTokens, HasMediaTrait, Notifiable, SoftDeletes;
+    use Searchable, HasActivity, HasApiTokens, HasMediaTrait, Notifiable, SoftDeletes;
 
     protected $table = 'users';
     protected $primaryKey = 'id';
@@ -44,6 +45,11 @@ class User extends VoyagerUser implements HasMedia
     ];
     protected static $logOnlyDirty = false;
     protected static $logName = 'user';
+
+    public function shouldBeSearchable()
+    {
+        return $this->canApplyToCampaigns() && $this->applications()->count() > 0;
+    }
 
     public function socials()
     {

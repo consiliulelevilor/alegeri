@@ -108,6 +108,11 @@
                         <i class="mdi mdi-share mdi-18px"></i> Aplică
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a href="{{ route('users') }}" class="nav-link">
+                        <i class="mdi mdi-account mdi-18px"></i> Candidați
+                      </a>
+                    </li>
                   @endauth
                 </ul>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
@@ -161,6 +166,19 @@
                   <span class="btn-inner--icon">
                     <i class="mdi mdi-facebook-box mdi-24px"></i>
                   </span>
+                </a>
+              </div>
+            </div>
+            <hr>
+            <div class="row align-items-center">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 offset-lg-2">
+                <a href="https://sentry.io" target=_blank>
+                  <img class="img-fluid" src="/images/sentry-logo-black.png?v={{ cache('v') }}" />
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <a href="https://algolia.com" target=_blank>
+                  <img class="img-fluid" src="/images/algolia-logo.png?v={{ cache('v') }}" />
                 </a>
               </div>
             </div>

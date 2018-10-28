@@ -21,7 +21,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url('/images/mastheads/masthead-12.jpg?v={{ cache('v') }}');" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-0 pb-250" style="background-image: url('/images/mastheads/masthead-22.jpg?v={{ cache('v') }}');" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -145,7 +145,7 @@
                       </div>
                     </div>
                     <div>
-                      <h6 class="mb-0">Consiliul Județean al Elevilor <span class="badge badge-pill badge-primary text-uppercase">În curând</span></h6>
+                      <h6 class="mb-0">Consiliul Județean al Elevilor</h6>
                     </div>
                   </div>
                 </li>

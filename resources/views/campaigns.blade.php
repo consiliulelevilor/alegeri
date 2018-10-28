@@ -33,7 +33,7 @@
 @section('content')
   <main>
     <div class="position-relative">
-      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url('/images/mastheads/masthead-14.jpg?v={{ cache('v') }}');" id="masthead">
+      <section class="masthead section section-lg section-shaped pt-5 pb-250" style="background-image: url('/images/mastheads/masthead-23.jpg?v={{ cache('v') }}');" id="masthead">
         <div class="shape shape-style-1 shape-default">
           <span></span>
           <span></span>
@@ -48,7 +48,7 @@
         <div class="container py-lg-md d-flex">
           <div class="col px-0">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-12 text-center">
                 <h1 class="display-3 pt-3 pb-3 text-white">
                   Candidează
                   <span>și fii vocea colegilor tăi!</span>
@@ -197,11 +197,11 @@
             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
               <i class="mdi mdi-map-marker-outline"></i>
             </div>
-            <h5 class="text-white mt-3">Consiliul Județean al Elevilor<sup><span class="badge badge-pill badge-primary text-uppercase">În curând</span></sup></h5>
+            <h5 class="text-white mt-3">Consiliul Județean al Elevilor</h5>
             <p class="text-white mt-3">
               Consiliul Județean al Elevilor este substructura CNE responsabilă de reprezentarea elevilor
               de pe raza unui anumit județ. Acesta monitorizează Consiliile Școlare ale Elevilor,
-              inițiată demerusi și proiecte care să răspundă nevoilor din acel județ.
+              inițiază demersuri și proiecte care să răspundă nevoilor din acel județ.
             </p>
           </div>
           <div class="col-lg-4">

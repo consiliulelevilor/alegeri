@@ -80,6 +80,14 @@ return [
                 'tries' => 1,
                 'timeout' => '86400',
             ],
+            'search-indexes' => [
+                'connection' => 'redis',
+                'queue' => ['search-indexes'],
+                'balance' => 'auto',
+                'processes' => 1,
+                'tries' => 3,
+                'timeout' => '86400',
+            ],
             'stats' => [
                 'connection' => 'redis',
                 'queue' => ['stats'],
@@ -97,6 +105,14 @@ return [
                 'balance' => 'auto',
                 'processes' => 1,
                 'tries' => 1,
+                'timeout' => '86400',
+            ],
+            'search-indexes' => [
+                'connection' => 'redis',
+                'queue' => ['search-indexes'],
+                'balance' => 'auto',
+                'processes' => 1,
+                'tries' => 3,
                 'timeout' => '86400',
             ],
             'stats' => [

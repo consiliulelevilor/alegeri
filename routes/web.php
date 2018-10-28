@@ -23,6 +23,8 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['authenticated']], function () {
+    Route::get('/candidati', 'UserController@users')->name('users');
+
     Route::get('/profilul-meu', 'UserController@me')->name('me');
     Route::patch('/profilul-meu', 'UserController@updateMe')->name('me.update');
     Route::get('/profilul-meu/{social}/deconectare', 'AuthenticationController@socialUnlink')->name('social.unlink');

@@ -18,6 +18,17 @@ class UserController extends Controller
         return view('user', ['user' => $user]);
     }
 
+    public function users(Request $request)
+    {
+        $users = User::latest()->paginate(15);
+
+        if ($request->query('query')) {
+            $users = User::search($request->query('query'))->orderBy('created_at', 'desc')->paginate(15);
+        }
+
+        return view('users', ['users' => $users]);
+    }
+
     public function me(Request $request)
     {
         $request->user()->load([
