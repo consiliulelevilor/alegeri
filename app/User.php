@@ -93,6 +93,11 @@ class User extends VoyagerUser implements HasMedia
         });
     }
 
+    public function scopeHasCompleteProfile($query)
+    {
+        return $query->where('accepted_gdpr', 1)->whereNotNull('region')->whereNotNull('institution');
+    }
+
     public function avatarUrl()
     {
         if ($this->avatar) {

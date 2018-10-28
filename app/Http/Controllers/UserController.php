@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function users(Request $request)
     {
-        $users = User::latest()->paginate(15);
+        $users = User::hasCompleteProfile()->latest()->paginate(15);
 
         if ($request->query('query')) {
             $users = User::search($request->query('query'))->orderBy('created_at', 'desc')->paginate(15);
