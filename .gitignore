@@ -18,4 +18,3 @@ yarn.lock
 .env.backup
 laravel-echo-server.json
 !.gitkeep
-mix-manifest.json
