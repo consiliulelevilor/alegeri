@@ -123,7 +123,7 @@
                           <img alt="{{ $campaign->name }}" src="{{ $campaign->imageUrl() }}" class="img-fluid rounded" style="height: 130px; min-height: 130px;">
                         @endif
                         @if($campaign->mdi_icon)
-                          <div class="text-center text-{{ $campaign->color_scheme }} mt-3"><i class="mdi mdi-{{ $campaign->mdi_icon }} mdi-48px"></i></div>
+                          <div class="text-center text-{{ $campaign->color_scheme }} mt-4"><i class="mdi mdi-{{ $campaign->mdi_icon }} mdi-48px"></i></div>
                         @endif
                         <div class="card-body py-2">
                           <h5 class="text-{{ $campaign->color_scheme }} text-uppercase mt-3">{{ $campaign->name }}</h5>
