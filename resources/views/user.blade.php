@@ -352,7 +352,7 @@
                           Consiliului Școlar al Elevilor?
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliului Județean {{ Auth::user()->region }}?
+                          Consiliului Județean al Elevilor {{ Auth::user()->region }}?
                         @endif
                         @if($application->campaign->type == 'institutional')
                           Consiliului Școlar?
@@ -375,7 +375,7 @@
                           Consiliului Școlar al Elevilor?
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliului Județean {{ Auth::user()->region }}?
+                          Consiliului Județean al Elevilor {{ Auth::user()->region }}?
                         @endif
                         @if($application->campaign->type == 'institutional')
                           Consiliului Școlar?
@@ -734,7 +734,7 @@
                           Consiliului Școlar al Elevilor?
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliului Județean {{ Auth::user()->region }}?
+                          Consiliului Județean al Elevilor {{ Auth::user()->region }}?
                         @endif
                         @if($application->campaign->type == 'institutional')
                           Consiliului Școlar?
@@ -752,7 +752,7 @@
                           Consiliului Școlar al Elevilor?
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliului Județean {{ Auth::user()->region }}?
+                          Consiliului Județean al Elevilor {{ Auth::user()->region }}?
                         @endif
                         @if($application->campaign->type == 'institutional')
                           Consiliului Școlar?
