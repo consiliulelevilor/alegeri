@@ -409,10 +409,10 @@
                           Consiliul Școlar al Elevilor
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliul Județean {{ Auth::user()->region }}
+                          Consiliul Județean al Elevilor {{ Auth::user()->region }}
                         @endif
                         @if($application->campaign->type == 'institutional')
-                          Consiliul Școlar {{ Auth::user()->region }}
+                          Consiliul Școlar al Elevilor {{ Auth::user()->region }}
                         @endif
                         să se dezvolte organizațional prin funcția la care candidezi?
                       </h2>
@@ -776,10 +776,10 @@
                           Consiliul Școlar al Elevilor
                         @endif
                         @if($application->campaign->type == 'regional')
-                          Consiliul Județean {{ Auth::user()->region }}
+                          Consiliul Județean al Elevilor {{ Auth::user()->region }}
                         @endif
                         @if($application->campaign->type == 'institutional')
-                          Consiliul Școlar {{ Auth::user()->region }}
+                          Consiliul Școlar al Elevilor {{ Auth::user()->region }}
                         @endif
                         să se dezvolte organizațional prin funcția la care candidezi?
                       </label>
