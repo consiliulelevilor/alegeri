@@ -100,10 +100,10 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
-              @foreach($campaigns->chunk(4) as $chunk)
+              @foreach($campaigns->chunk(3) as $chunk)
                 <div class="row row-grid">
                   @foreach($chunk as $campaign)
-                    <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
                       <div class="card card-lift--hover shadow border-0" id="card-{{ $campaign->id }}">
                         @if($campaign->isExpired())
                           <div class="closed overlay">
