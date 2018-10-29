@@ -36,7 +36,6 @@ class Kernel extends ConsoleKernel
             $schedule->command('backup:run')->twiceDaily(8, 16);
             $schedule->command('update:cached')->dailyAt(12);
             $schedule->command('update:stats:applications')->hourly();
-            $schedule->command('scout:import "App\User"')->everyFiveMinutes();
         }
 
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
