@@ -1,6 +1,3 @@
-# alegeri.consiliulelevilor.com
-This is the repo for https://alegeri.consiliulelevilor.com
-
 # Development
 The development environment is based on Homestead. Homestead runs using Vagrant and VirtualBox. If you are not familiar, check the [official Homestead documentation](https://laravel.com/docs/5.6/homestead) where there are in-depth details about how Development environment works. But for this, all details will be explained below:
 
