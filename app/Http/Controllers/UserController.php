@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        if (! Cache::has('json:regions')) {
+            Cache::put('json:regions', file_get_contents(public_path('/json/regions.json')), 90);
+        }
+
+        if (! Cache::has('json:institutions')) {
+            Cache::put('json:institutions', file_get_contents(public_path('/json/institutions.json')), 90);
+        }
+    }
+
     public function show($idOrSlug, Request $request)
     {
         $user = User::with([
@@ -44,8 +56,8 @@ class UserController extends Controller
         $user = $request->user();
 
         if ($request->region) {
-            $cities = collect(json_decode(cache('json:regions:raw'), true)[$request->region]);
-            $institutions = json_decode(cache('json:institutions:raw'), true)[$request->region];
+            $cities = collect(json_decode(cache('json:regions'), true)[$request->region]);
+            $institutions = json_decode(cache('json:institutions'), true)[$request->region];
 
             if ($request->city) {
                 if (! $cities->where('name', $request->city)->first()) {

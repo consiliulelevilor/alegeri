@@ -40,5 +40,7 @@ class UpdateApplicationsStats extends Command
     public function handle()
     {
         UpdateApplicationsStatsJob::dispatch()->onQueue('stats');
+
+        $this->line('The application stats were updated!');
     }
 }

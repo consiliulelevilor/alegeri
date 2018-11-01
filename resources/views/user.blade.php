@@ -508,7 +508,7 @@
                         <span class="input-group-text"><i class="mdi mdi-map-marker"></i></span>
                       </div>
                       <select class="form-control form-control-alternative" name="region" id="region-select">
-                        @foreach(cache('json:regions') as $region => $cities)
+                        @foreach(json_decode(cache('json:regions')) as $region => $cities)
                           <option value="{{ $region }}" @if($region == $user->region) selected @endif>{{ $region }}</option>
                         @endforeach
                       </select>
