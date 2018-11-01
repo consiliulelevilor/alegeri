@@ -15,7 +15,7 @@ class JSONController extends Controller
         }
 
         $json = file_get_contents(public_path('/json/regions.json'));
-        Cache::put('json:regions', $json, 90);
+        Cache::put('json:regions', $json, 30);
 
         return ($request->query('onlyRegion')) ? json_decode($json, true)[$request->query('onlyRegion')] : json_decode($json, true);
     }
@@ -27,7 +27,7 @@ class JSONController extends Controller
         }
 
         $json = file_get_contents(public_path('/json/institutions.json'));
-        Cache::put('json:institutions', $json, 90);
+        Cache::put('json:institutions', $json, 30);
 
         return ($request->query('onlyRegion')) ? json_decode($json, true)[$request->query('onlyRegion')] : json_decode($json, true);
     }

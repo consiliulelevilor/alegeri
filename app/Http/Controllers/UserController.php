@@ -12,11 +12,11 @@ class UserController extends Controller
     public function __construct()
     {
         if (! Cache::has('json:regions')) {
-            Cache::put('json:regions', file_get_contents(public_path('/json/regions.json')), 90);
+            Cache::put('json:regions', file_get_contents(public_path('/json/regions.json')), 30);
         }
 
         if (! Cache::has('json:institutions')) {
-            Cache::put('json:institutions', file_get_contents(public_path('/json/institutions.json')), 90);
+            Cache::put('json:institutions', file_get_contents(public_path('/json/institutions.json')), 30);
         }
     }
 
