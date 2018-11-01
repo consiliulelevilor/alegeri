@@ -31,6 +31,7 @@ script:
   - sh -e /etc/init.d/xvfb start
   - php artisan serve &
   - phpunit --coverage-text --coverage-clover=coverage.xml
+  - CYPRESS_baseUrl=http://127.0.0.1:8000 $(npm bin)/cypress run
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
