@@ -191,7 +191,7 @@
               <div class="h6 font-weight-300">
                 <i class="mdi mdi-map-marker mr-2"></i>
                 @if($user->region && $user->city)
-                  {{ $user->city }}, {{ $user->region }} 
+                  {{ $user->city }}, {{ $user->region }}
                 @else
                   Locație necunoscută
                 @endif
@@ -349,7 +349,7 @@
                     <div class="modal-body">
                       <h2 class="lead font-weight-bold">
                         <i class="mdi mdi-chevron-right"></i>
-                        Ce te recomandă pentru funcția în cadrul 
+                        Ce te recomandă pentru funcția în cadrul
                         @if($application->campaign->type == 'executive')
                           Consiliului Național al Elevilor?
                         @endif
@@ -372,7 +372,7 @@
                       </div>
                       <h2 class="lead font-weight-bold">
                         <i class="mdi mdi-chevron-right"></i>
-                        Care consideri că este misiunea 
+                        Care consideri că este misiunea
                         @if($application->campaign->type == 'executive')
                           Consiliului Național al Elevilor?
                         @endif
@@ -731,7 +731,7 @@
                   <div class="row">
                     <div class="col-md-12 mb-4">
                       <label>
-                        Ce te recomandă pentru funcția în cadrul 
+                        Ce te recomandă pentru funcția în cadrul
                         @if($application->campaign->type == 'executive')
                           Consiliului Național al Elevilor?
                         @endif
@@ -749,7 +749,7 @@
                     </div>
                     <div class="col-md-12 mb-4">
                       <label>
-                        Care consideri că este misiunea 
+                        Care consideri că este misiunea
                         @if($application->campaign->type == 'executive')
                           Consiliului Național al Elevilor?
                         @endif
