@@ -70,6 +70,8 @@
       question="Ce sunt prăjiturelele?"
       :href="config('app.main_url')"
     />
+
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/f88358194104b151b39d4a3c2/0634e9727fbd07d409c0533e1.js");</script>
   </head>
   <body>
     <facebook :appId="config('services.facebook.client_id')" version="3.1" />
