@@ -16,5 +16,4 @@ package-lock.json
 composer.lock
 yarn.lock
 .env.backup
-laravel-echo-server.json
 !.gitkeep

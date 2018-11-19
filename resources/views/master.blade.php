@@ -47,7 +47,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v={{ cache('v') }}">
     <link rel="manifest" href="/images/favicons/manifest.json">
 
-    <css file="/css/materialdesignicons.css" />
+    <mdi version="3.0.39" />
     <css file="/css/animate.css" />
     <css file="/css/noty.css" />
     <css file="/css/noty.relax.css" />

@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/{{ $version }}/css/materialdesignicons.min.css">
